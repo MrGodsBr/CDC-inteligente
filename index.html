@@ -195,7 +195,6 @@
     }
     
     .action-btn:active { transform: scale(0.98); }
-    .action-btn.jana-btn { background-color: #e74c3c; color: #ffffff; }
     
     .footer-version { 
       text-align: right; 
@@ -234,7 +233,6 @@
     .icon-btn:active { transform: scale(0.92); }
     .icon-btn.fav-btn.active { background-color: #f39c12; }
     .icon-btn.theme-btn { background-color: #6c5ce7; }
-    .icon-btn.jana-btn { background-color: #e74c3c; }
 
     /* Tela do Artigo */
     .article-screen { 
@@ -544,220 +542,6 @@
     .toast.show {
       opacity: 1;
     }
-
-    /* ===== TELA JANA (Assistente) ===== */
-    .jana-screen {
-      background-color: var(--bg-secondary);
-      transition: background-color 0.3s;
-    }
-    
-    .jana-container {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    
-    .jana-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .jana-avatar {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #e74c3c, #c0392b);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
-      font-size: 40px;
-      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
-    }
-    
-    .jana-header h2 {
-      font-size: 24px;
-      color: var(--text-secondary);
-      margin-bottom: 4px;
-    }
-    
-    .jana-header p {
-      color: #888;
-      font-size: 14px;
-    }
-    
-    .jana-chat {
-      flex: 1;
-      overflow-y: auto;
-      padding: 12px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      margin-bottom: 12px;
-      min-height: 200px;
-      transition: background-color 0.3s;
-    }
-    
-    .jana-message {
-      margin-bottom: 12px;
-      display: flex;
-      gap: 10px;
-    }
-    
-    .jana-message.bot {
-      align-items: flex-start;
-    }
-    
-    .jana-message.user {
-      align-items: flex-end;
-      flex-direction: row-reverse;
-    }
-    
-    .jana-message .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    
-    .jana-message.bot .avatar {
-      background: linear-gradient(135deg, #e74c3c, #c0392b);
-    }
-    
-    .jana-message.user .avatar {
-      background: var(--header-bg);
-    }
-    
-    .jana-message .bubble {
-      max-width: 80%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      line-height: 1.5;
-      word-wrap: break-word;
-    }
-    
-    .jana-message.bot .bubble {
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      border-bottom-left-radius: 4px;
-      box-shadow: var(--shadow);
-    }
-    
-    .jana-message.user .bubble {
-      background: var(--header-bg);
-      color: white;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .jana-message .time {
-      font-size: 10px;
-      color: #888;
-      margin-top: 4px;
-      display: block;
-    }
-    
-    .jana-input-group {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .jana-input {
-      flex: 1;
-      height: 48px;
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 0 16px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      outline: none;
-      background-color: var(--bg-secondary);
-      transition: border-color 0.3s;
-    }
-    
-    .jana-input:focus {
-      border-color: #e74c3c;
-    }
-    
-    .jana-send-btn {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #e74c3c, #c0392b);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.1s;
-      flex-shrink: 0;
-    }
-    
-    .jana-send-btn:active {
-      transform: scale(0.92);
-    }
-    
-    .jana-send-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    
-    .jana-sugestoes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
-    
-    .jana-sugestao {
-      padding: 6px 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      font-size: 12px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-    
-    .jana-sugestao:active {
-      transform: scale(0.95);
-      background: var(--ia-bg);
-    }
-    
-    .jana-typing {
-      display: flex;
-      gap: 4px;
-      padding: 8px 0;
-    }
-    
-    .jana-typing span {
-      width: 8px;
-      height: 8px;
-      background: #888;
-      border-radius: 50%;
-      animation: typing 1.4s infinite;
-    }
-    
-    .jana-typing span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .jana-typing span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    
-    @keyframes typing {
-      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-      30% { transform: translateY(-8px); opacity: 1; }
-    }
   </style>
 </head>
 <body>
@@ -800,9 +584,6 @@
           <button class="action-btn" onclick="openSearchScreen()">
             🔍 Pesquisar CDC
           </button>
-          <button class="action-btn jana-btn" onclick="openJanaScreen()">
-            🤖 Assistente Jana
-          </button>
           <button class="action-btn" style="background-color: #d1e4f0; color: #0d3859;" onclick="openFavorites()">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             Ver Artigos Favoritados
@@ -819,7 +600,6 @@
         <div class="nav-group">
           <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
           <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
-          <button class="icon-btn jana-btn" onclick="openJanaScreen()">🤖</button>
         </div>
       </div>
       <div class="search-body">
@@ -843,7 +623,6 @@
           <button class="icon-btn" onclick="openSearchScreen()"><svg class="icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
           <button id="fav-toggle-btn" class="icon-btn fav-btn" onclick="toggleFavorite()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></button>
           <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
-          <button class="icon-btn jana-btn" onclick="openJanaScreen()">🤖</button>
         </div>
         <div class="nav-group">
           <button class="icon-btn" onclick="navArticle(-1)"><svg class="icon" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
@@ -872,48 +651,10 @@
         <h2>Artigos Favoritados</h2>
         <div class="nav-group">
           <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
-          <button class="icon-btn jana-btn" onclick="openJanaScreen()">🤖</button>
           <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
         </div>
       </div>
       <div id="fav-list-container" class="fav-list"></div>
-    </div>
-
-    <!-- TELA JANA (Assistente) -->
-    <div id="jana-screen" class="screen jana-screen">
-      <div class="nav-bar">
-        <div class="nav-group">
-          <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
-          <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
-        </div>
-        <button class="icon-btn" onclick="limparChat()" style="background-color: #e74c3c;">🗑️</button>
-      </div>
-
-      <div class="jana-container">
-        <div class="jana-header">
-          <div class="jana-avatar">🤖</div>
-          <h2>Assistente Jana</h2>
-          <p>Sua especialista em direitos do consumidor</p>
-        </div>
-
-        <div id="jana-chat" class="jana-chat">
-          <!-- Mensagens serão inseridas aqui -->
-        </div>
-
-        <div class="jana-sugestoes">
-          <span class="jana-sugestao" onclick="enviarMensagem('Quais são meus direitos como consumidor?')">📋 Meus direitos</span>
-          <span class="jana-sugestao" onclick="enviarMensagem('Como fazer uma reclamação?')">📝 Reclamação</span>
-          <span class="jana-sugestao" onclick="enviarMensagem('O que fazer com produto com defeito?')">🛠️ Produto com defeito</span>
-          <span class="jana-sugestao" onclick="enviarMensagem('Como cancelar uma compra?')">🔙 Cancelamento</span>
-        </div>
-
-        <div class="jana-input-group">
-          <input type="text" id="jana-input" class="jana-input" placeholder="Digite sua dúvida..." onkeyup="if(event.key === 'Enter') enviarMensagem()" />
-          <button class="jana-send-btn" onclick="enviarMensagem()" id="jana-send-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-          </button>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -933,7 +674,6 @@
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
       
-      // Atualizar ícone do botão na home
       const homeBtn = document.getElementById('theme-btn-home');
       if (homeBtn) {
         homeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
@@ -1064,113 +804,6 @@
     function searchArticleFromKeypad() {
       if (!currentInput) return;
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
-    }
-
-    // ====== JANA (Assistente) ======
-    function openJanaScreen() {
-      switchScreen('jana-screen');
-      const chat = document.getElementById('jana-chat');
-      if (chat.children.length === 0) {
-        adicionarMensagemBot('Olá! 👋 Sou a Jana, sua assistente especialista em direitos do consumidor. Como posso ajudá-lo hoje?');
-      }
-    }
-
-    function adicionarMensagemBot(texto) {
-      const chat = document.getElementById('jana-chat');
-      const div = document.createElement('div');
-      div.className = 'jana-message bot';
-      div.innerHTML = `
-        <div class="avatar">🤖</div>
-        <div>
-          <div class="bubble">${texto}</div>
-          <span class="time">${new Date().toLocaleTimeString()}</span>
-        </div>
-      `;
-      chat.appendChild(div);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    function adicionarMensagemUser(texto) {
-      const chat = document.getElementById('jana-chat');
-      const div = document.createElement('div');
-      div.className = 'jana-message user';
-      div.innerHTML = `
-        <div class="avatar">👤</div>
-        <div>
-          <div class="bubble">${texto}</div>
-          <span class="time">${new Date().toLocaleTimeString()}</span>
-        </div>
-      `;
-      chat.appendChild(div);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    function mostrarDigitando() {
-      const chat = document.getElementById('jana-chat');
-      const div = document.createElement('div');
-      div.id = 'jana-typing';
-      div.className = 'jana-message bot';
-      div.innerHTML = `
-        <div class="avatar">🤖</div>
-        <div class="bubble">
-          <div class="jana-typing">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-      `;
-      chat.appendChild(div);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    function removerDigitando() {
-      const typing = document.getElementById('jana-typing');
-      if (typing) typing.remove();
-    }
-
-    async function enviarMensagem(texto) {
-      const input = document.getElementById('jana-input');
-      const btn = document.getElementById('jana-send-btn');
-      const mensagem = texto || input.value.trim();
-      
-      if (!mensagem) return;
-      
-      input.value = '';
-      btn.disabled = true;
-      
-      adicionarMensagemUser(mensagem);
-      mostrarDigitando();
-      
-      try {
-        await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
-        
-        removerDigitando();
-        
-        const respostas = [
-          'Entendi! Com base no Código de Defesa do Consumidor, você tem direito à informação clara e adequada sobre produtos e serviços. O CDC garante proteção contra publicidade enganosa e práticas abusivas.',
-          'Ótima pergunta! O CDC estabelece que o fornecedor é responsável pela qualidade e segurança dos produtos. Em caso de defeito, você tem direito à troca, reparo ou devolução do valor pago.',
-          'De acordo com o CDC, você pode solicitar o cancelamento de uma compra em até 7 dias para compras realizadas fora do estabelecimento comercial (telefone, internet, etc). Esse é o direito de arrependimento.',
-          'Para fazer uma reclamação, você pode procurar o PROCON, o Juizado Especial Cível ou o Ministério Público. O CDC também garante a inversão do ônus da prova, facilitando sua defesa.',
-          'Se o produto apresentar vício, o fornecedor tem 30 dias para resolver o problema. Se não resolver, você pode exigir a troca, o abatimento do preço ou o cancelamento da compra.'
-        ];
-        
-        const resposta = respostas[Math.floor(Math.random() * respostas.length)];
-        adicionarMensagemBot(resposta);
-        
-      } catch (err) {
-        removerDigitando();
-        adicionarMensagemBot('Desculpe, tive um problema ao processar sua pergunta. Tente novamente! 😅');
-        console.error('Erro no Jana:', err);
-      }
-      
-      btn.disabled = false;
-      input.focus();
-    }
-
-    function limparChat() {
-      const chat = document.getElementById('jana-chat');
-      chat.innerHTML = '';
-      adicionarMensagemBot('Olá! 👋 Sou a Jana, sua assistente especialista em direitos do consumidor. Como posso ajudá-lo hoje?');
-      showToast('🧹 Chat limpo!');
     }
 
     // ====== ARTIGO ======

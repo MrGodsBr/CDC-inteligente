@@ -1,62 +1,57 @@
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ erro: 'Método não permitido' });
-  }
-
-  const { query } = req.body;
-
-  if (!query) {
-    return res.status(400).json({ erro: 'Termo de busca é obrigatório' });
-  }
+// --- PESQUISA INTELIGENTE VIA IA + EXIBIÇÃO COMPLETA LOCAL ---
+async function performTextSearch() {
+  const term = document.getElementById("search-term-input").value.trim();
+  const container = document.getElementById("search-results-container");
+  
+  if (!term) return;
+  container.innerHTML = '<div class="loading-spinner">Consultando IA (Groq)...</div>';
 
   try {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
-        messages: [
-          {
-            role: "system",
-            content: `Você é um classificador jurídico do Código de Defesa do Consumidor (CDC) do Brasil.
-Sua ÚNICA função é identificar quais números de artigos do CDC (de 1 a 119) correspondem à dúvida ou ao número pesquisado pelo usuário.
-NUNCA invente o texto dos artigos.
-
-Responda ESTRITAMENTE em formato JSON com o número do artigo em 'id' e uma breve justificativa da relação em 'snippet':
-{
-  "resultados": [
-    {
-      "id": "18",
-      "title": "Artigo 18",
-      "snippet": "Trata da responsabilidade por vício de qualidade e prazo para sanar defeitos."
-    }
-  ]
-}`
-          },
-          {
-            role: "user",
-            content: query
-          }
-        ],
-        response_format: { type: "json_object" }
-      })
+    // 1. Pergunta para a IA qual artigo trata daquele assunto
+    const response = await fetch('/api/buscar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: term })
     });
 
     const data = await response.json();
-    
-    if (data.error) {
-      console.error("Erro Groq:", data.error);
-      return res.status(500).json({ erro: "Erro na resposta da IA." });
+
+    if (data.erro || !data.resultados || data.resultados.length === 0) {
+      container.innerHTML = `<div class="empty-msg">Nenhum artigo encontrado para "${term}".</div>`;
+      return;
     }
 
-    const resultado = JSON.parse(data.choices[0].message.content);
-    return res.status(200).json(resultado);
+    // 2. Carrega o banco de dados local cdc.json com o texto completo e oficial
+    const db = await getDatabase();
 
-  } catch (erro) {
-    console.error("Erro no servidor:", erro);
-    return res.status(500).json({ erro: "Falha ao processar a busca com IA." });
+    container.innerHTML = "";
+    data.resultados.forEach(res => {
+      // Busca o texto rico e completo de dentro do cdc.json
+      const textoOficialCompleto = getArticleTextFromData(db, res.id);
+      
+      // Cria uma prévia limpa para o resultado da lista
+      let preview = res.snippet;
+      if (textoOficialCompleto) {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = textoOficialCompleto;
+        preview = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 110) + "...";
+      }
+
+      const item = document.createElement("div");
+      item.className = "result-item";
+      
+      // Ao clicar, exibe o TEXTO OFICIAL COMPLETO (do cdc.json)
+      item.onclick = () => fetchAndDisplayArticle(res.id, textoOficialCompleto);
+      
+      item.innerHTML = `
+        <div class="result-title">Artigo ${res.id}</div>
+        <div class="result-snippet">${preview}</div>
+      `;
+      container.appendChild(item);
+    });
+
+  } catch (err) {
+    console.error("Erro na busca:", err);
+    container.innerHTML = '<div class="empty-msg">Falha na conexão. Tente novamente.</div>';
   }
 }

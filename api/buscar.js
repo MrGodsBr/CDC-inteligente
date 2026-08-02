@@ -21,21 +21,20 @@ export default async function handler(req, res) {
         messages: [
           {
             role: "system",
-            content: `Você é um indexador especialista no Código de Defesa do Consumidor (CDC) do Brasil.
+            content: `Você é um consultor jurídico do Código de Defesa do Consumidor (CDC) do Brasil.
+Sua função é analisar a DÚVIDA do usuário e indicar os artigos aplicáveis.
 
-PROIBIÇÃO ABSOLUTA: NUNCA ESCREVA O TEXTO DO ARTIGO DO CDC. O TEXTO VEM DO CDC.JSON LOCAL.
+REGRAS RIGOROSAS:
+1. NUNCA invente ou escreva o texto da lei. O texto da lei vem 100% do banco local cdc.json.
+2. Em 'id', coloque o número do artigo (entre 1 e 119).
+3. Em 'explicacao_ia', forneça uma orientação prática, curta e clara em linguagem simples explicando como o artigo se aplica ao problema relatado.
 
-Sua única função é:
-1. Retornar em 'id' apenas o número do artigo do CDC (de 1 a 119) correspondente à dúvida.
-2. Se houver alguma jurisprudência (ex: Súmulas do STJ/STF) ou atualização relevante, coloque em 'acrescimo_ia'. Se não houver nada a acrescentar, deixe em branco "".
-
-Formato de resposta JSON:
+Formato ESTRITO da resposta em JSON:
 {
   "resultados": [
     {
-      "id": "37",
-      "snippet": "Publicidade enganosa ou abusiva.",
-      "acrescimo_ia": "Súmula do STJ ou entendimento consolidado (se aplicável)."
+      "id": "18",
+      "explicacao_ia": "Para produtos com defeito de fabricação, o fornecedor tem até 30 dias para resolver. Se não resolver, você tem direito à troca imediata ou reembolso."
     }
   ]
 }`

@@ -35,7 +35,7 @@
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
-    /* CAIXA COM TEXTO EXTRA ADICIONADO PELA IA */
+    /* DESTAQUE EXCLUSIVO PARA O ACRÉSCIMO DA IA */
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
@@ -111,7 +111,7 @@
           </button>
         </div>
 
-        <div class="footer-version">v4.0 Oficial + IA 🌎</div>
+        <div class="footer-version">v5.0 Local Absoluto 🌎</div>
       </div>
     </div>
 
@@ -167,12 +167,12 @@
     let cdcDatabase = null;
     let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
 
-    // LEITURA DIRETA DO NOSSO CDC.JSON
+    // LER BANCO DE DADOS LOCAL (100% GARANTIDO DO CDC.JSON)
     async function getDatabase() {
       if (cdcDatabase) return cdcDatabase;
       try {
-        const response = await fetch('cdc.json', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Erro ao abrir cdc.json');
+        const response = await fetch('cdc.json?v=' + Date.now(), { cache: 'no-store' });
+        if (!response.ok) throw new Error('Erro ao carregar cdc.json');
         cdcDatabase = await response.json();
         return cdcDatabase;
       } catch (err) {
@@ -206,14 +206,14 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // EXIBE APENAS O TEXTO ORIGINAL DO BANCO E INSERE O 🌎 SE HOUVER COMPLEMENTO DA IA
+    // EXIBE APENAS O TEXTO DO CDC.JSON E O ACRÉSCIMO DA IA (COM SÍMBOLO 🌎)
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
       updateFavButtonState();
 
       document.getElementById("article-title").innerText = `Artigo ${artId}`;
-      document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando legislação oficial...</div>`;
+      document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando cdc.json...</div>`;
       document.getElementById("ia-extra-container").innerHTML = "";
 
       const db = await getDatabase();
@@ -221,14 +221,15 @@
 
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
-        // GARANTE O TEXTO 100% ORIGINAL DO CDC.JSON
+        
+        // FORÇA O USO EXCLUSIVO DO TEXTO LOCAL DO BANCO CDC.JSON
         document.getElementById("article-content").innerHTML = articleObj.texto;
 
-        // INSERE O BLOCO 🌎 APENAS SE HOUVER COMPLEMENTO EXTRA DA IA
+        // SE A IA TROUXER ALGO EXTRA, MOSTRA APENAS NA CAIXA COM O 🌎
         if (extraIaText && extraIaText.trim() !== "") {
           document.getElementById("ia-extra-container").innerHTML = `
             <div class="ia-extra-box">
-              <div class="ia-extra-title">🌎 Informação Complementar / Jurisprudência:</div>
+              <div class="ia-extra-title">🌎 Complemento / Jurisprudência (IA):</div>
               <div>${extraIaText}</div>
             </div>
           `;
@@ -237,7 +238,7 @@
         const bodyEl = document.querySelector('.article-body');
         if (bodyEl) bodyEl.scrollTop = 0;
       } else {
-        document.getElementById("article-content").innerHTML = `<p class="empty-msg">Artigo não encontrado no banco de dados.</p>`;
+        document.getElementById("article-content").innerHTML = `<p class="empty-msg">Artigo não encontrado no cdc.json.</p>`;
       }
     }
 
@@ -247,13 +248,13 @@
       switchScreen('search-screen');
     }
 
-    // PESQUISA COM IA: LOCALIZA O ID E BUSCA O TEXTO ORIGINAL DO CDC.JSON
+    // BUSCA INTELIGENTE: PAGA O ID E EXIBE O TEXTO DO BANCO LOCAL
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
       
       if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">Consultando IA para localizar o artigo...</div>';
+      container.innerHTML = '<div class="loading-spinner">IA identificando o artigo correspondente...</div>';
 
       try {
         const response = await fetch('/api/buscar', {
@@ -285,7 +286,6 @@
           const item = document.createElement("div");
           item.className = "result-item";
           
-          // Abre o artigo do cdc.json + envia o complemento extra (se houver)
           item.onclick = () => fetchAndDisplayArticle(res.id, res.acrescimo_ia);
           
           item.innerHTML = `
@@ -296,7 +296,7 @@
         });
 
       } catch (err) {
-        console.error("Erro na busca:", err);
+        console.error("Erro:", err);
         container.innerHTML = '<div class="empty-msg">Falha na conexão. Tente novamente.</div>';
       }
     }

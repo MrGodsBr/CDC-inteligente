@@ -100,7 +100,15 @@
     .icon { width: 22px; height: 22px; fill: currentColor; }
     .icon-btn .icon { width: 24px; height: 24px; }
 
-    /* Scrollbar personalizada */
+    .error-message {
+      background-color: #fee;
+      border-left: 4px solid #b76263;
+      padding: 12px;
+      border-radius: 8px;
+      color: #b76263;
+      margin: 8px 0;
+    }
+
     .article-body::-webkit-scrollbar, .results-list::-webkit-scrollbar, .fav-list::-webkit-scrollbar {
       width: 4px;
     }
@@ -206,7 +214,8 @@
     let currentArticleId = null;
     let cdcDatabase = null;
     let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
-    let isFavoritesOpen = false;
+
+    const API_BASE_URL = '/api';
 
     async function getDatabase() {
       if (cdcDatabase) return cdcDatabase;
@@ -298,11 +307,15 @@
       `;
 
       try {
-        const response = await fetch('/api/buscar', {
+        const response = await fetch(`${API_BASE_URL}/buscar`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: `Explicação e aplicação prática do Artigo ${artId} do CDC` })
+          body: JSON.stringify({ query: `Explique o Artigo ${artId} do Código de Defesa do Consumidor de forma prática e acessível` })
         });
+
+        if (!response.ok) {
+          throw new Error(`Erro ${response.status}: ${response.statusText}`);
+        }
 
         const data = await response.json();
 
@@ -312,13 +325,18 @@
           iaBox.innerHTML = `
             <div class="ia-extra-box">
               <div class="ia-extra-title">🌎 Análise / Orientação da IA:</div>
-              <div>Artigo legal sem jurisprudências específicas associadas no momento.</div>
+              <div>Não foi possível obter uma análise específica para este artigo no momento.</div>
             </div>
           `;
         }
       } catch (err) {
         console.error("Erro busca IA:", err);
-        iaBox.innerHTML = "";
+        iaBox.innerHTML = `
+          <div class="ia-extra-box" style="border-left-color: #b76263; background-color: #fee;">
+            <div class="ia-extra-title" style="color: #b76263;">⚠️ Erro na consulta:</div>
+            <div>Não foi possível obter a análise da IA. Tente novamente mais tarde.</div>
+          </div>
+        `;
       }
     }
 
@@ -341,12 +359,16 @@
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
       
-      if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">Buscando no banco local e na IA...</div>';
+      if (!term) {
+        container.innerHTML = '<div class="error-message">Por favor, digite um termo para pesquisa.</div>';
+        return;
+      }
+
+      container.innerHTML = '<div class="loading-spinner">🔍 Buscando no banco local e na IA...</div>';
 
       const db = await getDatabase();
       if (!db) {
-        container.innerHTML = '<div class="empty-msg">Erro ao carregar banco local.</div>';
+        container.innerHTML = '<div class="error-message">Erro ao carregar banco local. Verifique sua conexão.</div>';
         return;
       }
 
@@ -361,7 +383,7 @@
 
       const localHeader = document.createElement("div");
       localHeader.className = "section-header";
-      localHeader.innerText = "📄 Resultados no Banco Local (cdc.json)";
+      localHeader.innerText = `📄 Resultados no Banco Local (${matchesLocal.length} encontrados)`;
       container.appendChild(localHeader);
 
       if (matchesLocal.length > 0) {
@@ -398,26 +420,46 @@
       container.appendChild(iaLoading);
 
       try {
-        const response = await fetch('/api/buscar', {
+        const response = await fetch(`${API_BASE_URL}/buscar`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ query: term })
         });
+
+        if (!response.ok) {
+          throw new Error(`Erro ${response.status}: ${response.statusText}`);
+        }
 
         const data = await response.json();
         if (container.contains(iaLoading)) container.removeChild(iaLoading);
 
         if (data.resultados && data.resultados.length > 0) {
           data.resultados.forEach(res => {
+            // Tenta encontrar o artigo no banco local
             const articleObj = getArticleFromData(db, res.id);
-            if (!articleObj) return;
-
+            
             const item = document.createElement("div");
             item.className = "result-item";
-            item.onclick = () => fetchAndDisplayArticle(res.id, res.explicacao_ia);
+            item.onclick = () => {
+              if (articleObj) {
+                fetchAndDisplayArticle(res.id, res.explicacao_ia);
+              } else {
+                // Se não encontrar, apenas exibe a análise
+                const iaBox = document.getElementById("ia-extra-container");
+                iaBox.innerHTML = `
+                  <div class="ia-extra-box">
+                    <div class="ia-extra-title">🌎 Análise / Orientação da IA:</div>
+                    <div>${res.explicacao_ia}</div>
+                  </div>
+                `;
+                switchScreen('article-screen');
+                document.getElementById("article-title").innerText = `Análise: ${res.id}`;
+                document.getElementById("article-content").innerHTML = '<p class="empty-msg">Artigo não encontrado no banco local, mas aqui está a análise da IA:</p>';
+              }
+            };
             
             item.innerHTML = `
-              <div class="result-title">Artigo ${res.id} 🌎</div>
+              <div class="result-title">📌 ${articleObj ? `Artigo ${res.id}` : `Análise ${res.id}`} 🌎</div>
               <div class="result-snippet">${res.explicacao_ia || 'Toque para abrir a análise'}</div>
             `;
             container.appendChild(item);
@@ -425,16 +467,17 @@
         } else {
           const emptyIa = document.createElement("div");
           emptyIa.className = "empty-msg";
-          emptyIa.innerText = "Nenhuma orientação adicional da IA.";
+          emptyIa.innerText = "Nenhuma orientação adicional da IA para este termo.";
           container.appendChild(emptyIa);
         }
 
       } catch (err) {
         if (container.contains(iaLoading)) container.removeChild(iaLoading);
         const errIa = document.createElement("div");
-        errIa.className = "empty-msg";
-        errIa.innerText = "Erro ao consultar a IA. Tente novamente.";
+        errIa.className = "error-message";
+        errIa.innerText = "❌ Erro ao consultar a IA. Verifique sua conexão e tente novamente.";
         container.appendChild(errIa);
+        console.error("Erro na busca IA:", err);
       }
     }
 
@@ -458,7 +501,6 @@
       localStorage.setItem('cdc_favorites', JSON.stringify(favorites));
       updateFavButtonState();
       
-      // Se estiver na tela de favoritos, atualiza a lista
       if (document.getElementById('favorites-screen').classList.contains('active')) {
         openFavorites();
       }

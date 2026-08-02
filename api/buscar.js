@@ -21,20 +21,19 @@ export default async function handler(req, res) {
         messages: [
           {
             role: "system",
-            content: `Você é um assistente jurídico especialista no Código de Defesa do Consumidor (CDC) do Brasil.
-Sua função é:
-1. Identificar o número do artigo (entre 1 e 119) aplicável à dúvida ou pesquisa do usuário.
-2. NUNCA reescrever ou alterar o texto da lei original.
-3. Se houver alguma atualização legal recente, jurisprudência do STJ/STF (ex: súmulas) ou aplicação prática importante que NÃO consta na letra fria da lei, forneça em 'acrescimo_ia'. Se não houver acréscimo necessário, deixe 'acrescimo_ia' como string vazia "".
+            content: `Você é um indexador especialista no Código de Defesa do Consumidor (CDC) do Brasil.
+SUAS REGRAS ABSOLUTAS:
+1. Retorne APENAS o número do artigo (entre 1 e 119) aplicável à dúvida do usuário em 'id'.
+2. NUNCA escreva ou tente reproduzir o texto do artigo. O texto original é lido diretamente do arquivo cdc.json.
+3. Se houver alguma Súmula do STJ/STF, jurisprudência recente ou esclarecimento prático importante sobre essa dúvida, escreva em 'acrescimo_ia'. Se não houver nada a acrescentar, deixe 'acrescimo_ia' como "".
 
-Responda ESTRITAMENTE em JSON no seguinte formato:
+Formato da resposta JSON:
 {
   "resultados": [
     {
-      "id": "18",
-      "title": "Artigo 18",
-      "snippet": "Responsabilidade por vício de qualidade do produto e prazos para troca.",
-      "acrescimo_ia": "Segundo o STJ (Súmula 543 e jurisprudência consolidada), em caso de produto essencial (como celular ou geladeira), o consumidor não precisa aguardar o prazo de 30 dias para exigir a troca imediata."
+      "id": "37",
+      "snippet": "Regula a publicidade enganosa e abusiva.",
+      "acrescimo_ia": "O STJ entende que a publicidade enganosa gera responsabilidade objetiva do anunciante e do veículo se houver má-fé."
     }
   ]
 }`

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>CDC - Código de Defesa do Consumidor (Local)</title>
+  <title>CDC - Código de Defesa do Consumidor</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: #6392b4; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
@@ -35,6 +35,25 @@
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
+    /* ESTILO PARA A CAIXA COMPLEMENTAR 🌎 */
+    .ia-extra-box {
+      margin-top: 24px;
+      padding: 16px;
+      background-color: #eef7ff;
+      border-left: 4px solid #0d3859;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #0d3859;
+      line-height: 1.5;
+    }
+    .ia-extra-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #0d3859;
+    }
+
+    /* ESTILOS DA SEÇÃO DUPLA DE PESQUISA */
     .search-screen { background-color: #ffffff; }
     .search-body { padding: 20px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
     .search-title { font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 12px; }
@@ -42,6 +61,25 @@
     .search-input { flex: 1; height: 52px; border: 1px solid #333333; border-radius: 8px; padding: 0 16px; font-size: 16px; color: #333333; outline: none; }
     .search-submit-btn { width: 52px; height: 52px; background-color: #0d3859; border: none; border-radius: 8px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .results-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    
+    .section-header {
+      font-size: 14px;
+      font-weight: bold;
+      color: #0d3859;
+      background-color: #f0f4f8;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 12px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .section-header.ia {
+      background-color: #eef7ff;
+      color: #0d3859;
+      border-left: 4px solid #3f90be;
+    }
+
     .result-item { padding: 14px 12px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
     .result-title { font-size: 16px; font-weight: bold; color: #0d3859; margin-bottom: 4px; }
     .result-snippet { font-size: 13px; color: #555555; line-height: 1.4; }
@@ -52,8 +90,8 @@
     .fav-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     .fav-item { padding: 16px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
     
-    .empty-msg { text-align: center; color: #888; margin-top: 40px; font-size: 15px; }
-    .loading-spinner { text-align: center; color: #0d3859; padding: 30px; font-weight: 500; }
+    .empty-msg { text-align: center; color: #888; margin: 20px 0; font-size: 14px; }
+    .loading-spinner { text-align: center; color: #0d3859; padding: 15px; font-weight: 500; font-size: 14px; }
     .icon { width: 22px; height: 22px; fill: currentColor; }
   </style>
 </head>
@@ -87,7 +125,7 @@
 
         <div class="actions-group">
           <button class="action-btn" onclick="openSearchScreen()">
-            Pesquisar por Palavra
+            Pesquisa Inteligente (Local + IA 🌎)
           </button>
           <button class="action-btn" style="background-color: #d1e4f0; color: #0d3859;" onclick="openFavorites()">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -95,19 +133,19 @@
           </button>
         </div>
 
-        <div class="footer-version">v1.0 (100% Banco Local)</div>
+        <div class="footer-version">v2.0 (Busca Híbrida 🌎)</div>
       </div>
     </div>
 
-    <!-- 2. TELA DE PESQUISA POR PALAVRA -->
+    <!-- 2. TELA DE PESQUISA (DUPLA: LOCAL + IA) -->
     <div id="search-screen" class="screen search-screen">
       <div class="nav-bar">
         <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
       </div>
       <div class="search-body">
-        <h2 class="search-title">Pesquisar por Palavra</h2>
+        <h2 class="search-title">Pesquisa Inteligente</h2>
         <div class="search-input-group">
-          <input type="text" id="search-term-input" class="search-input" placeholder="Ex: troca, defeito, propaganda" onkeyup="if(event.key === 'Enter') performTextSearch()" />
+          <input type="text" id="search-term-input" class="search-input" placeholder="Digite uma palavra ou sua dúvida" onkeyup="if(event.key === 'Enter') performTextSearch()" />
           <button class="search-submit-btn" onclick="performTextSearch()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button>
         </div>
         <div id="search-results-container" class="results-list"></div>
@@ -131,6 +169,7 @@
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
+        <div id="ia-extra-container"></div>
       </div>
     </div>
 
@@ -150,7 +189,6 @@
     let cdcDatabase = null;
     let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
 
-    // LER BANCO DE DADOS LOCAL (100% GARANTIDO DO CDC.JSON)
     async function getDatabase() {
       if (cdcDatabase) return cdcDatabase;
       try {
@@ -189,21 +227,34 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // EXIBE APENAS O TEXTO DO CDC.JSON
-    async function fetchAndDisplayArticle(artId) {
+    // EXIBE O ARTIGO LOCAL DO CDC.JSON + O BLOCO 🌎 SE VIER DA IA
+    async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
       updateFavButtonState();
 
       document.getElementById("article-title").innerText = `Artigo ${artId}`;
       document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando cdc.json...</div>`;
+      document.getElementById("ia-extra-container").innerHTML = "";
 
       const db = await getDatabase();
       const articleObj = getArticleFromData(db, artId);
 
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
+        
+        // TEXTO 100% GARANTIDO DO SEU BANCO LOCAL CDC.JSON
         document.getElementById("article-content").innerHTML = articleObj.texto;
+
+        // SE TIVER A EXPLICAÇÃO/ORIENTAÇÃO DA IA, INSERE NO BLOCO COM 🌎
+        if (extraIaText && extraIaText.trim() !== "") {
+          document.getElementById("ia-extra-container").innerHTML = `
+            <div class="ia-extra-box">
+              <div class="ia-extra-title">🌎 Análise / Orientação da IA:</div>
+              <div>${extraIaText}</div>
+            </div>
+          `;
+        }
 
         const bodyEl = document.querySelector('.article-body');
         if (bodyEl) bodyEl.scrollTop = 0;
@@ -218,47 +269,110 @@
       switchScreen('search-screen');
     }
 
-    // PESQUISA LOCAL POR PALAVRA (SEM IA, 100% CONFIÁVEL)
+    // FUNÇÃO DA BUSCA DUPLA: BUSCA LOCAL INSTANTÂNEA + BUSCA POR INTENÇÃO NA IA
     async function performTextSearch() {
-      const term = document.getElementById("search-term-input").value.trim().toLowerCase();
+      const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
       
       if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">Buscando no cdc.json...</div>';
+      container.innerHTML = '<div class="loading-spinner">Buscando no banco local e consultando IA...</div>';
 
       const db = await getDatabase();
       if (!db) {
-        container.innerHTML = '<div class="empty-msg">Erro ao carregar banco de dados.</div>';
-        return;
-      }
-
-      // Filtra os artigos que possuem a palavra pesquisada no texto ou título
-      const matches = db.filter(art => {
-        const fullText = (art.titulo + " " + art.texto).toLowerCase();
-        return fullText.includes(term);
-      });
-
-      if (matches.length === 0) {
-        container.innerHTML = `<div class="empty-msg">Nenhum artigo encontrado contendo "${term}".</div>`;
+        container.innerHTML = '<div class="empty-msg">Erro ao carregar banco local.</div>';
         return;
       }
 
       container.innerHTML = "";
-      matches.forEach(art => {
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = art.texto;
-        const plainText = tempDiv.textContent || tempDiv.innerText || "";
-        const preview = plainText.substring(0, 110) + "...";
 
-        const item = document.createElement("div");
-        item.className = "result-item";
-        item.onclick = () => fetchAndDisplayArticle(art.id || art.numero);
-        item.innerHTML = `
-          <div class="result-title">${art.titulo || 'Artigo ' + art.id}</div>
-          <div class="result-snippet">${preview}</div>
-        `;
-        container.appendChild(item);
+      // --- 1. SEÇÃO LOCAL (Busca exata de palavras no cdc.json) ---
+      const termLower = term.toLowerCase();
+      const matchesLocal = db.filter(art => {
+        const fullText = (art.titulo + " " + art.texto).toLowerCase();
+        return fullText.includes(termLower);
       });
+
+      const localSectionHeader = document.createElement("div");
+      localSectionHeader.className = "section-header";
+      localSectionHeader.innerText = "📄 Resultados no Banco Local (cdc.json)";
+      container.appendChild(localSectionHeader);
+
+      if (matchesLocal.length > 0) {
+        // Exibe até 5 resultados mais relevantes da busca por palavra
+        matchesLocal.slice(0, 5).forEach(art => {
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = art.texto;
+          const plainText = tempDiv.textContent || tempDiv.innerText || "";
+          const preview = plainText.substring(0, 100) + "...";
+
+          const item = document.createElement("div");
+          item.className = "result-item";
+          item.onclick = () => fetchAndDisplayArticle(art.id || art.numero);
+          item.innerHTML = `
+            <div class="result-title">${art.titulo || 'Artigo ' + art.id}</div>
+            <div class="result-snippet">${preview}</div>
+          `;
+          container.appendChild(item);
+        });
+      } else {
+        const emptyLocal = document.createElement("div");
+        emptyLocal.className = "empty-msg";
+        emptyLocal.innerText = `Nenhum termo idêntico encontrado no banco local.`;
+        container.appendChild(emptyLocal);
+      }
+
+      // --- 2. SEÇÃO DA IA 🌎 (Análise de contexto/dúvida) ---
+      const iaSectionHeader = document.createElement("div");
+      iaSectionHeader.className = "section-header ia";
+      iaSectionHeader.innerText = "🌎 Análise de Contexto por IA (Groq)";
+      container.appendChild(iaSectionHeader);
+
+      const iaLoading = document.createElement("div");
+      iaLoading.className = "loading-spinner";
+      iaLoading.innerText = "IA analisando a intenção da dúvida...";
+      container.appendChild(iaLoading);
+
+      try {
+        const response = await fetch('/api/buscar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: term })
+        });
+
+        const data = await response.json();
+        container.removeChild(iaLoading);
+
+        if (data.resultados && data.resultados.length > 0) {
+          data.resultados.forEach(res => {
+            const articleObj = getArticleFromData(db, res.id);
+            if (!articleObj) return;
+
+            const item = document.createElement("div");
+            item.className = "result-item";
+            
+            // Ao clicar, exibe o texto oficial + a explicação da IA marcada com o 🌎
+            item.onclick = () => fetchAndDisplayArticle(res.id, res.explicacao_ia);
+            
+            item.innerHTML = `
+              <div class="result-title">Artigo ${res.id} 🌎</div>
+              <div class="result-snippet">${res.explicacao_ia || 'Clique para ver a análise da IA sobre este artigo'}</div>
+            `;
+            container.appendChild(item);
+          });
+        } else {
+          const emptyIa = document.createElement("div");
+          emptyIa.className = "empty-msg";
+          emptyIa.innerText = "Nenhuma recomendação adicional da IA.";
+          container.appendChild(emptyIa);
+        }
+
+      } catch (err) {
+        if (container.contains(iaLoading)) container.removeChild(iaLoading);
+        const errIa = document.createElement("div");
+        errIa.className = "empty-msg";
+        errIa.innerText = "Não foi possível conectar com a IA no momento.";
+        container.appendChild(errIa);
+      }
     }
 
     function navArticle(direction) {

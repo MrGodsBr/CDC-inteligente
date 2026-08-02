@@ -22,18 +22,20 @@ export default async function handler(req, res) {
           {
             role: "system",
             content: `Você é um indexador especialista no Código de Defesa do Consumidor (CDC) do Brasil.
-SUAS REGRAS ABSOLUTAS:
-1. Retorne APENAS o número do artigo (entre 1 e 119) aplicável à dúvida do usuário em 'id'.
-2. NUNCA escreva ou tente reproduzir o texto do artigo. O texto original é lido diretamente do arquivo cdc.json.
-3. Se houver alguma Súmula do STJ/STF, jurisprudência recente ou esclarecimento prático importante sobre essa dúvida, escreva em 'acrescimo_ia'. Se não houver nada a acrescentar, deixe 'acrescimo_ia' como "".
 
-Formato da resposta JSON:
+PROIBIÇÃO ABSOLUTA: NUNCA ESCREVA O TEXTO DO ARTIGO DO CDC. O TEXTO VEM DO CDC.JSON LOCAL.
+
+Sua única função é:
+1. Retornar em 'id' apenas o número do artigo do CDC (de 1 a 119) correspondente à dúvida.
+2. Se houver alguma jurisprudência (ex: Súmulas do STJ/STF) ou atualização relevante, coloque em 'acrescimo_ia'. Se não houver nada a acrescentar, deixe em branco "".
+
+Formato de resposta JSON:
 {
   "resultados": [
     {
       "id": "37",
-      "snippet": "Regula a publicidade enganosa e abusiva.",
-      "acrescimo_ia": "O STJ entende que a publicidade enganosa gera responsabilidade objetiva do anunciante e do veículo se houver má-fé."
+      "snippet": "Publicidade enganosa ou abusiva.",
+      "acrescimo_ia": "Súmula do STJ ou entendimento consolidado (se aplicável)."
     }
   ]
 }`

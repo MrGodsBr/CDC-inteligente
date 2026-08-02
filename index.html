@@ -17,26 +17,26 @@
     .home-content { flex: 1; padding: 20px 24px; display: flex; flex-direction: column; justify-content: space-between; }
     .display-number { text-align: center; font-size: 28px; font-weight: bold; color: #ffffff; min-height: 36px; margin-bottom: 10px; letter-spacing: 2px; }
     .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 15px; }
-    .key-btn { background-color: #e3e3e3; border: none; border-radius: 12px; height: 72px; font-size: 32px; font-weight: bold; color: #000000; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
-    .key-btn:active { transform: scale(0.97); background-color: #d0d0d0; }
+    .key-btn { background-color: #e3e3e3; border: none; border-radius: 12px; height: 72px; font-size: 32px; font-weight: bold; color: #000000; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: transform 0.1s; }
+    .key-btn:active { transform: scale(0.95); background-color: #d0d0d0; }
     .key-btn.clear { background-color: #b76263; color: #ffffff; font-size: 26px; }
     .key-btn.enter { background-color: #0d3859; color: #ffffff; font-size: 28px; }
     .actions-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
-    .action-btn { width: 100%; background-color: #e3e3e3; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: bold; color: #000000; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .action-btn { width: 100%; background-color: #e3e3e3; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: bold; color: #000000; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; }
+    .action-btn:active { transform: scale(0.98); }
     .footer-version { text-align: right; font-size: 11px; color: rgba(255, 255, 255, 0.7); }
 
     .nav-bar { background-color: #f5f5f7; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e0e0e0; flex-shrink: 0; }
     .nav-group { display: flex; gap: 12px; }
-    .icon-btn { width: 44px; height: 44px; background-color: #3f90be; border: none; border-radius: 10px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .icon-btn { width: 44px; height: 44px; background-color: #3f90be; border: none; border-radius: 10px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s; }
+    .icon-btn:active { transform: scale(0.92); }
     .icon-btn.fav-btn.active { background-color: #f39c12; }
 
-    /* TELA DO ARTIGO */
     .article-screen { background-color: #ffffff; height: 100%; }
     .article-body { padding: 24px 20px 50px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; color: #111111; line-height: 1.6; }
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
-    /* CAIXA FIXA DE ANÁLISE DA IA COM BORDAS E DESTAQUE 🌎 */
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
@@ -57,13 +57,14 @@
       gap: 6px;
     }
 
-    /* TELA DE PESQUISA */
     .search-screen { background-color: #ffffff; }
     .search-body { padding: 20px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
     .search-title { font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 12px; }
     .search-input-group { display: flex; gap: 10px; margin-bottom: 16px; }
     .search-input { flex: 1; height: 52px; border: 1px solid #333333; border-radius: 8px; padding: 0 16px; font-size: 16px; color: #333333; outline: none; }
-    .search-submit-btn { width: 52px; height: 52px; background-color: #0d3859; border: none; border-radius: 8px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .search-input:focus { border-color: #0d3859; }
+    .search-submit-btn { width: 52px; height: 52px; background-color: #0d3859; border: none; border-radius: 8px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.1s; }
+    .search-submit-btn:active { transform: scale(0.92); }
     .results-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     
     .section-header {
@@ -82,7 +83,8 @@
       border-left: 4px solid #3f90be;
     }
 
-    .result-item { padding: 14px 12px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+    .result-item { padding: 14px 12px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background-color 0.1s; }
+    .result-item:active { background-color: #f5f5f5; }
     .result-title { font-size: 16px; font-weight: bold; color: #0d3859; margin-bottom: 4px; }
     .result-snippet { font-size: 13px; color: #555555; line-height: 1.4; }
 
@@ -90,11 +92,25 @@
     .fav-header { padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; }
     .fav-header h2 { font-size: 20px; color: #0d3859; }
     .fav-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-    .fav-item { padding: 16px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .fav-item { padding: 16px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.1s; }
+    .fav-item:active { background-color: #f5f5f5; }
     
     .empty-msg { text-align: center; color: #888; margin: 15px 0; font-size: 14px; }
     .loading-spinner { text-align: center; color: #0d3859; padding: 15px; font-weight: 500; font-size: 14px; }
     .icon { width: 22px; height: 22px; fill: currentColor; }
+    .icon-btn .icon { width: 24px; height: 24px; }
+
+    /* Scrollbar personalizada */
+    .article-body::-webkit-scrollbar, .results-list::-webkit-scrollbar, .fav-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .article-body::-webkit-scrollbar-track, .results-list::-webkit-scrollbar-track, .fav-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .article-body::-webkit-scrollbar-thumb, .results-list::-webkit-scrollbar-thumb, .fav-list::-webkit-scrollbar-thumb {
+      background: #0d3859;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -105,7 +121,7 @@
       <p>Código de Defesa do Consumidor</p>
     </header>
 
-    <!-- 1. TELA INICIAL (TECLADO) -->
+    <!-- TELA INICIAL -->
     <div id="home-screen" class="screen active">
       <div class="home-content">
         <div id="display" class="display-number"></div>
@@ -127,7 +143,7 @@
 
         <div class="actions-group">
           <button class="action-btn" onclick="openSearchScreen()">
-            Pesquisar (Local + IA 🌎)
+            🔍 Pesquisar (Local + IA)
           </button>
           <button class="action-btn" style="background-color: #d1e4f0; color: #0d3859;" onclick="openFavorites()">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -139,7 +155,7 @@
       </div>
     </div>
 
-    <!-- 2. TELA DE PESQUISA -->
+    <!-- TELA DE PESQUISA -->
     <div id="search-screen" class="screen search-screen">
       <div class="nav-bar">
         <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
@@ -154,7 +170,7 @@
       </div>
     </div>
 
-    <!-- 3. TELA DO ARTIGO -->
+    <!-- TELA DO ARTIGO -->
     <div id="article-screen" class="screen article-screen">
       <div class="nav-bar">
         <div class="nav-group">
@@ -171,13 +187,11 @@
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
-        
-        <!-- ELEMENTO ONDE A CAIXA AZUL DA IA É INSERIDA -->
         <div id="ia-extra-container"></div>
       </div>
     </div>
 
-    <!-- 4. TELA DE FAVORITOS -->
+    <!-- TELA DE FAVORITOS -->
     <div id="favorites-screen" class="screen favorites-screen">
       <div class="fav-header">
         <h2>Artigos Favoritados</h2>
@@ -192,16 +206,17 @@
     let currentArticleId = null;
     let cdcDatabase = null;
     let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
+    let isFavoritesOpen = false;
 
     async function getDatabase() {
       if (cdcDatabase) return cdcDatabase;
       try {
-        const response = await fetch('cdc.json', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Erro cdc.json');
+        const response = await fetch('cdc.json');
+        if (!response.ok) throw new Error('Erro ao carregar cdc.json');
         cdcDatabase = await response.json();
         return cdcDatabase;
       } catch (err) {
-        console.error("Erro cdc.json:", err);
+        console.error("Erro ao carregar cdc.json:", err);
         return null;
       }
     }
@@ -215,23 +230,37 @@
       return null;
     }
 
-    function pressNum(num) { if (currentInput.length < 3) { currentInput += num; updateDisplay(); } }
-    function clearNum() { currentInput = ""; updateDisplay(); }
-    function updateDisplay() { document.getElementById("display").innerText = currentInput; }
+    function pressNum(num) { 
+      if (currentInput.length < 3) { 
+        currentInput += num; 
+        updateDisplay(); 
+      } 
+    }
+
+    function clearNum() { 
+      currentInput = ""; 
+      updateDisplay(); 
+    }
+
+    function updateDisplay() { 
+      document.getElementById("display").innerText = currentInput; 
+    }
 
     function switchScreen(screenId) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(screenId).classList.add('active');
     }
 
-    function showHome() { clearNum(); switchScreen('home-screen'); }
+    function showHome() { 
+      clearNum(); 
+      switchScreen('home-screen'); 
+    }
 
     function searchArticleFromKeypad() {
       if (!currentInput) return;
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // CARREGA O TEXTO OFICIAL DO CDC.JSON E BUSCA A IA AUTOMATICAMENTE
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
@@ -247,11 +276,9 @@
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
         document.getElementById("article-content").innerHTML = articleObj.texto;
 
-        // Se a busca já trouxe a explicação pronta, desenha na hora
         if (extraIaText && extraIaText.trim() !== "") {
           renderIaBox(extraIaText);
         } else {
-          // Senão, chama a busca da IA para o artigo selecionado
           fetchIaAnalysisForArticle(artId);
         }
 
@@ -262,7 +289,6 @@
       }
     }
 
-    // MONTA A CAIXA DE CARREGAMENTO E CONSULTA A API
     async function fetchIaAnalysisForArticle(artId) {
       const iaBox = document.getElementById("ia-extra-container");
       iaBox.innerHTML = `
@@ -311,7 +337,6 @@
       switchScreen('search-screen');
     }
 
-    // PESQUISA HÍBRIDA (LOCAL + IA)
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
@@ -327,7 +352,7 @@
 
       container.innerHTML = "";
 
-      // 1. RESULTADOS LOCAL (CDC.JSON)
+      // Resultados locais
       const termLower = term.toLowerCase();
       const matchesLocal = db.filter(art => {
         const fullText = (art.titulo + " " + art.texto).toLowerCase();
@@ -361,7 +386,7 @@
         container.appendChild(emptyLocal);
       }
 
-      // 2. RESULTADOS IA
+      // Resultados da IA
       const iaHeader = document.createElement("div");
       iaHeader.className = "section-header ia";
       iaHeader.innerText = "🌎 Análise Inteligente pela IA";
@@ -408,7 +433,7 @@
         if (container.contains(iaLoading)) container.removeChild(iaLoading);
         const errIa = document.createElement("div");
         errIa.className = "empty-msg";
-        errIa.innerText = "Sem resposta da IA.";
+        errIa.innerText = "Erro ao consultar a IA. Tente novamente.";
         container.appendChild(errIa);
       }
     }
@@ -425,21 +450,32 @@
     function toggleFavorite() {
       if (!currentArticleId) return;
       const index = favorites.indexOf(currentArticleId);
-      if (index === -1) favorites.push(currentArticleId);
-      else favorites.splice(index, 1);
+      if (index === -1) {
+        favorites.push(currentArticleId);
+      } else {
+        favorites.splice(index, 1);
+      }
       localStorage.setItem('cdc_favorites', JSON.stringify(favorites));
       updateFavButtonState();
+      
+      // Se estiver na tela de favoritos, atualiza a lista
+      if (document.getElementById('favorites-screen').classList.contains('active')) {
+        openFavorites();
+      }
     }
 
     function updateFavButtonState() {
       const btn = document.getElementById("fav-toggle-btn");
-      if (favorites.includes(currentArticleId)) btn.classList.add("active");
-      else btn.classList.remove("active");
+      if (favorites.includes(currentArticleId)) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
     }
 
     async function openFavorites() {
       const container = document.getElementById("fav-list-container");
-      container.innerHTML = "";
+      container.innerHTML = '';
 
       if (favorites.length === 0) {
         container.innerHTML = '<div class="empty-msg">Nenhum artigo favoritado ainda.</div>';

@@ -1,0 +1,716 @@
+[
+  {
+    "id": 1,
+    "numero": "1",
+    "titulo": "Artigo 1",
+    "texto": "<strong>Art. 1º</strong> O presente código estabelece normas de proteção e defesa do consumidor, de ordem pública e interesse social, nos termos dos arts. 5°, inciso XXXII, 170, inciso V, da Constituição Federal e art. 48 de suas Disposições Transitórias."
+  },
+  {
+    "id": 2,
+    "numero": "2",
+    "titulo": "Artigo 2",
+    "texto": "<strong>Art. 2º</strong> Consumidor é toda pessoa física ou jurídica que adquire ou utiliza produto ou serviço como destinatário final.<br><br><strong>Parágrafo único.</strong> Equipara-se a consumidor a coletividade de pessoas, ainda que indetermináveis, que haja intervindo nas relações de consumo."
+  },
+  {
+    "id": 3,
+    "numero": "3",
+    "titulo": "Artigo 3",
+    "texto": "<strong>Art. 3º</strong> Fornecedor é toda pessoa física ou jurídica, pública ou privada, nacional ou estrangeira, bem como os entes despersonalizados, que desenvolvem atividade de produção, montagem, criação, construção, transformação, importação, exportação, distribuição ou comercialização de produtos ou prestação de serviços.<br><br><strong>§ 1º</strong> Produto é qualquer bem, móvel ou imóvel, material ou imaterial.<br><br><strong>§ 2º</strong> Serviço é qualquer atividade fornecida no mercado de consumo, mediante remuneração, inclusive as de natureza bancária, financeira, de crédito e securitária, salvo as decorrentes das relações de caráter trabalhista."
+  },
+  {
+    "id": 4,
+    "numero": "4",
+    "titulo": "Artigo 4",
+    "texto": "<strong>Art. 4º</strong> A Política Nacional das Relações de Consumo tem por objetivo o atendimento das necessidades dos consumidores, o respeito à sua dignidade, saúde e segurança, a proteção de seus interesses econômicos, a melhoria da sua qualidade de vida, bem como a transparência e harmonia das relações de consumo, atendidos os seguintes princípios:<br>I - reconhecimento da vulnerabilidade do consumidor no mercado de consumo;<br>II - ação governamental no sentido de proteger efetivamente o consumidor:<br>a) por iniciativa direta;<br>b) por incentivos à criação e desenvolvimento de associações representativas;<br>c) pela presença do Estado no mercado de consumo;<br>d) pela garantia dos produtos e serviços com padrões adequados de qualidade, segurança, durabilidade e desempenho.<br>III - harmonização dos interesses dos participantes das relações de consumo e compatibilização da proteção do consumidor com a necessidade de desenvolvimento econômico e tecnológico, de modo a viabilizar os princípios nos quais se funda a ordem econômica (art. 170, da Constituição Federal), sempre com base na boa-fé e equilíbrio nas relações entre consumidores e fornecedores;<br>IV - educação e informação de fornecedores e consumidores, quanto aos seus direitos e deveres, com vistas à melhoria do mercado de consumo;<br>V - incentivo à criação pelos fornecedores de meios eficientes de controle de qualidade e segurança de produtos e serviços, assim como de mecanismos alternativos de solução de conflitos de consumo;<br>VI - coibição e repressão eficientes de todos os abusos praticados no mercado de consumo, inclusive a concorrência desleal e utilização indevida de inventos e criações industriais das marcas e nomes comerciais e signos distintivos, que possam causar prejuízos aos consumidores;<br>VII - racionalização e melhoria dos serviços públicos;<br>VIII - estudo constante das modificações do mercado de consumo."
+  },
+  {
+    "id": 5,
+    "numero": "5",
+    "titulo": "Artigo 5",
+    "texto": "<strong>Art. 5º</strong> Para a execução da Política Nacional das Relações de Consumo, contará o poder público com os seguintes instrumentos, entre outros:<br>I - manutenção de assistência jurídica, integral e gratuita para o consumidor carente;<br>II - instituição de Promotorias de Justiça de Defesa do Consumidor, no âmbito do Ministério Público;<br>III - criação de delegacias de polícia especializadas no atendimento de consumidores vítimas de infrações penais de consumo;<br>IV - criação de Juizados Especiais de Pequenas Causas e Varas Especializadas para a solução de litígios de consumo;<br>V - concessão de estímulos à criação e desenvolvimento das Associações de Defesa do Consumidor.<br><br><strong>§ 1º</strong> (Vetado).<br><br><strong>§ 2º</strong> (Vetado)."
+  },
+  {
+    "id": 6,
+    "numero": "6",
+    "titulo": "Artigo 6",
+    "texto": "<strong>Art. 6º</strong> São direitos básicos do consumidor:<br>I - a proteção da vida, saúde e segurança contra os riscos provocados por práticas no fornecimento de produtos e serviços considerados perigosos ou nocivos;<br>II - a educação e divulgação sobre o consumo adequado dos produtos e serviços, asseguradas a liberdade de escolha e a igualdade nas contratações;<br>III - a informação adequada e clara sobre os diferentes produtos e serviços, com especificação correta de quantidade, características, composição, qualidade, tributos incidentes e preço, bem como sobre os riscos que apresentem;<br>IV - a proteção contra a publicidade enganosa e abusiva, métodos comerciais coercitivos ou desleais, bem como contra práticas e cláusulas abusivas ou impostas no fornecimento de produtos e serviços;<br>V - a modificação das cláusulas contratuais que estabeleçam prestações desproporcionais ou sua revisão em razão de fatos supervenientes que as tornem excessivamente onerosas;<br>VI - a efetiva prevenção e reparação de danos patrimoniais e morais, individuais, coletivos e difusos;<br>VII - o acesso aos órgãos judiciários e administrativos com vistas à prevenção ou reparação de danos patrimoniais e morais, individuais, coletivos ou difusos, assegurada a proteção jurídica, administrativa e técnica aos necessitados;<br>VIII - a facilitação da defesa de seus direitos, inclusive com a inversão do ônus da prova, a seu favor, no processo civil, quando, a critério do juiz, for verossímil a alegação ou quando for ele hipossuficiente, segundo as regras ordinárias de experiências;<br>IX - (Vetado);<br>X - a adequada e eficaz prestação dos serviços públicos em geral."
+  },
+  {
+    "id": 7,
+    "numero": "7",
+    "titulo": "Artigo 7",
+    "texto": "<strong>Art. 7º</strong> Os direitos previstos neste código não excluem outros decorrentes de tratados ou convenções internacionais de que o Brasil seja signatário, da legislação interna ordinária, de regulamentos expedidos pelas autoridades administrativas competentes, bem como dos que derivem dos princípios gerais do direito, analogia, costumes e eqüidade.<br><br><strong>Parágrafo único.</strong> Tendo mais de um autor a ofensa, todos responderão solidariamente pela reparação dos danos previstos nas normas de consumo."
+  },
+  {
+    "id": 8,
+    "numero": "8",
+    "titulo": "Artigo 8",
+    "texto": "<strong>Art. 8º</strong> Os produtos e serviços colocados no mercado de consumo não acarretarão riscos à saúde ou segurança dos consumidores, exceto os considerados normais e previsíveis em decorrência de sua natureza e fruição, obrigando-se os fornecedores, em qualquer hipótese, a dar as informações necessárias e adequadas a seu respeito.<br><br><strong>Parágrafo único.</strong> Em se tratando de produto industrial, ao fabricante cabe prestar as informações a que se refere este artigo, através de impressos apropriados que devam acompanhar o produto."
+  },
+  {
+    "id": 9,
+    "numero": "9",
+    "titulo": "Artigo 9",
+    "texto": "<strong>Art. 9º</strong> O fornecedor de produtos e serviços potencialmente nocivos ou perigosos à saúde ou segurança deverá informar, de maneira ostensiva e adequada, a respeito da sua nocividade ou periculosidade, sem prejuízo da adoção de outras medidas cabíveis em cada caso concreto."
+  },
+  {
+    "id": 10,
+    "numero": "10",
+    "titulo": "Artigo 10",
+    "texto": "<strong>Art. 10.</strong> O fornecedor não poderá colocar no mercado de consumo produto ou serviço que sabe ou deveria saber apresentar alto grau de nocividade ou periculosidade à saúde ou segurança.<br><br><strong>§ 1º</strong> O fornecedor de produtos e serviços que, posteriormente à sua introdução no mercado de consumo, tiver conhecimento da periculosidade que apresentem, deverá comunicar o fato imediatamente às autoridades competentes e aos consumidores, mediante anúncios publicitários.<br><br><strong>§ 2º</strong> Os anúncios publicitários a que se refere o parágrafo anterior serão veiculados na imprensa, rádio e televisão, às expensas do fornecedor do produto ou serviço.<br><br><strong>§ 3º</strong> Sempre que tiverem conhecimento de periculosidade de produtos ou serviços à saúde ou segurança dos consumidores, a União, os Estados, o Distrito Federal e os Municípios deverão informá-los a respeito."
+  },
+  {
+    "id": 11,
+    "numero": "11",
+    "titulo": "Artigo 11",
+    "texto": "<strong>Art. 11.</strong> (Vetado)."
+  },
+  {
+    "id": 12,
+    "numero": "12",
+    "titulo": "Artigo 12",
+    "texto": "<strong>Art. 12.</strong> O fabricante, o produtor, o construtor, nacional ou estrangeiro, e o importador respondem, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos decorrentes de projeto, fabricação, construção, montagem, fórmulas, manipulação, apresentação ou acondicionamento de seus produtos, bem como por informações insuficientes ou inadequadas sobre sua utilização e riscos.<br><br><strong>§ 1º</strong> O produto é defeituoso quando não oferece a segurança que dele legitimamente se espera, levando-se em consideração as circunstâncias relevantes, entre as quais:<br>I - sua apresentação;<br>II - o uso e os riscos que razoavelmente dele se esperam;<br>III - a época em que foi colocado em circulação.<br><br><strong>§ 2º</strong> O produto não é considerado defeituoso pelo fato de outro de melhor qualidade ter sido colocado no mercado.<br><br><strong>§ 3º</strong> O fabricante, o construtor, o produtor ou importador só não será responsabilizado quando provar:<br>I - que não colocou o produto no mercado;<br>II - que, embora haja colocado o produto no mercado, o defeito inexiste;<br>III - a culpa exclusiva do consumidor ou de terceiro."
+  },
+  {
+    "id": 13,
+    "numero": "13",
+    "titulo": "Artigo 13",
+    "texto": "<strong>Art. 13.</strong> O comerciante é igualmente responsável, nos termos do artigo anterior, quando:<br>I - o fabricante, o construtor, o produtor ou o importador não puderem ser identificados;<br>II - o produto for fornecido sem identificação clara do seu fabricante, produtor, construtor ou importador;<br>III - não conservar adequadamente os produtos perecíveis.<br><br><strong>Parágrafo único.</strong> Aquele que efetivar o pagamento ao prejudicado poderá exercer o direito de regresso contra os demais responsáveis, segundo sua participação na causação do evento danoso."
+  },
+  {
+    "id": 14,
+    "numero": "14",
+    "titulo": "Artigo 14",
+    "texto": "<strong>Art. 14.</strong> O fornecedor de serviços responde, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos relativos à prestação dos serviços, bem como por informações insuficientes ou inadequadas sobre sua fruição e riscos.<br><br><strong>§ 1º</strong> O serviço é defeituoso quando não fornece a segurança que o consumidor dele pode esperar, levando-se em consideração as circunstâncias relevantes, entre as quais:<br>I - o modo de seu fornecimento;<br>II - o resultado e os riscos que razoavelmente dele se esperam;<br>III - a época em que foi fornecido.<br><br><strong>§ 2º</strong> O serviço não é considerado defeituoso pela adoção de novas técnicas.<br><br><strong>§ 3º</strong> O fornecedor de serviços só não será responsabilizado quando provar:<br>I - que, tendo prestado o serviço, o defeito inexiste;<br>II - a culpa exclusiva do consumidor ou de terceiro.<br><br><strong>§ 4º</strong> A responsabilidade pessoal dos profissionais liberais será apurada mediante a verificação de culpa."
+  },
+  {
+    "id": 15,
+    "numero": "15",
+    "titulo": "Artigo 15",
+    "texto": "<strong>Art. 15.</strong> (Vetado)."
+  },
+  {
+    "id": 16,
+    "numero": "16",
+    "titulo": "Artigo 16",
+    "texto": "<strong>Art. 16.</strong> (Vetado)."
+  },
+  {
+    "id": 17,
+    "numero": "17",
+    "titulo": "Artigo 17",
+    "texto": "<strong>Art. 17.</strong> Para os efeitos desta Seção, equiparam-se aos consumidores todas as vítimas do evento."
+  },
+  {
+    "id": 18,
+    "numero": "18",
+    "titulo": "Artigo 18",
+    "texto": "<strong>Art. 18.</strong> Os fornecedores de produtos de consumo duráveis ou não duráveis respondem solidariamente pelos vícios de qualidade ou quantidade que os tornem impróprios ou inadequados ao consumo a que se destinam ou lhes diminuam o valor, assim como por aqueles decorrentes da disparidade, com a indicações constantes do recipiente, da embalagem, rotulagem ou mensagem publicitária, respeitadas as variações decorrentes de sua natureza, podendo o consumidor exigir a substituição das partes viciadas.<br><br><strong>§ 1º</strong> Não sendo o vício sanado no prazo máximo de trinta dias, pode o consumidor exigir, alternativamente e à sua escolha:<br>I - a substituição do produto por outro da mesma espécie, em perfeitas condições de uso;<br>II - a restituição imediata da quantia paga, monetariamente atualizada, sem prejuízo de eventuais perdas e danos;<br>III - o abatimento proporcional do preço.<br><br><strong>§ 2º</strong> Poderão as partes convencionar a redução ou ampliação do prazo previsto no parágrafo anterior, não podendo ser inferior a sete nem superior a cento e oitenta dias. Nos contratos de adesão, a cláusula de prazo deverá ser convencionada em separado, por meio de manifestação expressa do consumidor.<br><br><strong>§ 3º</strong> O consumidor poderá fazer uso imediato das alternativas do § 1º deste artigo sempre que, em razão da extensão do vício, a substituição das partes viciadas puder comprometer a qualidade ou características do produto, diminuir-lhe o valor ou se tratar de produto essencial.<br><br><strong>§ 4º</strong> Tendo o consumidor optado pela alternativa do inciso I do § 1º deste artigo, e não sendo possível a substituição do bem, poderá haver substituição por outro de espécie, marca ou modelo diversos, mediante complementação ou restituição de eventual diferença de preço, sem prejuízo do disposto nos incisos II e III do § 1º deste artigo.<br><br><strong>§ 5º</strong> No caso de fornecimento de produtos in natura, será responsável perante o consumidor o fornecedor imediato, exceto quando identificado claramente seu produtor.<br><br><strong>§ 6º</strong> São impróprios ao uso e consumo:<br>I - os produtos cujos prazos de validade estejam vencidos;<br>II - os produtos deteriorados, alterados, adulterados, avariados, falsificados, corrompidos, fraudados, nocivos à vida ou à saúde, perigosos ou, ainda, aqueles em desacordo com as normas regulamentares de fabricação, distribuição ou apresentação;<br>III - os produtos que, por qualquer motivo, se revelem inadequados ao fim a que se destinam."
+  },
+  {
+    "id": 19,
+    "numero": "19",
+    "titulo": "Artigo 19",
+    "texto": "<strong>Art. 19.</strong> Os fornecedores respondem solidariamente pelos vícios de quantidade do produto sempre que, respeitadas as variações decorrentes de sua natureza, seu conteúdo líquido for inferior às indicações constantes do recipiente, da embalagem, rotulagem ou de mensagem publicitária, podendo o consumidor exigir, alternativamente e à sua escolha:<br>I - o abatimento proporcional do preço;<br>II - complementação do peso ou medida;<br>III - a substituição do produto por outro da mesma espécie, marca ou modelo, sem os aludidos vícios;<br>IV - a restituição imediata da quantia paga, monetariamente atualizada, sem prejuízo de eventuais perdas e danos.<br><br><strong>§ 1º</strong> Aplica-se a este artigo o disposto no § 4º do artigo anterior.<br><br><strong>§ 2º</strong> O fornecedor imediato será responsável quando fizer a pesagem ou a medição e o instrumento utilizado não estiver aferido segundo os padrões oficiais."
+  },
+  {
+    "id": 20,
+    "numero": "20",
+    "titulo": "Artigo 20",
+    "texto": "<strong>Art. 20.</strong> O fornecedor de serviços responde pelos vícios de qualidade que os tornem impróprios ao consumo ou lhes diminuam o valor, assim como por aqueles decorrentes da disparidade com as indicações constantes da oferta ou mensagem publicitária, podendo o consumidor exigir, alternativamente e à sua escolha:<br>I - a reexecução dos serviços, sem custo adicional e quando cabível;<br>II - a restituição imediata da quantia paga, monetariamente atualizada, sem prejuízo de eventuais perdas e danos;<br>III - o abatimento proporcional do preço.<br><br><strong>§ 1º</strong> A reexecução dos serviços poderá ser confiada a terceiros devidamente capacitados, por conta e risco do fornecedor.<br><br><strong>§ 2º</strong> São impróprios os serviços que se mostrem inadequados para os fins que razoavelmente deles se esperam, bem como aqueles que não atendam as normas regulamentares de prestabilidade."
+  },
+  {
+    "id": 21,
+    "numero": "21",
+    "titulo": "Artigo 21",
+    "texto": "<strong>Art. 21.</strong> No fornecimento de serviços que tenham por objetivo a reparação de qualquer produto considerar-se-á implícita a obrigação do fornecedor de empregar componentes de reposição originais adequados e novos, ou que mantenham as especificações técnicas do fabricante, salvo, quanto a estes últimos, autorização em contrário do consumidor."
+  },
+  {
+    "id": 22,
+    "numero": "22",
+    "titulo": "Artigo 22",
+    "texto": "<strong>Art. 22.</strong> Os órgãos públicos, por si ou suas empresas, concessionárias, permissionárias ou sob qualquer outra forma de empreendimento, são obrigados a fornecer serviços adequados, eficientes, seguros e, quanto aos essenciais, contínuos.<br><br><strong>Parágrafo único.</strong> Nos casos de descumprimento, total ou parcial, das obrigações referidas neste artigo, serão as pessoas jurídicas compelledas a cumpri-las e a reparar os danos causados, na forma prevista neste código."
+  },
+  {
+    "id": 23,
+    "numero": "23",
+    "titulo": "Artigo 23",
+    "texto": "<strong>Art. 23.</strong> A ignorância do fornecedor sobre os vícios de qualidade por inadequação dos produtos e serviços não o exime de responsabilidade."
+  },
+  {
+    "id": 24,
+    "numero": "24",
+    "titulo": "Artigo 24",
+    "texto": "<strong>Art. 24.</strong> A garantia legal de adequação do produto ou serviço independe de termo expresso, vedada a exoneração contratual do fornecedor."
+  },
+  {
+    "id": 25,
+    "numero": "25",
+    "titulo": "Artigo 25",
+    "texto": "<strong>Art. 25.</strong> É vedada a estipulação contratual de cláusula que impossibilite, exonere ou atenue a obrigação de indenizar prevista nesta e nas seções anteriores.<br><br><strong>§ 1º</strong> Havendo mais de um responsável pela causação do dano, todos responderão solidariamente pela reparação prevista nesta e nas seções anteriores.<br><br><strong>§ 2º</strong> Sendo o dano causado por componente ou peça incorporada ao produto ou serviço, são responsáveis solidários seu fabricante, construtor ou importador e o que realizou a incorporação."
+  },
+  {
+    "id": 26,
+    "numero": "26",
+    "titulo": "Artigo 26",
+    "texto": "<strong>Art. 26.</strong> O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:<br>I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;<br>II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.<br><br><strong>§ 1º</strong> Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.<br><br><strong>§ 2°</strong> Obstam a decadência:<br>I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;<br>II - (Vetado);<br>III - a instauração de inquérito civil, até seu encerramento.<br><br><strong>§ 3º</strong> Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito."
+  },
+  {
+    "id": 27,
+    "numero": "27",
+    "titulo": "Artigo 27",
+    "texto": "<strong>Art. 27.</strong> Prescreve em cinco anos a pretensão à reparação pelos danos causados por fato do produto ou do serviço prevista na Seção II deste Capítulo, iniciando-se a contagem do prazo a partir do conhecimento do dano e de sua autoria.<br><br><strong>Parágrafo único.</strong> (Vetado)."
+  },
+  {
+    "id": 28,
+    "numero": "28",
+    "titulo": "Artigo 28",
+    "texto": "<strong>Art. 28.</strong> O juiz poderá desconsiderar a personalidade jurídica da sociedade quando, em detrimento do consumidor, houver abuso de direito, excesso de poder, infração da lei, fato ou ato ilícito ou violação dos estatutos ou contrato social. A desconsideração também será efetivada quando houver falência, estado de insolvência, encerramento ou inatividade da pessoa jurídica provocados por má administração.<br><br><strong>§ 1º</strong> (Vetado).<br><br><strong>§ 2º</strong> As sociedades integrantes dos grupos societários e as sociedades controladas, são subsidiariamente responsáveis pelas obrigações decorrentes deste código.<br><br><strong>§ 3º</strong> As sociedades consorciadas são solidariamente responsáveis pelas obrigações decorrentes deste código.<br><br><strong>§ 4°</strong> As sociedades coligadas só responderão por culpa.<br><br><strong>§ 5°</strong> Também poderá ser desconsiderada a pessoa jurídica sempre que sua personalidade for, de alguma forma, obstáculo ao ressarcimento de prejuízos causados aos consumidores."
+  },
+  {
+    "id": 29,
+    "numero": "29",
+    "titulo": "Artigo 29",
+    "texto": "<strong>Art. 29.</strong> Para os fins deste Capítulo e do seguinte, equiparam-se aos consumidores todas as pessoas determináveis ou não, expostas às práticas nele previstas."
+  },
+  {
+    "id": 30,
+    "numero": "30",
+    "titulo": "Artigo 30",
+    "texto": "<strong>Art. 30.</strong> Toda informação ou publicidade, suficientemente precisa, veiculada por qualquer forma ou meio de comunicação com relação a produtos e serviços oferecidos ou apresentados, obriga o fornecedor que a fizer veicular ou dela se utilizar e integra o contrato que vier a ser celebrado."
+  },
+  {
+    "id": 31,
+    "numero": "31",
+    "titulo": "Artigo 31",
+    "texto": "<strong>Art. 31.</strong> A oferta e apresentação de produtos ou serviços devem assegurar informações corretas, claras, precisas, ostensivas e em língua portuguesa sobre suas características, qualidades, quantidade, composição, preço, garantia, prazos de validade e origem, entre outros dados, bem como sobre os riscos que apresentam à saúde e segurança dos consumidores.<br><br><strong>Parágrafo único.</strong> As informações de que trata este artigo, nos produtos refrigerados oferecidos ao consumidor, serão gravadas de forma indelével."
+  },
+  {
+    "id": 32,
+    "numero": "32",
+    "titulo": "Artigo 32",
+    "texto": "<strong>Art. 32.</strong> Os fabricantes e importadores deverão assegurar a oferta de componentes e peças de reposição enquanto não cessar a fabricação ou importação do produto.<br><br><strong>Parágrafo único.</strong> Cessadas a produção ou importação, a oferta deverá ser mantida por período razoável de tempo, na forma da lei."
+  },
+  {
+    "id": 33,
+    "numero": "33",
+    "titulo": "Artigo 33",
+    "texto": "<strong>Art. 33.</strong> Em caso de oferta ou venda por telefone ou reembolso postal, deve constar o nome do fabricante e endereço na embalagem, publicidade e em todos os impressos utilizados na transação comercial.<br><br><strong>Parágrafo único.</strong> É proibida a publicidade de bens e serviços por telefone, quando a chamada for onerosa ao consumidor que a origina."
+  },
+  {
+    "id": 34,
+    "numero": "34",
+    "titulo": "Artigo 34",
+    "texto": "<strong>Art. 34.</strong> O fornecedor do produto ou serviço é solidariamente responsável pelos atos de seus prepostos ou representantes autônomos."
+  },
+  {
+    "id": 35,
+    "numero": "35",
+    "titulo": "Artigo 35",
+    "texto": "<strong>Art. 35.</strong> Se o fornecedor de produtos ou serviços recusar cumprimento à oferta, apresentação ou publicidade, o consumidor poderá, alternativamente e à sua livre escolha:<br>I - exigir o cumprimento forçado da obrigação, nos termos da oferta, apresentação ou publicidade;<br>II - aceitar outro produto ou prestação de serviço equivalente;<br>III - rescindir o contrato, com direito à restituição de quantia eventualmente antecipada, monetariamente atualizada, e a perdas e danos."
+  },
+  {
+    "id": 36,
+    "numero": "36",
+    "titulo": "Artigo 36",
+    "texto": "<strong>Art. 36.</strong> A publicidade deve ser veiculada de tal forma que o consumidor, fácil e imediatamente, a identifique como tal.<br><br><strong>Parágrafo único.</strong> O fornecedor, na publicidade de seus produtos ou serviços, manterá, em seu poder, para informação dos legítimos interessados, os dados fáticos, técnicos e científicos que dão sustentação à mensagem."
+  },
+  {
+    "id": 37,
+    "numero": "37",
+    "titulo": "Artigo 37",
+    "texto": "<strong>Art. 37.</strong> É proibida toda publicidade enganosa ou abusiva.<br><br><strong>§ 1°</strong> É enganosa qualquer modalidade de informação ou comunicação de caráter publicitário, inteira ou parcialmente falsa, ou, por qualquer outro modo, mesmo por omissão, capaz de induzir em erro o consumidor a respeito da natureza, características, qualidade, quantidade, propriedades, origem, preço e quaisquer outros dados sobre produtos e serviços.<br><br><strong>§ 2º</strong> É abusiva, dentre outras a publicidade discriminatória de qualquer natureza, a que incite à violência, explore o medo ou a superstição, se aproveite da deficiência de julgamento e experiência da criança, desrespeita valores ambientais, ou que seja capaz de induzir o consumidor a se comportar de forma prejudicial ou perigosa à sua saúde ou segurança.<br><br><strong>§ 3º</strong> Para os efeitos deste código, a publicidade é enganosa por omissão quando deixar de informar sobre dado essencial do produto ou serviço.<br><br><strong>§ 4º</strong> (Vetado)."
+  },
+  {
+    "id": 38,
+    "numero": "38",
+    "titulo": "Artigo 38",
+    "texto": "<strong>Art. 38.</strong> O ônus da prova da veracidade e correção da informação ou comunicação publicitária cabe a quem as patrocina."
+  },
+  {
+    "id": 39,
+    "numero": "39",
+    "titulo": "Artigo 39",
+    "texto": "<strong>Art. 39.</strong> É vedado ao fornecedor de produtos ou serviços, dentre outras práticas abusivas:<br>I - condicionar o fornecimento de produto ou de serviço ao fornecimento de outro produto ou serviço, bem como, sem justa causa, a limites quantitativos;<br>II - recusar atendimento às demandas dos consumidores, na exata medida de suas disponibilidades de estoque, e, ainda, de conformidade com os usos e costumes;<br>III - enviar ou entregar ao consumidor, sem solicitação prévia, qualquer produto, ou fornecer qualquer serviço;<br>IV - prevalecer-se da fraqueza ou ignorância do consumidor, tendo em vista sua idade, saúde, conhecimento ou condição social, para impingir-lhe seus produtos ou serviços;<br>V - exigir do consumidor vantagem manifestamente excessiva;<br>VI - executar serviços sem a prévia elaboração de orçamento e autorização expressa do consumidor, ressalvadas as decorrentes de práticas anteriores entre as partes;<br>VII - repassar informação depreciativa, referente a ato praticado pelo consumidor no exercício de seus direitos;<br>VIII - colocar, no mercado de consumo, qualquer produto ou serviço em desacordo com as normas expedidas pelos órgãos oficiais competentes ou, se normas específicas não existirem, pela Associação Brasileira de Normas Técnicas ou outra entidade credenciada pelo Conselho Nacional de Metrologia, Normalização e Qualidade Industrial (Conmetro);<br>IX - recusar a venda de bens ou a prestação de serviços, diretamente a quem se disponha a adquiri-los mediante pronto pagamento, ressalvados os casos de intermediação regulados em leis especiais;<br>X - elevar sem justa causa o preço de produtos ou serviços;<br>XI - (Dispositivo transformado em inciso XIII);<br>XII - deixar de estipular prazo para o cumprimento de sua obrigação ou deixar a fixação de seu termo inicial a seu exclusivo critério;<br>XIII - aplicar fórmula ou índice de reajuste diverso do legal ou contratualmente estabelecido.<br><br><strong>Parágrafo único.</strong> Os serviços prestados e os produtos remetidos ou entregues ao consumidor, na hipótese prevista no inciso III, equiparam-se às amostras grátis, inexistindo obrigação de pagamento."
+  },
+  {
+    "id": 40,
+    "numero": "40",
+    "titulo": "Artigo 40",
+    "texto": "<strong>Art. 40.</strong> O fornecedor de serviço será obrigado a entregar ao consumidor orçamento prévio discriminando o valor da mão-de-obra, dos materiais e equipamentos a serem empregados, as condições de pagamento, bem como as datas de início e término dos serviços.<br><br><strong>§ 1º</strong> Salvo estipulação em contrário, o valor orçado terá validade pelo prazo de dez dias, contado de seu recebimento pelo consumidor.<br><br><strong>§ 2º</strong> Uma vez aprovado pelo consumidor, o orçamento obriga os contraentes e somente pode ser alterado mediante livre negociação das partes.<br><br><strong>§ 3º</strong> O consumidor não responde por quaisquer ônus ou acréscimos decorrentes da contratação de serviços de terceiros não previstos no orçamento prévio."
+  },
+  {
+    "id": 41,
+    "numero": "41",
+    "titulo": "Artigo 41",
+    "texto": "<strong>Art. 41.</strong> No caso de fornecimento de produtos ou de serviços sujeitos ao regime de controle ou de tabelamento de preços, os fornecedores deverão respeitar os limites oficiais sob pena de não o fazendo, responderem pela restituição da quantia recebida em excesso, monetariamente atualizada, podendo o consumidor exigir à sua escolha, o desfazimento do negócio, sem prejuízo de outras sanções cabíveis."
+  },
+  {
+    "id": 42,
+    "numero": "42",
+    "titulo": "Artigo 42",
+    "texto": "<strong>Art. 42.</strong> Na cobrança de débitos, o consumidor inadimplente não será exposto a ridículo, nem será submetido a qualquer tipo de constrangimento ou ameaça.<br><br><strong>Parágrafo único.</strong> O consumidor cobrado em quantia indevida tem direito à repetição do indébito, por valor igual ao dobro do que pagou em excesso, acrescido de correção monetária e juros legais, salvo hipótese de engano justificável."
+  },
+  {
+    "id": 43,
+    "numero": "43",
+    "titulo": "Artigo 43",
+    "texto": "<strong>Art. 43.</strong> O consumidor, sem prejuízo do disposto no art. 86, terá acesso às informações existentes em cadastros, fichas, registros e dados pessoais e de consumo arquivados sobre ele, bem como sobre as suas respectivas fontes.<br><br><strong>§ 1º</strong> Os cadastros e dados de consumidores devem ser objetivos, claros, verdadeiros e em linguagem de fácil compreensão, não podendo conter informações negativas referentes a período superior a cinco anos.<br><br><strong>§ 2º</strong> A abertura de cadastro, ficha, registro e dados pessoais e de consumo deverá ser comunicada por escrito ao consumidor, quando não solicitada por ele.<br><br><strong>§ 3º</strong> O consumidor, sempre que encontrar inexatidão nos seus dados e cadastros, poderá exigir sua imediata correção, devendo o arquivista, no prazo de cinco dias úteis, comunicar a alteração aos eventuais destinatários das informações incorretas.<br><br><strong>§ 4º</strong> Os bancos de dados e cadastros relativos a consumidores, os serviços de proteção ao crédito e congêneres são considerados entidades de caráter público.<br><br><strong>§ 5º</strong> Consumada a prescrição relativa à cobrança de débitos do consumidor, não serão fornecidas, pelos respectivos Sistemas de Proteção ao Crédito, quaisquer informações que possam impedir ou dificultar novo acesso ao crédito junto aos fornecedores."
+  },
+  {
+    "id": 44,
+    "numero": "44",
+    "titulo": "Artigo 44",
+    "texto": "<strong>Art. 44.</strong> Os órgãos públicos de defesa do consumidor manterão cadastros atualizados de reclamações fundamentadas contra fornecedores de produtos e serviços, devendo divulgá-lo pública e anualmente. A divulgação indicará se a reclamação foi atendida ou não pelo fornecedor.<br><br><strong>§ 1°</strong> É facultado o acesso às informações lá constantes para orientação e consulta por qualquer interessado.<br><br><strong>§ 2º</strong> Aplicam-se a este artigo, no que couber, as mesmas regras enunciadas no artigo anterior e as do parágrafo único do art. 22 deste código."
+  },
+  {
+    "id": 45,
+    "numero": "45",
+    "titulo": "Artigo 45",
+    "texto": "<strong>Art. 45.</strong> (Vetado)."
+  },
+  {
+    "id": 46,
+    "numero": "46",
+    "titulo": "Artigo 46",
+    "texto": "<strong>Art. 46.</strong> Os contratos que regulam as relações de consumo não obrigarão os consumidores, se não lhes for dada a oportunidade de tomar conhecimento prévio de seu conteúdo, ou se os respectivos instrumentos forem redigidos de modo a dificultar a compreensão de seu sentido e alcance."
+  },
+  {
+    "id": 47,
+    "numero": "47",
+    "titulo": "Artigo 47",
+    "texto": "<strong>Art. 47.</strong> As cláusulas contratuais serão interpretadas de maneira mais favorável ao consumidor."
+  },
+  {
+    "id": 48,
+    "numero": "48",
+    "titulo": "Artigo 48",
+    "texto": "<strong>Art. 48.</strong> As declarações de vontade constantes de escritos particulares, recibos e pré-contratos relativos às relações de consumo vinculam o fornecedor, ensejando inclusive execução específica, nos termos do art. 84 e parágrafos."
+  },
+  {
+    "id": 49,
+    "numero": "49",
+    "titulo": "Artigo 49",
+    "texto": "<strong>Art. 49.</strong> O consumidor pode desistir do contrato, no prazo de 7 dias a contar de sua assinatura ou do ato de recebimento do produto ou serviço, sempre que a contratação de fornecimento de produtos e serviços ocorrer fora do estabelecimento comercial, especialmente por telefone ou a domicílio.<br><br><strong>Parágrafo único.</strong> Se o consumidor exercitar o direito de arrependimento previsto neste artigo, os valores eventualmente pagos, a qualquer título, durante o prazo de reflexão, serão devolvidos, de imediato, monetariamente atualizados."
+  },
+  {
+    "id": 50,
+    "numero": "50",
+    "titulo": "Artigo 50",
+    "texto": "<strong>Art. 50.</strong> A garantia contratual é complementar à legal e será conferida mediante termo escrito.<br><br><strong>Parágrafo único.</strong> O termo de garantia ou equivalente deve ser padronizado e esclarecer, de maneira adequada em que consiste a mesma garantia, bem como a forma, o prazo e o lugar em que pode ser exercitada e os ônus a cargo do consumidor, devendo ser-lhe entregue, devidamente preenchido pelo fornecedor, no ato do fornecimento, acompanhado de manual de instrução, de instalação e uso do produto em linguagem didática, com ilustrações."
+  },
+  {
+    "id": 51,
+    "numero": "51",
+    "titulo": "Artigo 51",
+    "texto": "<strong>Art. 51.</strong> São nulas de pleno direito, entre outras, as cláusulas contratuais relativas ao fornecimento de produtos e serviços que:<br>I - impossibilitem, exonerem ou atenuem a responsabilidade do fornecedor por vícios de qualquer natureza dos produtos e serviços ou impliquem renúncia ou disposição de direitos. Nas relações de consumo entre o fornecedor e o consumidor pessoa jurídica, a indenização poderá ser limitada, em situações justificáveis;<br>II - subtraiam ao consumidor a opção de reembolso da quantia já paga, nos casos previstos neste código;<br>III - transfiram responsabilidades a terceiros;<br>IV - estabeleçam obrigações consideradas iníquas, abusivas, que coloquem o consumidor em desvantagem exagerada, ou sejam incompatíveis com a boa-fé ou a eqüidade;<br>V - (Vetado);<br>VI - estabeleçam inversão do ônus da prova em prejuízo do consumidor;<br>VII - determinem a utilização compulsória de arbitragem;<br>VIII - imponham representante para concluir ou realizar outro negócio jurídico pelo consumidor;<br>IX - deixem ao fornecedor a opção de concluir ou não o contrato, embora obrigando o consumidor;<br>X - permitam ao fornecedor, direta ou indiretamente, variação do preço de maneira unilateral;<br>XI - autorizem o fornecedor a cancelar o contrato unilateralmente, sem que igual direito seja conferido ao consumidor;<br>XII - obriguem o consumidor a ressarcir os custos de cobrança de sua obrigação, sem que igual direito lhe seja conferido contra o fornecedor;<br>XIII - autorizem o fornecedor a modificar unilateralmente o conteúdo ou a qualidade do contrato, após sua celebração;<br>XIV - infrinjam ou possibilitem a violação de normas ambientais;<br>XV - estejam em desacordo com o sistema de proteção ao consumidor;<br>XVI - possibilitem a renúncia do direito de indenização por benfeitorias necessárias.<br><br><strong>§ 1º</strong> Presume-se exagerada, entre outros casos, a vontade que:<br>I - ofende os princípios fundamentais do sistema jurídico a que pertence;<br>II - restringe direitos ou obrigações fundamentais inerentes à natureza do contrato, de tal modo a ameaçar seu objeto ou equilíbrio contratual;<br>III - se mostra excessivamente onerosa para o consumidor, considerando-se a natureza e conteúdo do contrato, o interesse das partes e outras circunstâncias peculiares ao caso.<br><br><strong>§ 2º</strong> A nulidade de uma cláusula contratual abusiva não invalida o contrato, exceto quando de sua ausência, apesar dos esforços de integração, decorrer ônus excessivo a qualquer das partes.<br><br><strong>§ 3º</strong> (Vetado).<br><br><strong>§ 4º</strong> É facultado a qualquer consumidor ou entidade que o represente requerer ao Ministério Público que ajuíze a competente ação para ser declarada a nulidade de cláusula contratual que contrarie o disposto neste código ou de qualquer forma não assegure o justo equilíbrio entre direitos e obrigações das partes."
+  },
+  {
+    "id": 52,
+    "numero": "52",
+    "titulo": "Artigo 52",
+    "texto": "<strong>Art. 52.</strong> No fornecimento de produtos ou serviços que envolva outorga de crédito ou concessão de financiamento ao consumidor, o fornecedor deverá, entre outros requisitos, informá-lo prévia e adequadamente sobre:<br>I - preço do produto ou serviço em moeda corrente nacional;<br>II - montante dos juros de mora e da taxa efetiva anual de juros;<br>III - acréscimos legalmente previstos;<br>IV - número e periodicidade das prestações;<br>V - soma total a pagar, com e sem financiamento.<br><br><strong>§ 1º</strong> As multas de mora decorrentes do inadimplemento de obrigações no seu termo não poderão ser superiores a dois por cento do valor da prestação.<br><br><strong>§ 2º</strong> É assegurado ao consumidor a liquidação antecipada do débito, total ou parcialmente, mediante redução proporcional dos juros e demais acréscimos.<br><br><strong>§ 3º</strong> (Vetado)."
+  },
+  {
+    "id": 53,
+    "numero": "53",
+    "titulo": "Artigo 53",
+    "texto": "<strong>Art. 53.</strong> Nos contratos de compra e venda de móveis ou imóveis mediante pagamento em prestações, bem como nas alienações fiduciárias em garantia, consideram-se nulas de pleno direito as cláusulas que estabeleçam a perda total das prestações pagas em benefício do credor que, em razão do inadimplemento, pleitear a resolução do contrato e a retomada do produto alienado.<br><br><strong>§ 1°</strong> (Vetado).<br><br><strong>§ 2º</strong> Nos contratos do sistema de consórcio de produtos duráveis, a compensação ou a restituição das parcelas quitadas, na forma deste artigo, terá descontada, além da vantagem econômica auferida com a fruição, os prejuízos que o desistente ou inadimplente causar ao grupo.<br><br><strong>§ 3º</strong> Os contratos de que trata o caput deste artigo serão expressos em moeda corrente nacional."
+  },
+  {
+    "id": 54,
+    "numero": "54",
+    "titulo": "Artigo 54",
+    "texto": "<strong>Art. 54.</strong> Contrato de adesão é aquele cujas cláusulas tenham sido aprovadas pela autoridade competente ou estabelecidas unilateralmente pelo fornecedor de produtos ou serviços, sem que o consumidor possa discutir ou modificar substancialmente seu conteúdo.<br><br><strong>§ 1º</strong> A inserção de cláusula no formulário não desfigura a natureza de adesão do contrato.<br><br><strong>§ 2º</strong> Nos contratos de adesão admite-se cláusula resolutória, desde que a alternativa, cabendo a escolha ao consumidor, ressalvando-se o disposto no § 2º do artigo anterior.<br><br><strong>§ 3º</strong> Os contratos de adesão escritos serão redigidos em termos claros e com caracteres ostensivos e legíveis, cujo tamanho da fonte não será inferior ao corpo doze, de modo a facilitar sua compreensão pelo consumidor.<br><br><strong>§ 4º</strong> As cláusulas que implicarem limitação de direito do consumidor deverão ser redigidas com destaque, permitindo sua imediata e fácil compreensão.<br><br><strong>§ 5º</strong> (Vetado)."
+  },
+  {
+    "id": 55,
+    "numero": "55",
+    "titulo": "Artigo 55",
+    "texto": "<strong>Art. 55.</strong> A União, os Estados e o Distrito Federal, em caráter concorrente e nas suas respectivas áreas de atuação administrativa, baixarão normas relativas à produção, industrialização, distribuição e consumo de produtos e serviços.<br><br><strong>§ 1º</strong> A União, os Estados, o Distrito Federal e os Municípios fiscalizarão e controlarão a produção, industrialização, distribuição, a publicidade de produtos e serviços e o mercado de consumo, no interesse da preservação da vida, da saúde, da segurança, da informação e do bem-estar do consumidor, baixarão as normas que se fizerem necessárias.<br><br><strong>§ 2º</strong> (Vetado).<br><br><strong>§ 3º</strong> Os órgãos federais, estaduais, do Distrito Federal e municipais com atribuições para fiscalizar e controlar o mercado de consumo manterão comissões permanentes para elaboração, revisão e atualização das normas referidas no § 1º, sendo obrigatória a participação dos consumidores e fornecedores.<br><br><strong>§ 4º</strong> Os órgãos oficiais poderão expedir notificações aos fornecedores para que, sob pena de desobediência, prestem informações sobre questões de interesse do consumidor, resguardado o segredo industrial."
+  },
+  {
+    "id": 56,
+    "numero": "56",
+    "titulo": "Artigo 56",
+    "texto": "<strong>Art. 56.</strong> As infrações das normas de defesa do consumidor ficam sujeitas, conforme o caso, às seguintes sanções administrativas, sem prejuízo das de natureza civil, penal e das definidas em normas específicas:<br>I - multa;<br>II - apreensão do produto;<br>III - inutilização do produto;<br>IV - cassação do registro do produto junto ao órgão competente;<br>V - proibição de fabricação do produto;<br>VI - suspensão de fornecimento de produtos ou serviço;<br>VII - suspensão temporária de atividade;<br>VIII - revogação de concessão ou permissão de uso;<br>IX - cassação de licença do estabelecimento ou de atividade;<br>X - interdição, total ou parcial, de estabelecimento, de obra ou de atividade;<br>XI - intervenção administrativa;<br>XII - imposição de contrapropaganda.<br><br><strong>Parágrafo único.</strong> As sanções previstas neste artigo serão aplicadas pela autoridade administrativa, no âmbito de sua atribuição, podendo ser aplicadas cumulativamente, inclusive por medida cautelar, antecedente ou incidente de procedimento administrativo."
+  },
+  {
+    "id": 57,
+    "numero": "57",
+    "titulo": "Artigo 57",
+    "texto": "<strong>Art. 57.</strong> A pena de multa, graduada de acordo com a gravidade da infração, a vantagem auferida e a condição econômica do fornecedor, será aplicada mediante procedimento administrativo, revertendo para o Fundo de que trata a Lei nº 7.347, de 24 de julho de 1985, os valores cabíveis à União, ou para os Fundos estaduais ou municipais de proteção ao consumidor nos demais casos.<br><br><strong>Parágrafo único.</strong> A multa será em montante não inferior a duzentas e não superior a três milhões de vezes o valor da Unidade Fiscal de Referência (Ufir), ou índice equivalente que venha a substituí-lo."
+  },
+  {
+    "id": 58,
+    "numero": "58",
+    "titulo": "Artigo 58",
+    "texto": "<strong>Art. 58.</strong> As penas de apreensão, de inutilização de produtos, de proibição de fabricação de produtos, de suspensão do fornecimento de produto ou serviço, de cassação do registro do produto e revogação da concessão ou permissão de uso serão aplicadas pela administração, mediante procedimento administrativo, assegurada ampla defesa, quando forem constatados vícios de quantidade ou de qualidade por inadequação ou insegurança do produto ou serviço."
+  },
+  {
+    "id": 59,
+    "numero": "59",
+    "titulo": "Artigo 59",
+    "texto": "<strong>Art. 59.</strong> As penas de cassação de alvará de licença, de interdição e de suspensão temporária da atividade, bem como a de intervenção administrativa, serão aplicadas mediante procedimento administrativo, assegurada ampla defesa, quando o fornecedor reincidir na prática das infrações de maior gravidade previstas neste código e na legislação de consumo.<br><br><strong>§ 1º</strong> A pena de cassação da concessão será aplicada à concessionária de serviço público, quando violar obrigação legal ou contratual.<br><br><strong>§ 2º</strong> A pena de intervenção administrativa será aplicada sempre que as circunstâncias de fato desaconselharem a cassação de licença, a interdição ou suspensão da atividade.<br><br><strong>§ 3º</strong> Pendendo ação judicial na qual se discuta a imposição de penalidade administrativa, não haverá reincidência até o trânsito em julgado da sentença."
+  },
+  {
+    "id": 60,
+    "numero": "60",
+    "titulo": "Artigo 60",
+    "texto": "<strong>Art. 60.</strong> A imposição de contrapropaganda será cominada quando o fornecedor incorrer na prática de publicidade enganosa ou abusiva, nos termos do art. 36 e seus parágrafos, sempre às expensas do infrator.<br><br><strong>§ 1º</strong> A contrapropaganda será divulgada pelo responsável da mesma forma, freqüência e dimensão e, preferencialmente no mesmo veículo, local, espaço e horário, de forma capaz de desfazer o malefício da publicidade enganosa ou abusiva.<br><br><strong>§ 2°</strong> (Vetado).<br><br><strong>§ 3º</strong> (Vetado)."
+  },
+  {
+    "id": 61,
+    "numero": "61",
+    "titulo": "Artigo 61",
+    "texto": "<strong>Art. 61.</strong> Constituem crimes contra as relações de consumo previstas neste código, sem prejuízo do disposto no Código Penal e leis especiais, as condutas tipificadas nos artigos seguintes."
+  },
+  {
+    "id": 62,
+    "numero": "62",
+    "titulo": "Artigo 62",
+    "texto": "<strong>Art. 62.</strong> (Vetado)."
+  },
+  {
+    "id": 63,
+    "numero": "63",
+    "titulo": "Artigo 63",
+    "texto": "<strong>Art. 63.</strong> Omitir dizeres ou sinais ostensivos sobre a nocividade ou periculosidade de produtos, nas embalagens, nos invólucros, recipientes ou publicidade:<br>Pena - Detenção de seis meses a dois anos e multa.<br><br><strong>§ 1º</strong> Incorrerá nas mesmas penas quem deixar de alertar, mediante recomendações escritas ostensivas, sobre a periculosidade do serviço a ser prestado.<br><br><strong>§ 2º</strong> Se o crime é culposo:<br>Pena - Detenção de um a seis meses ou multa."
+  },
+  {
+    "id": 64,
+    "numero": "64",
+    "titulo": "Artigo 64",
+    "texto": "<strong>Art. 64.</strong> Deixar de comunicar à autoridade competente e aos consumidores a nocividade ou periculosidade de produtos cujo conhecimento seja posterior à sua colocação no mercado:<br>Pena - Detenção de seis meses a dois anos e multa.<br><br><strong>Parágrafo único.</strong> Incorrerá nas mesmas penas quem deixar de retirar do mercado, imediatamente quando determinado pela autoridade competente, os produtos nocivos ou perigosos, na forma deste artigo."
+  },
+  {
+    "id": 65,
+    "numero": "65",
+    "titulo": "Artigo 65",
+    "texto": "<strong>Art. 65.</strong> Executar serviço de alto grau de periculosidade, contrariando determinação de autoridade competente:<br>Pena - Detenção de seis meses a dois anos e multa.<br><br><strong>Parágrafo único.</strong> As penas deste artigo são aplicáveis sem prejuízo das correspondentes à lesão corporal e à morte."
+  },
+  {
+    "id": 66,
+    "numero": "66",
+    "titulo": "Artigo 66",
+    "texto": "<strong>Art. 66.</strong> Fazer afirmação falsa ou enganosa, ou omitir informação relevante sobre a natureza, característica, qualidade, quantidade, segurança, desempenho, durabilidade, preço ou garantia de produtos ou serviços:<br>Pena - Detenção de três meses a um ano e multa.<br><br><strong>§ 1º</strong> Incorrerá nas mesmas penas quem patrocinar a oferta.<br><br><strong>§ 2º</strong> Se o crime é culposo:<br>Pena - Detenção de um a seis meses ou multa."
+  },
+  {
+    "id": 67,
+    "numero": "67",
+    "titulo": "Artigo 67",
+    "texto": "<strong>Art. 67.</strong> Fazer ou promover publicidade que sabe ou deveria saber ser enganosa ou abusiva:<br>Pena - Detenção de três meses a um ano e multa.<br><br><strong>Parágrafo único.</strong> (Vetado)."
+  },
+  {
+    "id": 68,
+    "numero": "68",
+    "titulo": "Artigo 68",
+    "texto": "<strong>Art. 68.</strong> Fazer ou promover publicidade que sabe ou deveria saber ser capaz de induzir o consumidor a se comportar de forma prejudicial ou perigosa a sua saúde ou segurança:<br>Pena - Detenção de seis meses a dois anos e multa.<br><br><strong>Parágrafo único.</strong> (Vetado)."
+  },
+  {
+    "id": 69,
+    "numero": "69",
+    "titulo": "Artigo 69",
+    "texto": "<strong>Art. 69.</strong> Deixar de organizar dados fáticos, técnicos e científicos que dão base à publicidade:<br>Pena - Detenção de um a seis meses ou multa."
+  },
+  {
+    "id": 70,
+    "numero": "70",
+    "titulo": "Artigo 70",
+    "texto": "<strong>Art. 70.</strong> Empregar na reparação de produtos, peça ou componentes de reposição usados, sem autorização do consumidor:<br>Pena - Detenção de três meses a um ano e multa."
+  },
+  {
+    "id": 71,
+    "numero": "71",
+    "titulo": "Artigo 71",
+    "texto": "<strong>Art. 71.</strong> Utilizar, na cobrança de dívidas, de ameaça, coação, constrangimento físico ou moral, afirmações falsas incorretas ou enganosas ou de qualquer outro procedimento que exponha o consumidor, injustificadamente, a ridículo ou interfira com seu trabalho, descanso ou lazer:<br>Pena - Detenção de três meses a um ano e multa."
+  },
+  {
+    "id": 72,
+    "numero": "72",
+    "titulo": "Artigo 72",
+    "texto": "<strong>Art. 72.</strong> Impedir ou dificultar o acesso do consumidor às informações que sobre ele constem em cadastros, banco de dados, fichas e registros:<br>Pena - Detenção de seis meses a um ano ou multa."
+  },
+  {
+    "id": 73,
+    "numero": "73",
+    "titulo": "Artigo 73",
+    "texto": "<strong>Art. 73.</strong> Deixar de corrigir imediatamente informação sobre consumidor constante de cadastro, banco de dados, fichas ou registros que sabe ou deveria saber ser inexata:<br>Pena - Detenção de um a seis meses ou multa."
+  },
+  {
+    "id": 74,
+    "numero": "74",
+    "titulo": "Artigo 74",
+    "texto": "<strong>Art. 74.</strong> Deixar de entregar ao consumidor o termo de garantia adequadamente preenchido e com especificação clara de seu conteúdo:<br>Pena - Detenção de um a seis meses ou multa."
+  },
+  {
+    "id": 75,
+    "numero": "75",
+    "titulo": "Artigo 75",
+    "texto": "<strong>Art. 75.</strong> Quem, de qualquer forma, concorrer para os crimes referidos neste código, incide as penas a esses cominadas na medida de sua culpabilidade, bem como o diretor, administrador ou gerente da pessoa jurídica que promover, permitir ou por qualquer modo aprovar o fornecimento, oferta, exposição à venda ou manutenção em depósito de produtos ou a oferta e prestação de serviços nas condições por ele proibidas."
+  },
+  {
+    "id": 76,
+    "numero": "76",
+    "titulo": "Artigo 76",
+    "texto": "<strong>Art. 76.</strong> São circunstâncias agravantes dos crimes tipificados neste código:<br>I - serem cometidos em época de grave crise econômica ou por ocasião de calamidade;<br>II - ocasionarem grave dano individual ou coletivo;<br>III - dissimular-se a natureza ilícita do procedimento;<br>IV - quando cometidos:<br>a) por servidor público, ou por pessoa cuja condição econômico-social seja manifestamente superior à da vítima;<br>b) em detrimento de operário ou rurícola; de menor de dezoito ou maior de sessenta anos ou de pessoas portadoras de deficiência mental interditadas ou não;<br>V - serem praticados em operações que envolvam alimentos, medicamentos ou quaisquer outros produtos ou serviços essenciais."
+  },
+  {
+    "id": 77,
+    "numero": "77",
+    "titulo": "Artigo 77",
+    "texto": "<strong>Art. 77.</strong> A pena pecuniária prevista nesta Seção será fixada em dias-multa, correspondente ao mínimo e ao máximo de dias de duração da pena privativa da liberdade cominada ao crime. Na individualização desta multa, o juiz observará o disposto no art. 60, § 1° do Código Penal."
+  },
+  {
+    "id": 78,
+    "numero": "78",
+    "titulo": "Artigo 78",
+    "texto": "<strong>Art. 78.</strong> Além das penas privativas de liberdade e de multa, podem ser impostas, cumulativa ou alternadamente, observado o disposto nos arts. 44 a 47, do Código Penal:<br>I - a interdição temporária de direitos;<br>II - a publicação em órgãos de comunicação de grande circulação ou audiência, às expensas do condenado, de notícia sobre os fatos e a condenação;<br>III - a prestação de serviços à comunidade."
+  },
+  {
+    "id": 79,
+    "numero": "79",
+    "titulo": "Artigo 79",
+    "texto": "<strong>Art. 79.</strong> O valor da fiança, nas infrações de que trata este código, será fixado pelo juiz, ou pela autoridade que presidir o inquérito, entre cem e duzentas mil vezes o valor do Bônus do Tesouro Nacional (BTN), ou índice equivalente que venha a substituí-lo.<br><br><strong>Parágrafo único.</strong> Se assim recomendar a situação econômica do indiciado ou réu, a fiança poderá ser:<br>a) reduzida até a metade do seu valor mínimo;<br>b) aumentada pelo juiz até vinte vezes."
+  },
+  {
+    "id": 80,
+    "numero": "80",
+    "titulo": "Artigo 80",
+    "texto": "<strong>Art. 80.</strong> No processo penal atinente aos crimes previstos neste código, bem como a outros crimes e contravenções que envolvam relações de consumo, poderão intervir, como assistentes do Ministério Público, os legitimados indicados no art. 82, inciso III e IV, aos quais também é facultado propor ação penal subsidiária, se a denúncia não for oferecida no prazo legal."
+  },
+  {
+    "id": 81,
+    "numero": "81",
+    "titulo": "Artigo 81",
+    "texto": "<strong>Art. 81.</strong> A defesa dos interesses e direitos dos consumidores e das vítimas poderá ser exercida em juízo individualmente, ou a título coletivo.<br><br><strong>Parágrafo único.</strong> A defesa coletiva será exercida quando se tratar de:<br>I - interesses ou direitos difusos, assim entendidos, para efeitos deste código, os transindividuais, de natureza indivisível, de que sejam titulares pessoas indeterminadas e ligadas por circunstâncias de fato;<br>II - interesses ou direitos coletivos, assim entendidos, para efeitos deste código, os transindividuais, de natureza indivisível de que seja titular grupo, categoria ou classe de pessoas ligadas entre si ou com a parte contrária por uma relação jurídica base;<br>III - interesses ou direitos individuais homogêneos, assim entendidos os decorrentes de origem comum."
+  },
+  {
+    "id": 82,
+    "numero": "82",
+    "titulo": "Artigo 82",
+    "texto": "<strong>Art. 82.</strong> Para os fins do art. 81, parágrafo único, são legitimados concorrentemente:<br>I - o Ministério Público;<br>II - a União, os Estados, os Municípios e o Distrito Federal;<br>III - as entidades e órgãos da Administração Pública, direta ou indireta, ainda que sem personalidade jurídica, especificamente destinados à defesa dos interesses e direitos protegidos por este código;<br>IV - as associações legalmente constituídas há pelo menos um ano e que incluam entre seus fins institucionais a defesa dos interesses e direitos protegidos por este código, dispensada a autorização assemblear.<br><br><strong>§ 1º</strong> O requisito da pré-constituição pode ser dispensado pelo juiz, nas ações previstas nos arts. 91 e seguintes, quando haja manifesto interesse social evidenciado pela dimensão ou característica do dano, ou pela relevância do bem jurídico a ser protegido.<br><br><strong>§ 2º</strong> (Vetado).<br><br><strong>§ 3º</strong> (Vetado)."
+  },
+  {
+    "id": 83,
+    "numero": "83",
+    "titulo": "Artigo 83",
+    "texto": "<strong>Art. 83.</strong> Para a defesa dos direitos e interesses protegidos por este código são admissíveis todas as espécies de ações capazes de propiciar sua adequada e efetiva tutela.<br><br><strong>Parágrafo único.</strong> (Vetado)."
+  },
+  {
+    "id": 84,
+    "numero": "84",
+    "titulo": "Artigo 84",
+    "texto": "<strong>Art. 84.</strong> Na ação que tenha por objeto o cumprimento da obrigação de fazer ou não fazer, o juiz concederá a tutela específica da obrigação ou determinará providências que assegurem o resultado prático equivalente ao do adimplemento.<br><br><strong>§ 1º</strong> A conversão da obrigação em perdas e danos somente será admissível se por elas optar o autor ou se impossível a tutela específica ou a obtenção do resultado prático correspondente.<br><br><strong>§ 2º</strong> A indenização por perdas e danos se fará sem prejuízo da multa (art. 287, do Código de Processo Civil).<br><br><strong>§ 3º</strong> Sendo relevante o fundamento da demanda e havendo justificado receio de ineficácia do provimento final, é lícito ao juiz conceder a tutela liminarmente ou após justificação prévia, citado o réu.<br><br><strong>§ 4º</strong> O juiz poderá, na hipótese do § 3º ou na sentença, impor multa diária ao réu, independentemente de pedido do autor, se for suficiente ou compatível com a obrigação, fixando prazo razoável para o cumprimento do preceito.<br><br><strong>§ 5º</strong> Para a tutela específica ou para a obtenção do resultado prático equivalente, poderá o juiz determinar as medidas necessárias, tais como busca e apreensão, remoção de coisas e pessoas, desfazimento de obra, impedimento de atividade nociva, além de requisição de força policial."
+  },
+  {
+    "id": 85,
+    "numero": "85",
+    "titulo": "Artigo 85",
+    "texto": "<strong>Art. 85.</strong> (Vetado)."
+  },
+  {
+    "id": 86,
+    "numero": "86",
+    "titulo": "Artigo 86",
+    "texto": "<strong>Art. 86.</strong> (Vetado)."
+  },
+  {
+    "id": 87,
+    "numero": "87",
+    "titulo": "Artigo 87",
+    "texto": "<strong>Art. 87.</strong> Nas ações coletivas de que trata este código não haverá adiantamento de custas, emolumentos, honorários periciais e quaisquer outras despesas, nem condenação da associação autora, salvo comprovada má-fé, em honorários de advogados, custas e despesas processuais.<br><br><strong>Parágrafo único.</strong> Em caso de litigância de má-fé, a associação autora e os diretores responsáveis pela propositura da ação serão solidariamente condenados em honorários advocatícios e ao décuplo das custas, sem prejuízo da responsabilidade por perdas e danos."
+  },
+  {
+    "id": 88,
+    "numero": "88",
+    "titulo": "Artigo 88",
+    "texto": "<strong>Art. 88.</strong> Na hipótese do art. 13, parágrafo único deste código, a ação de regresso poderá ser ajuizada em processo autônomo, facultada a possibilidade de prosseguir-se nos mesmos autos, vedada a denunciação da lide."
+  },
+  {
+    "id": 89,
+    "numero": "89",
+    "titulo": "Artigo 89",
+    "texto": "<strong>Art. 89.</strong> (Vetado)."
+  },
+  {
+    "id": 90,
+    "numero": "90",
+    "titulo": "Artigo 90",
+    "texto": "<strong>Art. 90.</strong> Aplicam-se às ações previstas neste título as normas do Código de Processo Civil e da Lei nº 7.347, de 24 de julho de 1985, inclusive no que respeita ao inquérito civil, naquilo que não contrariar suas disposições."
+  },
+  {
+    "id": 91,
+    "numero": "91",
+    "titulo": "Artigo 91",
+    "texto": "<strong>Art. 91.</strong> Os legitimados de que trata o art. 82 poderão propor, em nome próprio e no interesse das vítimas ou seus sucessores, ação civil coletiva de responsabilidade pelos danos individualmente sofridos, de acordo com o disposto nos artigos seguintes."
+  },
+  {
+    "id": 92,
+    "numero": "92",
+    "titulo": "Artigo 92",
+    "texto": "<strong>Art. 92.</strong> O Ministério Público, se não ajuizar a ação, atuará sempre como fiscal da lei.<br><br><strong>Parágrafo único.</strong> (Vetado)."
+  },
+  {
+    "id": 93,
+    "numero": "93",
+    "titulo": "Artigo 93",
+    "texto": "<strong>Art. 93.</strong> Ressalvada a competência da Justiça Federal, é competente para a causa a justiça local:<br>I - no foro do lugar onde ocorreu ou deva ocorrer o dano, quando de âmbito local;<br>II - no foro da Capital do Estado ou no do Distrito Federal, para os danos de âmbito nacional ou regional, aplicando-se as regras do Código de Processo Civil aos casos de competência concorrente."
+  },
+  {
+    "id": 94,
+    "numero": "94",
+    "titulo": "Artigo 94",
+    "texto": "<strong>Art. 94.</strong> Proposta a ação, será publicado edital no órgão oficial, a fim de que os interessados possam intervir no processo como litisconsortes, sem prejuízo de ampla divulgação pelos meios de comunicação social por parte dos órgãos de defesa do consumidor."
+  },
+  {
+    "id": 95,
+    "numero": "95",
+    "titulo": "Artigo 95",
+    "texto": "<strong>Art. 95.</strong> Em caso de procedência do pedido, a condenação será genérica, fixando a responsabilidade do réu pelos danos causados."
+  },
+  {
+    "id": 96,
+    "numero": "96",
+    "titulo": "Artigo 96",
+    "texto": "<strong>Art. 96.</strong> (Vetado)."
+  },
+  {
+    "id": 97,
+    "numero": "97",
+    "titulo": "Artigo 97",
+    "texto": "<strong>Art. 97.</strong> A liquidação e a execução de sentença poderão ser promovidas pela vítima e seus sucessores, assim como pelos legitimados de que trata o art. 82.<br><br><strong>Parágrafo único.</strong> (Vetado)."
+  },
+  {
+    "id": 98,
+    "numero": "98",
+    "titulo": "Artigo 98",
+    "texto": "<strong>Art. 98.</strong> A execução poderá ser coletiva, sendo promovida pelos legitimados de que trata o art. 82, abrangendo as vítimas cujas indenizações já tiveram sido fixadas em sentença de liquidação, sem prejuízo do ajuizamento de outras execuções.<br><br><strong>§ 1º</strong> A execução coletiva far-se-á com base em certidão das sentenças de liquidação, da qual deverá constar a ocorrência ou não do trânsito em julgado.<br><br><strong>§ 2º</strong> É competente para a execução o juízo:<br>I - da liquidação da sentença ou da ação condenatória, no caso de execução individual;<br>II - da ação condenatória, quando coletiva a execução."
+  },
+  {
+    "id": 99,
+    "numero": "99",
+    "titulo": "Artigo 99",
+    "texto": "<strong>Art. 99.</strong> Em caso de concurso de créditos decorrentes de condenação prevista na Lei n.° 7.347, de 24 de julho de 1985 e de indenizações pelos prejuízos individuais resultantes do mesmo evento danoso, estas terão preferência no pagamento.<br><br><strong>Parágrafo único.</strong> Para efeito do disposto neste artigo, a destinação da importância recolhida ao fundo criado pela Lei n° 7.347 de 24 de julho de 1985, ficará sustada enquanto pendentes de decisão de segundo grau as ações de indenização pelos danos individuais, salvo na hipótese de o patrimônio do devedor ser manifestamente suficiente para responder pela integralidade das dívidas."
+  },
+  {
+    "id": 100,
+    "numero": "100",
+    "titulo": "Artigo 100",
+    "texto": "<strong>Art. 100.</strong> Decorrido o prazo de um ano sem habilitação de interessados em número compatível com a gravidade do dano, poderão os legitimados do art. 82 promover a liquidação e execução da indenização devida.<br><br><strong>Parágrafo único.</strong> O produto da indenização devida reverterá para o fundo criado pela Lei n.° 7.347, de 24 de julho de 1985."
+  },
+  {
+    "id": 101,
+    "numero": "101",
+    "titulo": "Artigo 101",
+    "texto": "<strong>Art. 101.</strong> Na ação de responsabilidade civil do fornecedor de produtos e serviços, sem prejuízo do disposto nos Capítulos I e II deste título, serão observadas as seguintes normas:<br>I - a ação pode ser proposta no domicílio do autor;<br>II - o réu que houver contratado seguro de responsabilidade poderá chamar ao processo o segurador, vedada a integração do contraditório pelo Instituto de Resseguros do Brasil. Nesta hipótese, a sentença que julgar procedente o pedido condenará o réu nos termos do art. 80 do Código de Processo Civil. Se o réu houver sido declarado falido, o síndico será intimado a informar a existência de seguro de responsabilidade, facultando-se, em caso afirmativo, o ajuizamento de ação de indenização diretamente contra o segurador, vedada a denunciação da lide ao Instituto de Resseguros do Brasil e dispensado o litisconsórcio obrigatório com este."
+  },
+  {
+    "id": 102,
+    "numero": "102",
+    "titulo": "Artigo 102",
+    "texto": "<strong>Art. 102.</strong> Os legitimados a agir na forma deste código poderão propor ação visando compelir o Poder Público competente a proibir, em todo o território nacional, a produção, divulgação distribuição ou venda, ou a determinar a alteração na composição, estrutura, fórmula ou acondicionamento de produto, cujo uso ou consumo regular se revele nocivo ou perigoso à saúde pública e à incolumidade pessoal.<br><br><strong>§ 1º</strong> (Vetado).<br><br><strong>§ 2º</strong> (Vetado)."
+  },
+  {
+    "id": 103,
+    "numero": "103",
+    "titulo": "Artigo 103",
+    "texto": "<strong>Art. 103.</strong> Nas ações coletivas de que trata este código, a sentença fará coisa julgada:<br>I - erga omnes, exceto se o pedido for julgado improcedente por insuficiência de provas, hipótese em que qualquer legitimado poderá intentar outra ação, com idêntico fundamento valendo-se de nova prova, na hipótese do inciso I do parágrafo único do art. 81;<br>II - ultra partes, mas limitadamente ao grupo, categoria ou classe, salvo improcedência por insuficiência de provas, nos termos do inciso anterior, quando se tratar da hipótese prevista no inciso II do parágrafo único do art. 81;<br>III - erga omnes, apenas no caso de procedência do pedido, para beneficiar todas as vítimas e seus sucessores, na hipótese do inciso III do parágrafo único do art. 81.<br><br><strong>§ 1º</strong> Os efeitos da coisa julgada previstos nos incisos I e II não prejudicarão interesses e direitos individuais dos integrantes da coletividade, do grupo, categoria ou classe.<br><br><strong>§ 2º</strong> Na hipótese prevista no inciso III, em caso de improcedência do pedido, os interessados que não tiverem intervindo no processo como litisconsortes poderão propor ação de indenização a título individual.<br><br><strong>§ 3º</strong> Os efeitos da coisa julgada de que cuida o art. 16, combinado com o art. 13 da Lei nº 7.347, de 24 de julho de 1985, não prejudicarão as ações de indenização por danos pessoalmente sofridos, propostas individualmente ou na forma prevista neste código, mas, se procedente o pedido, beneficiarão as vítimas e seus sucessores, que poderão proceder à liquidação e à execução, nos termos dos arts. 96 a 99.<br><br><strong>§ 4º</strong> Aplica-se o disposto no parágrafo anterior à sentença penal condenatória."
+  },
+  {
+    "id": 104,
+    "numero": "104",
+    "titulo": "Artigo 104",
+    "texto": "<strong>Art. 104.</strong> As ações coletivas, previstas nos incisos I e II e do parágrafo único do art. 81, não induzem litispendência para as ações individuais, mas os efeitos da coisa julgada erga omnes ou ultra partes a que aludem os incisos II e III do artigo anterior não beneficiarão os autores das ações individuais, se não for requerida sua suspensão no prazo de trinta dias, a contar da ciência nos autos do ajuizamento da ação coletiva."
+  },
+  {
+    "id": 105,
+    "numero": "105",
+    "titulo": "Artigo 105",
+    "texto": "<strong>Art. 105.</strong> Integram o Sistema Nacional de Defesa do Consumidor (SNDC), os órgãos federais, estaduais, do Distrito Federal e municipais e as entidades privadas de defesa do consumidor."
+  },
+  {
+    "id": 106,
+    "numero": "106",
+    "titulo": "Artigo 106",
+    "texto": "<strong>Art. 106.</strong> O Departamento Nacional de Defesa do Consumidor, da Secretaria Nacional de Direito Econômico (MJ), ou órgão federal que venha substituí-lo, é organismo de coordenação da política do Sistema Nacional de Defesa do Consumidor, cabendo-lhe:<br>I - planejar, elaborar, propor, coordenar e executar a política nacional de proteção ao consumidor;<br>II - receber, analisar, avaliar e encaminhar consultas, denúncias ou sugestões apresentadas por entidades representativas ou pessoas jurídicas de direito público ou privado;<br>III - prestar aos consumidores orientação permanente sobre seus direitos e garantias;<br>IV - informar, conscientizar e motivar o consumidor através dos diferentes meios de comunicação;<br>V - solicitar à polícia judiciária a instauração de inquérito policial para a apreciação de delito contra os consumidores, nos termos da legislação vigente;<br>VI - representar ao Ministério Público competente para fins de adoção de medidas processuais no âmbito de suas atribuições;<br>VII - levar ao conhecimento dos órgãos competentes as infrações de ordem administrativa que violarem os interesses difusos, coletivos, ou individuais dos consumidores;<br>VIII - solicitar o concurso de órgãos e entidades da União, Estados, do Distrito Federal e Municípios, bem como auxiliar a fiscalização de preços, abastecimento, quantidade e segurança de bens e serviços;<br>IX - incentivar, inclusive com recursos financeiros e outros programas especiais, a formação de entidades de defesa do consumidor pela população e pelos órgãos públicos estaduais e municipais;<br>X - (Vetado);<br>XI - (Vetado);<br>XII - (Vetado);<br>XIII - desenvolver outras atividades compatíveis com suas finalidades.<br><br><strong>Parágrafo único.</strong> Para a consecução de seus objetivos, o Departamento Nacional de Defesa do Consumidor poderá solicitar o concurso de órgãos e entidades de notória especialização técnico-científica."
+  },
+  {
+    "id": 107,
+    "numero": "107",
+    "titulo": "Artigo 107",
+    "texto": "<strong>Art. 107.</strong> As entidades civis de consumidores e as associações de fornecedores ou sindicatos de categoria econômica podem regular, por convenção escrita, relações de consumo que tenham por objeto estabelecer condições relativas ao preço, à qualidade, à quantidade, à garantia e características de produtos e serviços, bem como à reclamação e composição do conflito de consumo.<br><br><strong>§ 1º</strong> A convenção tornar-se-á obrigatória a partir do registro do instrumento no cartório de títulos e documentos.<br><br><strong>§ 2º</strong> A convenção somente obrigará os filiados às entidades signatárias.<br><br><strong>§ 3º</strong> Não se exime de cumprir a convenção o fornecedor que se desligar da entidade em data posterior ao registro do instrumento."
+  },
+  {
+    "id": 108,
+    "numero": "108",
+    "titulo": "Artigo 108",
+    "texto": "<strong>Art. 108.</strong> (Vetado)."
+  },
+  {
+    "id": 109,
+    "numero": "109",
+    "titulo": "Artigo 109",
+    "texto": "<strong>Art. 109.</strong> (Vetado)."
+  },
+  {
+    "id": 110,
+    "numero": "110",
+    "titulo": "Artigo 110",
+    "texto": "<strong>Art. 110.</strong> Acrescente-se o seguinte inciso IV ao art. 1º da Lei nº 7.347, de 24 de julho de 1985: 'IV - a qualquer outro interesse difuso ou coletivo'."
+  },
+  {
+    "id": 111,
+    "numero": "111",
+    "titulo": "Artigo 111",
+    "texto": "<strong>Art. 111.</strong> O inciso II do art. 5º da Lei nº 7.347, de 24 de julho de 1985, passa a ter a seguinte redação: 'II - inclua, entre suas finalidades institucionais, a proteção ao meio ambiente, ao consumidor, ao patrimônio artístico, estético, histórico, turístico e paisagístico, ou a qualquer outro interesse difuso ou coletivo'."
+  },
+  {
+    "id": 112,
+    "numero": "112",
+    "titulo": "Artigo 112",
+    "texto": "<strong>Art. 112.</strong> O § 3º do art. 5º da Lei nº 7.347, de 24 de julho de 1985, passa a ter a seguinte redação: '§ 3º Em caso de desistência infundada ou abandono da ação por associação legitimada, o Ministério Público ou outro legitimado assumirá a titularidade ativa'."
+  },
+  {
+    "id": 113,
+    "numero": "113",
+    "titulo": "Artigo 113",
+    "texto": "<strong>Art. 113.</strong> Acrescente-se os seguintes §§ 4º, 5º e 6º ao art. 5º da Lei n.º 7.347, de 24 de julho de 1985: '§ 4.° O requisito da pré-constituição poderá ser dispensado pelo juiz, quando haja manifesto interesse social evidenciado pela dimensão ou característica do dano, ou pela relevância do bem jurídico a ser protegido. § 5.° Admitir-se-á o litisconsórcio facultativo entre os Ministérios Públicos da União, do Distrito Federal e dos Estados na defesa dos interesses e direitos de que cuida esta lei. § 6º Os órgãos públicos legitimados poderão tomar dos interessados compromisso de ajustamento de sua conduta às exigências legais, mediante combinações, que terá eficácia de título executivo extrajudicial'."
+  },
+  {
+    "id": 114,
+    "numero": "114",
+    "titulo": "Artigo 114",
+    "texto": "<strong>Art. 114.</strong> O art. 15 da Lei nº 7.347, de 24 de julho de 1985, passa a ter a seguinte redação: 'Art. 15. Decorridos sessenta dias do trânsito em julgado da sentença condenatória, sem que a associação autora lhe promova a execução, deverá fazê-lo o Ministério Público, facultada igual iniciativa aos demais legitimados'."
+  },
+  {
+    "id": 115,
+    "numero": "115",
+    "titulo": "Artigo 115",
+    "texto": "<strong>Art. 115.</strong> Suprima-se o caput do art. 17 da Lei nº 7.347, de 24 de julho de 1985, passando o parágrafo único a constituir o caput, com a seguinte redação: 'Art. 17. Em caso de litigância de má-fé, a associação autora e os diretores responsáveis pela propositura da ação serão solidariamente condenados em honorários advocatícios e ao décuplo das custas, sem prejuízo da responsabilidade por perdas e danos'."
+  },
+  {
+    "id": 116,
+    "numero": "116",
+    "titulo": "Artigo 116",
+    "texto": "<strong>Art. 116.</strong> Dê-se a seguinte redação ao art. 18 da Lei n° 7.347, de 24 de julho de 1985: 'Art. 18. Nas ações de que trata esta lei, não haverá adiantamento de custas, emolumentos, honorários periciais e quaisquer outras despesas, nem condenação da associação autora, salvo comprovada má-fé, em honorários de advogado, custas e despesas processuais'."
+  },
+  {
+    "id": 117,
+    "numero": "117",
+    "titulo": "Artigo 117",
+    "texto": "<strong>Art. 117.</strong> Acrescente-se à Lei nº 7.347, de 24 de julho de 1985, o seguinte dispositivo, renumerando-se os seguintes: 'Art. 21. Aplicam-se à defesa dos direitos e interesses difusos, coletivos e individuais, no que for cabível, os dispositivos do Título III da lei que instituiu o Código de Defesa do Consumidor'."
+  },
+  {
+    "id": 118,
+    "numero": "118",
+    "titulo": "Artigo 118",
+    "texto": "<strong>Art. 118.</strong> Este código entrará em vigor dentro de cento e oitenta dias a contar de sua publicação."
+  },
+  {
+    "id": 119,
+    "numero": "119",
+    "titulo": "Artigo 119",
+    "texto": "<strong>Art. 119.</strong> Revogam-se as disposições em contrário."
+  }
+]

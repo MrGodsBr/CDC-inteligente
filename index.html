@@ -6,97 +6,411 @@
   <title>CDC - Código de Defesa do Consumidor</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background-color: #6392b4; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
-    .app-container { width: 100%; max-width: 420px; height: 100vh; max-height: 880px; background-color: #6392b4; display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-    header { background-color: #0d3859; color: #ffffff; padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; z-index: 10; }
-    header h1 { font-size: 22px; font-weight: bold; color: #6da2c9; margin-bottom: 2px; }
-    header p { font-size: 13px; color: #ffffff; font-weight: 500; }
-    .screen { display: none; flex: 1; flex-direction: column; position: relative; overflow: hidden; }
+    
+    /* Tema Claro (padrão) */
+    :root {
+      --bg-primary: #6392b4;
+      --bg-secondary: #ffffff;
+      --text-primary: #333333;
+      --text-secondary: #111111;
+      --header-bg: #0d3859;
+      --header-text: #ffffff;
+      --card-bg: #e3e3e3;
+      --border-color: #e0e0e0;
+      --ia-bg: #eef7ff;
+      --ia-border: #0d3859;
+      --shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    /* Tema Escuro */
+    [data-theme="dark"] {
+      --bg-primary: #1a1a2e;
+      --bg-secondary: #16213e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #ffffff;
+      --header-bg: #0f3460;
+      --header-text: #ffffff;
+      --card-bg: #2a2a4a;
+      --border-color: #3a3a5a;
+      --ia-bg: #1a2a4a;
+      --ia-border: #4a8ab5;
+      --shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    body { 
+      background-color: var(--bg-primary); 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      min-height: 100vh; 
+      color: var(--text-primary); 
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .app-container { 
+      width: 100%; 
+      max-width: 420px; 
+      height: 100vh; 
+      max-height: 880px; 
+      background-color: var(--bg-primary); 
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+      overflow: hidden; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+      transition: background-color 0.3s;
+    }
+    
+    header { 
+      background-color: var(--header-bg); 
+      color: var(--header-text); 
+      padding: 12px 16px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      z-index: 10; 
+      transition: background-color 0.3s;
+    }
+    
+    header h1 { 
+      font-size: 22px; 
+      font-weight: bold; 
+      color: #6da2c9; 
+      margin-bottom: 2px; 
+    }
+    
+    header p { 
+      font-size: 13px; 
+      color: var(--header-text); 
+      font-weight: 500; 
+    }
+    
+    .screen { 
+      display: none; 
+      flex: 1; 
+      flex-direction: column; 
+      position: relative; 
+      overflow: hidden; 
+    }
+    
     .screen.active { display: flex; }
     
-    .home-content { flex: 1; padding: 20px 24px; display: flex; flex-direction: column; justify-content: space-between; }
-    .display-number { text-align: center; font-size: 28px; font-weight: bold; color: #ffffff; min-height: 36px; margin-bottom: 10px; letter-spacing: 2px; }
-    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 15px; }
-    .key-btn { background-color: #e3e3e3; border: none; border-radius: 12px; height: 72px; font-size: 32px; font-weight: bold; color: #000000; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: transform 0.1s; }
+    .home-content { 
+      flex: 1; 
+      padding: 20px 24px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between; 
+    }
+    
+    .display-number { 
+      text-align: center; 
+      font-size: 28px; 
+      font-weight: bold; 
+      color: var(--header-text); 
+      min-height: 36px; 
+      margin-bottom: 10px; 
+      letter-spacing: 2px; 
+      transition: color 0.3s;
+    }
+    
+    .keypad { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 16px; 
+      margin-bottom: 15px; 
+    }
+    
+    .key-btn { 
+      background-color: var(--card-bg); 
+      border: none; 
+      border-radius: 12px; 
+      height: 72px; 
+      font-size: 32px; 
+      font-weight: bold; 
+      color: var(--text-secondary); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      cursor: pointer; 
+      box-shadow: var(--shadow); 
+      transition: transform 0.1s, background-color 0.3s, color 0.3s; 
+    }
+    
     .key-btn:active { transform: scale(0.95); background-color: #d0d0d0; }
     .key-btn.clear { background-color: #b76263; color: #ffffff; font-size: 26px; }
-    .key-btn.enter { background-color: #0d3859; color: #ffffff; font-size: 28px; }
-    .actions-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
-    .action-btn { width: 100%; background-color: #e3e3e3; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: bold; color: #000000; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; }
+    .key-btn.enter { background-color: var(--header-bg); color: #ffffff; font-size: 28px; }
+    
+    .actions-group { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+      margin-bottom: 10px; 
+    }
+    
+    .action-btn { 
+      width: 100%; 
+      background-color: var(--card-bg); 
+      border: none; 
+      border-radius: 12px; 
+      padding: 16px; 
+      font-size: 16px; 
+      font-weight: bold; 
+      color: var(--text-secondary); 
+      cursor: pointer; 
+      box-shadow: var(--shadow); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      transition: transform 0.1s, background-color 0.3s, color 0.3s; 
+    }
+    
     .action-btn:active { transform: scale(0.98); }
-    .footer-version { text-align: right; font-size: 11px; color: rgba(255, 255, 255, 0.7); }
+    .footer-version { 
+      text-align: right; 
+      font-size: 11px; 
+      color: rgba(255, 255, 255, 0.7); 
+    }
 
-    .nav-bar { background-color: #f5f5f7; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e0e0e0; flex-shrink: 0; }
+    .nav-bar { 
+      background-color: var(--bg-secondary); 
+      padding: 12px 16px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      border-bottom: 1px solid var(--border-color); 
+      flex-shrink: 0; 
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    
     .nav-group { display: flex; gap: 12px; }
-    .icon-btn { width: 44px; height: 44px; background-color: #3f90be; border: none; border-radius: 10px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s; }
+    
+    .icon-btn { 
+      width: 44px; 
+      height: 44px; 
+      background-color: #3f90be; 
+      border: none; 
+      border-radius: 10px; 
+      color: #ffffff; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      cursor: pointer; 
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+      transition: transform 0.1s, background-color 0.3s; 
+    }
+    
     .icon-btn:active { transform: scale(0.92); }
     .icon-btn.fav-btn.active { background-color: #f39c12; }
+    .icon-btn.theme-btn { background-color: #6c5ce7; }
 
-    .article-screen { background-color: #ffffff; height: 100%; }
-    .article-body { padding: 24px 20px 50px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; color: #111111; line-height: 1.6; }
-    .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
+    /* Tela do Artigo */
+    .article-screen { 
+      background-color: var(--bg-secondary); 
+      height: 100%; 
+      transition: background-color 0.3s;
+    }
+    
+    .article-body { 
+      padding: 24px 20px 50px 20px; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+      flex: 1; 
+      color: var(--text-secondary); 
+      line-height: 1.6; 
+      transition: color 0.3s;
+    }
+    
+    .article-title { 
+      font-size: 26px; 
+      font-weight: bold; 
+      margin-bottom: 20px; 
+      color: var(--text-secondary); 
+      transition: color 0.3s;
+    }
+    
     .article-text { font-size: 15px; }
 
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
-      background-color: #eef7ff;
-      border-left: 4px solid #0d3859;
+      background-color: var(--ia-bg);
+      border-left: 4px solid var(--ia-border);
       border-radius: 8px;
       font-size: 14px;
-      color: #0d3859;
+      color: var(--text-secondary);
       line-height: 1.5;
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s;
     }
+    
     .ia-extra-title {
       font-weight: bold;
       margin-bottom: 8px;
       font-size: 15px;
-      color: #0d3859;
+      color: var(--ia-border);
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: color 0.3s;
     }
 
-    .search-screen { background-color: #ffffff; }
-    .search-body { padding: 20px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-    .search-title { font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 12px; }
-    .search-input-group { display: flex; gap: 10px; margin-bottom: 16px; }
-    .search-input { flex: 1; height: 52px; border: 1px solid #333333; border-radius: 8px; padding: 0 16px; font-size: 16px; color: #333333; outline: none; }
+    /* Tela de Pesquisa */
+    .search-screen { 
+      background-color: var(--bg-secondary); 
+      transition: background-color 0.3s;
+    }
+    
+    .search-body { 
+      padding: 20px; 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+      overflow: hidden; 
+    }
+    
+    .search-title { 
+      font-size: 22px; 
+      font-weight: bold; 
+      color: var(--text-secondary); 
+      margin-bottom: 12px; 
+      transition: color 0.3s;
+    }
+    
+    .search-input-group { 
+      display: flex; 
+      gap: 10px; 
+      margin-bottom: 16px; 
+    }
+    
+    .search-input { 
+      flex: 1; 
+      height: 52px; 
+      border: 1px solid var(--border-color); 
+      border-radius: 8px; 
+      padding: 0 16px; 
+      font-size: 16px; 
+      color: var(--text-secondary); 
+      outline: none; 
+      background-color: var(--bg-secondary);
+      transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+    }
+    
     .search-input:focus { border-color: #0d3859; }
-    .search-submit-btn { width: 52px; height: 52px; background-color: #0d3859; border: none; border-radius: 8px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.1s; }
+    .search-input::placeholder { color: #999; }
+    
+    .search-submit-btn { 
+      width: 52px; 
+      height: 52px; 
+      background-color: var(--header-bg); 
+      border: none; 
+      border-radius: 8px; 
+      color: #ffffff; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      cursor: pointer; 
+      transition: transform 0.1s, background-color 0.3s; 
+    }
+    
     .search-submit-btn:active { transform: scale(0.92); }
     .results-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     
     .section-header {
       font-size: 13px;
       font-weight: bold;
-      color: #0d3859;
-      background-color: #f0f4f8;
+      color: var(--text-secondary);
+      background-color: var(--card-bg);
       padding: 8px 12px;
       border-radius: 6px;
       margin-top: 12px;
       margin-bottom: 8px;
       text-transform: uppercase;
+      transition: background-color 0.3s, color 0.3s;
     }
+    
     .section-header.ia {
-      background-color: #eef7ff;
+      background-color: var(--ia-bg);
       border-left: 4px solid #3f90be;
     }
 
-    .result-item { padding: 14px 12px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background-color 0.1s; }
-    .result-item:active { background-color: #f5f5f5; }
-    .result-title { font-size: 16px; font-weight: bold; color: #0d3859; margin-bottom: 4px; }
-    .result-snippet { font-size: 13px; color: #555555; line-height: 1.4; }
-
-    .favorites-screen { background-color: #ffffff; }
-    .fav-header { padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; }
-    .fav-header h2 { font-size: 20px; color: #0d3859; }
-    .fav-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-    .fav-item { padding: 16px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.1s; }
-    .fav-item:active { background-color: #f5f5f5; }
+    .result-item { 
+      padding: 14px 12px; 
+      border-bottom: 1px solid var(--border-color); 
+      cursor: pointer; 
+      transition: background-color 0.1s, border-color 0.3s; 
+    }
     
-    .empty-msg { text-align: center; color: #888; margin: 15px 0; font-size: 14px; }
-    .loading-spinner { text-align: center; color: #0d3859; padding: 15px; font-weight: 500; font-size: 14px; }
+    .result-item:active { background-color: var(--card-bg); }
+    .result-title { 
+      font-size: 16px; 
+      font-weight: bold; 
+      color: var(--text-secondary); 
+      margin-bottom: 4px; 
+      transition: color 0.3s;
+    }
+    
+    .result-snippet { 
+      font-size: 13px; 
+      color: #888; 
+      line-height: 1.4; 
+    }
+
+    /* Favoritos */
+    .favorites-screen { 
+      background-color: var(--bg-secondary); 
+      transition: background-color 0.3s;
+    }
+    
+    .fav-header { 
+      padding: 16px 20px; 
+      border-bottom: 1px solid var(--border-color); 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      transition: border-color 0.3s;
+    }
+    
+    .fav-header h2 { 
+      font-size: 20px; 
+      color: var(--text-secondary); 
+      transition: color 0.3s;
+    }
+    
+    .fav-list { 
+      flex: 1; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+    }
+    
+    .fav-item { 
+      padding: 16px 20px; 
+      border-bottom: 1px solid var(--border-color); 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      transition: background-color 0.1s, border-color 0.3s; 
+    }
+    
+    .fav-item:active { background-color: var(--card-bg); }
+    
+    .empty-msg { 
+      text-align: center; 
+      color: #888; 
+      margin: 15px 0; 
+      font-size: 14px; 
+    }
+    
+    .loading-spinner { 
+      text-align: center; 
+      color: var(--text-secondary); 
+      padding: 15px; 
+      font-weight: 500; 
+      font-size: 14px; 
+      transition: color 0.3s;
+    }
+    
     .icon { width: 22px; height: 22px; fill: currentColor; }
     .icon-btn .icon { width: 24px; height: 24px; }
 
@@ -109,21 +423,104 @@
       margin: 8px 0;
     }
 
-    .article-body::-webkit-scrollbar, .results-list::-webkit-scrollbar, .fav-list::-webkit-scrollbar {
+    /* Sugestões rápidas (histórico) */
+    .suggestions-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    
+    .suggestion-chip {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    
+    .suggestion-chip:active {
+      transform: scale(0.95);
+      background-color: var(--ia-bg);
+    }
+
+    /* Botão compartilhar */
+    .share-btn {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s;
+    }
+    
+    .share-btn:active { transform: scale(0.95); }
+
+    .article-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .article-body::-webkit-scrollbar, 
+    .results-list::-webkit-scrollbar, 
+    .fav-list::-webkit-scrollbar {
       width: 4px;
     }
-    .article-body::-webkit-scrollbar-track, .results-list::-webkit-scrollbar-track, .fav-list::-webkit-scrollbar-track {
+    
+    .article-body::-webkit-scrollbar-track, 
+    .results-list::-webkit-scrollbar-track, 
+    .fav-list::-webkit-scrollbar-track {
       background: #f1f1f1;
     }
-    .article-body::-webkit-scrollbar-thumb, .results-list::-webkit-scrollbar-thumb, .fav-list::-webkit-scrollbar-thumb {
-      background: #0d3859;
+    
+    .article-body::-webkit-scrollbar-thumb, 
+    .results-list::-webkit-scrollbar-thumb, 
+    .fav-list::-webkit-scrollbar-thumb {
+      background: var(--header-bg);
       border-radius: 4px;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--header-bg);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s;
+      max-width: 90%;
+    }
+    
+    .toast.show {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="app-container" id="app">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
     <header>
       <h1>CDC</h1>
       <p>Código de Defesa do Consumidor</p>
@@ -166,10 +563,17 @@
     <!-- TELA DE PESQUISA -->
     <div id="search-screen" class="screen search-screen">
       <div class="nav-bar">
-        <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
+        <div class="nav-group">
+          <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
+          <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
+        </div>
       </div>
       <div class="search-body">
-        <h2 class="search-title">Pesquisa Inteligente</h2>
+        <h2 class="search-title">Pesquisar CDC</h2>
+        
+        <!-- Sugestões do histórico -->
+        <div id="suggestions-container" class="suggestions-container"></div>
+        
         <div class="search-input-group">
           <input type="text" id="search-term-input" class="search-input" placeholder="Digite uma palavra ou dúvida" onkeyup="if(event.key === 'Enter') performTextSearch()" />
           <button class="search-submit-btn" onclick="performTextSearch()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button>
@@ -185,6 +589,7 @@
           <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
           <button class="icon-btn" onclick="openSearchScreen()"><svg class="icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
           <button id="fav-toggle-btn" class="icon-btn fav-btn" onclick="toggleFavorite()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></button>
+          <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
         </div>
         <div class="nav-group">
           <button class="icon-btn" onclick="navArticle(-1)"><svg class="icon" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
@@ -195,6 +600,15 @@
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
+        
+        <!-- Ações do artigo: Compartilhar -->
+        <div class="article-actions">
+          <button class="share-btn" onclick="shareArticle()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+            Compartilhar
+          </button>
+        </div>
+        
         <div id="ia-extra-container"></div>
       </div>
     </div>
@@ -203,7 +617,10 @@
     <div id="favorites-screen" class="screen favorites-screen">
       <div class="fav-header">
         <h2>Artigos Favoritados</h2>
-        <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+        <div class="nav-group">
+          <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
+          <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+        </div>
       </div>
       <div id="fav-list-container" class="fav-list"></div>
     </div>
@@ -214,9 +631,92 @@
     let currentArticleId = null;
     let cdcDatabase = null;
     let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
+    let searchHistory = JSON.parse(localStorage.getItem('search_history')) || [];
+    let currentTheme = localStorage.getItem('theme') || 'light';
 
     const API_BASE_URL = '/api';
 
+    // ====== TEMA ======
+    function applyTheme(theme) {
+      currentTheme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    function toggleTheme() {
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      applyTheme(newTheme);
+      showToast(newTheme === 'dark' ? '🌙 Tema escuro ativado' : '☀️ Tema claro ativado');
+    }
+
+    // ====== TOAST ======
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // ====== HISTÓRICO ======
+    function saveSearchHistory(term) {
+      if (!term || term.trim() === '') return;
+      const cleaned = term.trim();
+      searchHistory = searchHistory.filter(t => t.toLowerCase() !== cleaned.toLowerCase());
+      searchHistory.unshift(cleaned);
+      if (searchHistory.length > 10) searchHistory.pop();
+      localStorage.setItem('search_history', JSON.stringify(searchHistory));
+      renderSuggestions();
+    }
+
+    function renderSuggestions() {
+      const container = document.getElementById('suggestions-container');
+      if (!container) return;
+      
+      if (searchHistory.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      container.innerHTML = searchHistory.map(term => `
+        <span class="suggestion-chip" onclick="useSuggestion('${term.replace(/'/g, "\\'")}')">${term}</span>
+      `).join('');
+    }
+
+    function useSuggestion(term) {
+      document.getElementById('search-term-input').value = term;
+      performTextSearch();
+    }
+
+    // ====== COMPARTILHAR ======
+    async function shareArticle() {
+      const title = document.getElementById('article-title').innerText || 'Artigo CDC';
+      const url = window.location.href + `?artigo=${currentArticleId}`;
+      
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: `CDC - ${title}`,
+            text: `📜 Confira este artigo do Código de Defesa do Consumidor: ${title}`,
+            url: url
+          });
+          showToast('✅ Compartilhado com sucesso!');
+        } else {
+          // Fallback: copiar link
+          await navigator.clipboard.writeText(url);
+          showToast('📋 Link copiado para a área de transferência!');
+        }
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Erro ao compartilhar:', err);
+          showToast('❌ Erro ao compartilhar. Tente novamente.');
+        }
+      }
+    }
+
+    // ====== FUNÇÕES PRINCIPAIS ======
     async function getDatabase() {
       if (cdcDatabase) return cdcDatabase;
       try {
@@ -301,8 +801,8 @@
     async function fetchIaAnalysisForArticle(artId) {
       const iaBox = document.getElementById("ia-extra-container");
       iaBox.innerHTML = `
-        <div class="ia-extra-box" style="background-color: #f8fafc; border-left-color: #3f90be;">
-          <div class="ia-extra-title" style="color: #0d3859;">🌎 Consultando análise da IA para o Artigo ${artId}...</div>
+        <div class="ia-extra-box" style="background-color: var(--ia-bg); border-left-color: #3f90be;">
+          <div class="ia-extra-title" style="color: var(--ia-border);">🌎 Consultando análise da IA para o Artigo ${artId}...</div>
         </div>
       `;
 
@@ -352,6 +852,7 @@
     function openSearchScreen() {
       document.getElementById("search-term-input").value = "";
       document.getElementById("search-results-container").innerHTML = "";
+      renderSuggestions();
       switchScreen('search-screen');
     }
 
@@ -363,6 +864,9 @@
         container.innerHTML = '<div class="error-message">Por favor, digite um termo para pesquisa.</div>';
         return;
       }
+
+      // Salvar no histórico
+      saveSearchHistory(term);
 
       container.innerHTML = '<div class="loading-spinner">🔍 Buscando no banco local e na IA...</div>';
 
@@ -435,7 +939,6 @@
 
         if (data.resultados && data.resultados.length > 0) {
           data.resultados.forEach(res => {
-            // Tenta encontrar o artigo no banco local
             const articleObj = getArticleFromData(db, res.id);
             
             const item = document.createElement("div");
@@ -444,7 +947,6 @@
               if (articleObj) {
                 fetchAndDisplayArticle(res.id, res.explicacao_ia);
               } else {
-                // Se não encontrar, apenas exibe a análise
                 const iaBox = document.getElementById("ia-extra-container");
                 iaBox.innerHTML = `
                   <div class="ia-extra-box">
@@ -495,8 +997,10 @@
       const index = favorites.indexOf(currentArticleId);
       if (index === -1) {
         favorites.push(currentArticleId);
+        showToast('⭐ Artigo favoritado!');
       } else {
         favorites.splice(index, 1);
+        showToast('💔 Artigo removido dos favoritos');
       }
       localStorage.setItem('cdc_favorites', JSON.stringify(favorites));
       updateFavButtonState();
@@ -538,8 +1042,8 @@
           item.onclick = () => fetchAndDisplayArticle(id);
           item.innerHTML = `
             <div>
-              <div style="font-weight: bold; color: #0d3859;">${title}</div>
-              <div style="font-size: 13px; color: #666;">${preview}</div>
+              <div style="font-weight: bold; color: var(--text-secondary);">${title}</div>
+              <div style="font-size: 13px; color: #888;">${preview}</div>
             </div>
             <svg class="icon" style="color: #f39c12;" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           `;
@@ -548,6 +1052,20 @@
       }
 
       switchScreen('favorites-screen');
+    }
+
+    // ====== INICIALIZAÇÃO ======
+    // Aplicar tema salvo
+    applyTheme(currentTheme);
+    renderSuggestions();
+
+    // Verificar se tem artigo na URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const artigoParam = urlParams.get('artigo');
+    if (artigoParam) {
+      setTimeout(() => {
+        fetchAndDisplayArticle(artigoParam);
+      }, 500);
     }
   </script>
 </body>

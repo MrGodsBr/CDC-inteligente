@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>CDC - Código de Defesa do Consumidor</title>
+  <title>CDC - Código de Defesa do Consumidor (Local)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: #6392b4; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
@@ -34,24 +34,6 @@
     .article-body { padding: 24px 20px 50px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; color: #111111; line-height: 1.6; }
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
-
-    /* DESTAQUE EXCLUSIVO PARA O ACRÉSCIMO DA IA */
-    .ia-extra-box {
-      margin-top: 24px;
-      padding: 16px;
-      background-color: #eef7ff;
-      border-left: 4px solid #0d3859;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #0d3859;
-      line-height: 1.5;
-    }
-    .ia-extra-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-      font-size: 15px;
-      color: #0d3859;
-    }
 
     .search-screen { background-color: #ffffff; }
     .search-body { padding: 20px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -104,26 +86,28 @@
         </div>
 
         <div class="actions-group">
-          <button class="action-btn" onclick="openSearchScreen()">Pesquisar com IA</button>
+          <button class="action-btn" onclick="openSearchScreen()">
+            Pesquisar por Palavra
+          </button>
           <button class="action-btn" style="background-color: #d1e4f0; color: #0d3859;" onclick="openFavorites()">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             Ver Artigos Favoritados
           </button>
         </div>
 
-        <div class="footer-version">v5.0 Local Absoluto 🌎</div>
+        <div class="footer-version">v1.0 (100% Banco Local)</div>
       </div>
     </div>
 
-    <!-- 2. TELA DE PESQUISA COM IA -->
+    <!-- 2. TELA DE PESQUISA POR PALAVRA -->
     <div id="search-screen" class="screen search-screen">
       <div class="nav-bar">
         <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
       </div>
       <div class="search-body">
-        <h2 class="search-title">Pesquisar com IA</h2>
+        <h2 class="search-title">Pesquisar por Palavra</h2>
         <div class="search-input-group">
-          <input type="text" id="search-term-input" class="search-input" placeholder="Digite sua dúvida ou assunto" onkeyup="if(event.key === 'Enter') performTextSearch()" />
+          <input type="text" id="search-term-input" class="search-input" placeholder="Ex: troca, defeito, propaganda" onkeyup="if(event.key === 'Enter') performTextSearch()" />
           <button class="search-submit-btn" onclick="performTextSearch()"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button>
         </div>
         <div id="search-results-container" class="results-list"></div>
@@ -147,7 +131,6 @@
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
-        <div id="ia-extra-container"></div>
       </div>
     </div>
 
@@ -206,34 +189,21 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // EXIBE APENAS O TEXTO DO CDC.JSON E O ACRÉSCIMO DA IA (COM SÍMBOLO 🌎)
-    async function fetchAndDisplayArticle(artId, extraIaText = null) {
+    // EXIBE APENAS O TEXTO DO CDC.JSON
+    async function fetchAndDisplayArticle(artId) {
       currentArticleId = artId;
       switchScreen('article-screen');
       updateFavButtonState();
 
       document.getElementById("article-title").innerText = `Artigo ${artId}`;
       document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando cdc.json...</div>`;
-      document.getElementById("ia-extra-container").innerHTML = "";
 
       const db = await getDatabase();
       const articleObj = getArticleFromData(db, artId);
 
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
-        
-        // FORÇA O USO EXCLUSIVO DO TEXTO LOCAL DO BANCO CDC.JSON
         document.getElementById("article-content").innerHTML = articleObj.texto;
-
-        // SE A IA TROUXER ALGO EXTRA, MOSTRA APENAS NA CAIXA COM O 🌎
-        if (extraIaText && extraIaText.trim() !== "") {
-          document.getElementById("ia-extra-container").innerHTML = `
-            <div class="ia-extra-box">
-              <div class="ia-extra-title">🌎 Complemento / Jurisprudência (IA):</div>
-              <div>${extraIaText}</div>
-            </div>
-          `;
-        }
 
         const bodyEl = document.querySelector('.article-body');
         if (bodyEl) bodyEl.scrollTop = 0;
@@ -248,57 +218,47 @@
       switchScreen('search-screen');
     }
 
-    // BUSCA INTELIGENTE: PAGA O ID E EXIBE O TEXTO DO BANCO LOCAL
+    // PESQUISA LOCAL POR PALAVRA (SEM IA, 100% CONFIÁVEL)
     async function performTextSearch() {
-      const term = document.getElementById("search-term-input").value.trim();
+      const term = document.getElementById("search-term-input").value.trim().toLowerCase();
       const container = document.getElementById("search-results-container");
       
       if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">IA identificando o artigo correspondente...</div>';
+      container.innerHTML = '<div class="loading-spinner">Buscando no cdc.json...</div>';
 
-      try {
-        const response = await fetch('/api/buscar', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: term })
-        });
-
-        const data = await response.json();
-
-        if (data.erro || !data.resultados || data.resultados.length === 0) {
-          container.innerHTML = `<div class="empty-msg">Nenhum artigo encontrado para "${term}".</div>`;
-          return;
-        }
-
-        const db = await getDatabase();
-        container.innerHTML = "";
-
-        data.resultados.forEach(res => {
-          const articleObj = getArticleFromData(db, res.id);
-          
-          let preview = res.snippet || "Toque para abrir...";
-          if (articleObj && articleObj.texto) {
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = articleObj.texto;
-            preview = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 110) + "...";
-          }
-
-          const item = document.createElement("div");
-          item.className = "result-item";
-          
-          item.onclick = () => fetchAndDisplayArticle(res.id, res.acrescimo_ia);
-          
-          item.innerHTML = `
-            <div class="result-title">Artigo ${res.id} ${res.acrescimo_ia ? '🌎' : ''}</div>
-            <div class="result-snippet">${preview}</div>
-          `;
-          container.appendChild(item);
-        });
-
-      } catch (err) {
-        console.error("Erro:", err);
-        container.innerHTML = '<div class="empty-msg">Falha na conexão. Tente novamente.</div>';
+      const db = await getDatabase();
+      if (!db) {
+        container.innerHTML = '<div class="empty-msg">Erro ao carregar banco de dados.</div>';
+        return;
       }
+
+      // Filtra os artigos que possuem a palavra pesquisada no texto ou título
+      const matches = db.filter(art => {
+        const fullText = (art.titulo + " " + art.texto).toLowerCase();
+        return fullText.includes(term);
+      });
+
+      if (matches.length === 0) {
+        container.innerHTML = `<div class="empty-msg">Nenhum artigo encontrado contendo "${term}".</div>`;
+        return;
+      }
+
+      container.innerHTML = "";
+      matches.forEach(art => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = art.texto;
+        const plainText = tempDiv.textContent || tempDiv.innerText || "";
+        const preview = plainText.substring(0, 110) + "...";
+
+        const item = document.createElement("div");
+        item.className = "result-item";
+        item.onclick = () => fetchAndDisplayArticle(art.id || art.numero);
+        item.innerHTML = `
+          <div class="result-title">${art.titulo || 'Artigo ' + art.id}</div>
+          <div class="result-snippet">${preview}</div>
+        `;
+        container.appendChild(item);
+      });
     }
 
     function navArticle(direction) {

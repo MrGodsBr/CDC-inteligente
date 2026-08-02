@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>CDC - Código de Defesa do Consumidor (IA Pure)</title>
+  <title>CDC - Código de Defesa do Consumidor</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: #6392b4; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
@@ -93,7 +93,7 @@
           </button>
         </div>
 
-        <div class="footer-version">3.0 Online API</div>
+        <div class="footer-version">3.1 Híbrido Groq</div>
       </div>
     </div>
 
@@ -145,8 +145,35 @@
   <script>
     let currentInput = "";
     let currentArticleId = null;
+    let cdcDatabase = null;
     let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
-    let articleMemory = {};
+
+    // LER BANCO LOCAL CDC.JSON
+    async function getDatabase() {
+      if (cdcDatabase) return cdcDatabase;
+      try {
+        const response = await fetch('cdc.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Erro ao abrir cdc.json');
+        cdcDatabase = await response.json();
+        return cdcDatabase;
+      } catch (err) {
+        console.error("Erro ao carregar cdc.json:", err);
+        return null;
+      }
+    }
+
+    function getArticleTextFromData(db, artId) {
+      if (!db) return null;
+      const num = parseInt(artId, 10);
+      if (Array.isArray(db)) {
+        const item = db.find(a => parseInt(a.id || a.numero, 10) === num);
+        return item ? (item.texto || item.conteudo) : null;
+      }
+      if (typeof db === 'object') {
+        return db[String(num)] || db[num] || null;
+      }
+      return null;
+    }
 
     function pressNum(num) { if (currentInput.length < 3) { currentInput += num; updateDisplay(); } }
     function clearNum() { currentInput = ""; updateDisplay(); }
@@ -164,44 +191,25 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    async function fetchAndDisplayArticle(artId, directHtml = null) {
+    // EXIBE O ARTIGO COM TEXTO 100% OFICIAL DO CDC.JSON
+    async function fetchAndDisplayArticle(artId) {
       currentArticleId = artId;
       switchScreen('article-screen');
       updateFavButtonState();
 
       document.getElementById("article-title").innerText = `Artigo ${artId}`;
+      document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando legislação oficial...</div>`;
 
-      if (directHtml) {
-        document.getElementById("article-content").innerHTML = directHtml;
-        articleMemory[artId] = directHtml;
-        return;
-      }
+      const db = await getDatabase();
+      const text = getArticleTextFromData(db, artId);
 
-      if (articleMemory[artId]) {
-        document.getElementById("article-content").innerHTML = articleMemory[artId];
-        return;
-      }
-
-      document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Buscando Artigo ${artId} na IA...</div>`;
-
-      try {
-        const response = await fetch('/api/buscar', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: `Exiba o texto completo oficial do Artigo ${artId} do Código de Defesa do Consumidor.` })
-        });
-
-        const data = await response.json();
-
-        if (data.resultados && data.resultados.length > 0 && data.resultados[0].texto) {
-          const html = data.resultados[0].texto;
-          articleMemory[artId] = html;
-          document.getElementById("article-content").innerHTML = html;
-        } else {
-          document.getElementById("article-content").innerHTML = `<p class="empty-msg">Erro ao carregar o artigo via IA.</p>`;
-        }
-      } catch (err) {
-        document.getElementById("article-content").innerHTML = `<p class="empty-msg">Falha na conexão.</p>`;
+      if (text) {
+        document.getElementById("article-title").innerText = `Artigo ${parseInt(artId, 10)}`;
+        document.getElementById("article-content").innerHTML = text;
+        const bodyEl = document.querySelector('.article-body');
+        if (bodyEl) bodyEl.scrollTop = 0;
+      } else {
+        document.getElementById("article-content").innerHTML = `<p class="empty-msg">Artigo não encontrado no banco de dados.</p>`;
       }
     }
 
@@ -211,12 +219,13 @@
       switchScreen('search-screen');
     }
 
+    // BUSCA COM IA QUE RETORNA O NÚMERO E O APP CARREGA DO CDC.JSON
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
       
       if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">Consultando IA Groq (70B)...</div>';
+      container.innerHTML = '<div class="loading-spinner">Consultando IA (Groq)...</div>';
 
       try {
         const response = await fetch('/api/buscar', {
@@ -232,24 +241,31 @@
           return;
         }
 
+        const db = await getDatabase();
         container.innerHTML = "";
 
         data.resultados.forEach(res => {
-          if (res.id && res.texto) {
-            articleMemory[res.id] = res.texto;
+          const textoOficial = getArticleTextFromData(db, res.id);
+          
+          let preview = res.snippet;
+          if (textoOficial) {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = textoOficial;
+            preview = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 110) + "...";
           }
 
           const item = document.createElement("div");
           item.className = "result-item";
-          item.onclick = () => fetchAndDisplayArticle(res.id, res.texto);
+          item.onclick = () => fetchAndDisplayArticle(res.id);
           item.innerHTML = `
             <div class="result-title">Artigo ${res.id}</div>
-            <div class="result-snippet">${res.snippet || 'Toque para ver o artigo completo'}</div>
+            <div class="result-snippet">${preview}</div>
           `;
           container.appendChild(item);
         });
 
       } catch (err) {
+        console.error("Erro:", err);
         container.innerHTML = '<div class="empty-msg">Falha na conexão com a IA. Tente novamente.</div>';
       }
     }
@@ -278,21 +294,31 @@
       else btn.classList.remove("active");
     }
 
-    function openFavorites() {
+    async function openFavorites() {
       const container = document.getElementById("fav-list-container");
       container.innerHTML = "";
 
       if (favorites.length === 0) {
         container.innerHTML = '<div class="empty-msg">Nenhum artigo favoritado ainda.</div>';
       } else {
+        const db = await getDatabase();
         favorites.forEach(id => {
+          let title = `Artigo ${id}`;
+          let preview = "Toque para abrir...";
+          const rawText = getArticleTextFromData(db, id);
+          if (rawText) {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = rawText;
+            preview = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 80) + "...";
+          }
+
           const item = document.createElement("div");
           item.className = "fav-item";
           item.onclick = () => fetchAndDisplayArticle(id);
           item.innerHTML = `
             <div>
-              <div style="font-weight: bold; color: #0d3859;">Artigo ${id}</div>
-              <div style="font-size: 13px; color: #666;">Toque para consultar via IA...</div>
+              <div style="font-weight: bold; color: #0d3859;">${title}</div>
+              <div style="font-size: 13px; color: #666;">${preview}</div>
             </div>
             <svg class="icon" style="color: #f39c12;" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           `;

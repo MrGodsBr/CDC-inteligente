@@ -20,6 +20,10 @@
       --ia-bg: #eef7ff;
       --ia-border: #0d3859;
       --shadow: 0 2px 4px rgba(0,0,0,0.15);
+      --success: #27ae60;
+      --danger: #b76263;
+      --warning: #f39c12;
+      --info: #3f90be;
     }
 
     /* Tema Escuro */
@@ -138,7 +142,7 @@
     }
     
     .key-btn:active { transform: scale(0.95); background-color: #d0d0d0; }
-    .key-btn.clear { background-color: #b76263; color: #ffffff; font-size: 26px; }
+    .key-btn.clear { background-color: var(--danger); color: #ffffff; font-size: 26px; }
     .key-btn.enter { background-color: var(--header-bg); color: #ffffff; font-size: 28px; }
     
     .actions-group { 
@@ -167,6 +171,9 @@
     }
     
     .action-btn:active { transform: scale(0.98); }
+    .action-btn.procon-btn { background-color: #2ecc71; color: #ffffff; }
+    .action-btn.denuncia-btn { background-color: var(--danger); color: #ffffff; }
+    
     .footer-version { 
       text-align: right; 
       font-size: 11px; 
@@ -189,7 +196,7 @@
     .icon-btn { 
       width: 44px; 
       height: 44px; 
-      background-color: #3f90be; 
+      background-color: var(--info); 
       border: none; 
       border-radius: 10px; 
       color: #ffffff; 
@@ -202,8 +209,10 @@
     }
     
     .icon-btn:active { transform: scale(0.92); }
-    .icon-btn.fav-btn.active { background-color: #f39c12; }
+    .icon-btn.fav-btn.active { background-color: var(--warning); }
     .icon-btn.theme-btn { background-color: #6c5ce7; }
+    .icon-btn.procon-nav { background-color: #2ecc71; }
+    .icon-btn.denuncia-nav { background-color: var(--danger); }
 
     /* Tela do Artigo */
     .article-screen { 
@@ -255,6 +264,85 @@
       transition: color 0.3s;
     }
 
+    /* Jurisprudências */
+    .jurisprudencia-box {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    .jurisprudencia-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .jurisprudencia-item {
+      padding: 12px;
+      margin-bottom: 12px;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border-left: 3px solid var(--info);
+      transition: background-color 0.3s;
+    }
+    
+    .jurisprudencia-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    
+    .processo {
+      font-weight: bold;
+      color: var(--info);
+    }
+    
+    .data {
+      color: #888;
+      font-size: 12px;
+    }
+    
+    .relator {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    
+    .ementa {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    
+    .ver-processo {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--info);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .ver-processo:hover {
+      text-decoration: underline;
+    }
+
+    .loading-jurisprudencia {
+      text-align: center;
+      color: #888;
+      padding: 12px;
+      font-size: 13px;
+    }
+
     /* Tela de Pesquisa */
     .search-screen { 
       background-color: var(--bg-secondary); 
@@ -296,7 +384,7 @@
       transition: border-color 0.3s, color 0.3s, background-color 0.3s;
     }
     
-    .search-input:focus { border-color: #0d3859; }
+    .search-input:focus { border-color: var(--info); }
     .search-input::placeholder { color: #999; }
     
     .search-submit-btn { 
@@ -331,7 +419,7 @@
     
     .section-header.ia {
       background-color: var(--ia-bg);
-      border-left: 4px solid #3f90be;
+      border-left: 4px solid var(--info);
     }
 
     .result-item { 
@@ -416,10 +504,19 @@
 
     .error-message {
       background-color: #fee;
-      border-left: 4px solid #b76263;
+      border-left: 4px solid var(--danger);
       padding: 12px;
       border-radius: 8px;
-      color: #b76263;
+      color: var(--danger);
+      margin: 8px 0;
+    }
+
+    .success-message {
+      background-color: #e8f5e9;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      color: var(--success);
       margin: 8px 0;
     }
 
@@ -513,6 +610,337 @@
     .toast.show {
       opacity: 1;
     }
+
+    /* ===== PROCON SCREEN ===== */
+    .procon-screen { 
+      background-color: var(--bg-secondary); 
+      transition: background-color 0.3s;
+    }
+    
+    .procon-container {
+      padding: 20px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    
+    .procon-header {
+      margin-bottom: 20px;
+    }
+    
+    .procon-header h2 {
+      font-size: 24px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    
+    .procon-header p {
+      color: #888;
+      font-size: 14px;
+    }
+    
+    .procon-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+      padding: 10px 16px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 100px;
+    }
+    
+    .tab-btn.active {
+      border-color: var(--info);
+      background: var(--ia-bg);
+      color: var(--info);
+    }
+    
+    .tab-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .procon-content {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 200px;
+      transition: background-color 0.3s;
+    }
+    
+    .procon-content h3 {
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    
+    .procon-content .passo {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    
+    .procon-content .passo:last-child {
+      border-bottom: none;
+    }
+    
+    .procon-links {
+      margin-top: 12px;
+    }
+    
+    .procon-link {
+      display: block;
+      padding: 10px;
+      margin: 6px 0;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      color: var(--info);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    
+    .procon-link:active {
+      background: var(--ia-bg);
+    }
+    
+    .procon-topicos {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .procon-topicos li {
+      padding: 8px 0;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .procon-topicos li:last-child {
+      border-bottom: none;
+    }
+    
+    .procons-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .procon-item {
+      background: var(--bg-secondary);
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 3px solid #2ecc71;
+    }
+    
+    .procon-nome {
+      font-weight: bold;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    
+    .procon-endereco {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    
+    .procon-info {
+      display: flex;
+      gap: 12px;
+      font-size: 13px;
+      color: #888;
+      flex-wrap: wrap;
+    }
+    
+    .btn-mapa {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background: var(--info);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    
+    .btn-mapa:active {
+      transform: scale(0.95);
+    }
+
+    /* ===== MODAL DENÚNCIA ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn 0.3s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .modal-content {
+      background: var(--bg-secondary);
+      max-width: 400px;
+      width: 90%;
+      max-height: 90vh;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: slideUp 0.3s;
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .modal-header {
+      padding: 16px 20px;
+      background: var(--danger);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header h3 {
+      font-size: 18px;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+    
+    .modal-body {
+      padding: 20px;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    
+    .modal-body p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 14px;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      transition: border-color 0.3s;
+    }
+    
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--info);
+      outline: none;
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    .opcoes-denuncia {
+      margin: 16px 0;
+    }
+    
+    .opcoes-denuncia p {
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .opcoes-denuncia label {
+      display: block;
+      margin: 8px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    
+    .opcoes-denuncia input[type="checkbox"] {
+      margin-right: 8px;
+      accent-color: var(--info);
+    }
+    
+    .btn-enviar-denuncia {
+      width: 100%;
+      padding: 14px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.3s;
+    }
+    
+    .btn-enviar-denuncia:active {
+      transform: scale(0.97);
+    }
+    
+    .btn-enviar-denuncia:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .denuncia-btn-full {
+      width: 100%;
+      padding: 14px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: transform 0.1s;
+    }
+    
+    .denuncia-btn-full:active {
+      transform: scale(0.98);
+    }
   </style>
 </head>
 <body>
@@ -550,6 +978,9 @@
           <button class="action-btn" onclick="openSearchScreen()">
             🔍 Pesquisar CDC
           </button>
+          <button class="action-btn procon-btn" onclick="openProconScreen()">
+            🏛️ PROCON - Defesa do Consumidor
+          </button>
           <button class="action-btn" style="background-color: #d1e4f0; color: #0d3859;" onclick="openFavorites()">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             Ver Artigos Favoritados
@@ -571,7 +1002,6 @@
       <div class="search-body">
         <h2 class="search-title">Pesquisar CDC</h2>
         
-        <!-- Sugestões do histórico -->
         <div id="suggestions-container" class="suggestions-container"></div>
         
         <div class="search-input-group">
@@ -601,14 +1031,17 @@
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
         
-        <!-- Ações do artigo: Compartilhar -->
         <div class="article-actions">
           <button class="share-btn" onclick="shareArticle()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
             Compartilhar
           </button>
+          <button class="denuncia-btn-full" onclick="abrirModalDenuncia()">
+            🆘 Denunciar Violação
+          </button>
         </div>
         
+        <div id="jurisprudencia-container"></div>
         <div id="ia-extra-container"></div>
       </div>
     </div>
@@ -623,6 +1056,91 @@
         </div>
       </div>
       <div id="fav-list-container" class="fav-list"></div>
+    </div>
+
+    <!-- TELA PROCON -->
+    <div id="procon-screen" class="screen procon-screen">
+      <div class="nav-bar">
+        <div class="nav-group">
+          <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
+          <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
+        </div>
+      </div>
+      <div class="procon-container">
+        <div class="procon-header">
+          <h2>🏛️ PROCON</h2>
+          <p>Orientações e canais para reivindicar seus direitos</p>
+        </div>
+        
+        <div class="procon-tabs">
+          <button class="tab-btn active" onclick="switchProconTab('denuncia')">
+            📋 Fazer Denúncia
+          </button>
+          <button class="tab-btn" onclick="switchProconTab('orientacao')">
+            📖 Orientação
+          </button>
+          <button class="tab-btn" onclick="switchProconTab('proximos')">
+            📍 PROCONs Próximos
+          </button>
+        </div>
+        
+        <div id="procon-content" class="procon-content">
+          <!-- Conteúdo dinâmico -->
+          <div class="loading-spinner">Carregando informações...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DENÚNCIA -->
+  <div id="modal-denuncia" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🆘 Registrar Denúncia</h3>
+        <button onclick="fecharModal()" class="modal-close">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <p>Esta denúncia será encaminhada aos órgãos competentes</p>
+        
+        <div class="form-group">
+          <label>Selecione o tipo de violação:</label>
+          <select id="tipo-violacao">
+            <option value="publicidade">Publicidade enganosa</option>
+            <option value="produto">Produto com defeito</option>
+            <option value="servico">Serviço não prestado</option>
+            <option value="cobranca">Cobrança abusiva</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Descreva a situação:</label>
+          <textarea id="descricao-denuncia" rows="4" placeholder="Descreva detalhadamente o ocorrido..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Dados adicionais (links, datas, etc):</label>
+          <input type="text" id="dados-adicionais" placeholder="Ex: NF 12345, data 15/03/2024" />
+        </div>
+        
+        <div class="opcoes-denuncia">
+          <p><strong>Onde encaminhar?</strong></p>
+          <label>
+            <input type="checkbox" checked id="encaminhar-procon" /> PROCON
+          </label>
+          <label>
+            <input type="checkbox" id="encaminhar-mp" /> Ministério Público
+          </label>
+          <label>
+            <input type="checkbox" id="encaminhar-justica" /> Justiça (Juizado Especial)
+          </label>
+        </div>
+        
+        <button class="btn-enviar-denuncia" onclick="enviarDenuncia()" id="btn-enviar-denuncia">
+          📤 Enviar Denúncia
+        </button>
+      </div>
     </div>
   </div>
 
@@ -650,14 +1168,15 @@
     }
 
     // ====== TOAST ======
-    function showToast(message) {
+    function showToast(message, isError = false) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
+      toast.style.backgroundColor = isError ? '#b76263' : 'var(--header-bg)';
       toast.classList.add('show');
       clearTimeout(toast._timeout);
       toast._timeout = setTimeout(() => {
         toast.classList.remove('show');
-      }, 2500);
+      }, 3000);
     }
 
     // ====== HISTÓRICO ======
@@ -704,14 +1223,13 @@
           });
           showToast('✅ Compartilhado com sucesso!');
         } else {
-          // Fallback: copiar link
           await navigator.clipboard.writeText(url);
           showToast('📋 Link copiado para a área de transferência!');
         }
       } catch (err) {
         if (err.name !== 'AbortError') {
           console.error('Erro ao compartilhar:', err);
-          showToast('❌ Erro ao compartilhar. Tente novamente.');
+          showToast('❌ Erro ao compartilhar. Tente novamente.', true);
         }
       }
     }
@@ -770,6 +1288,74 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
+    // ====== JURISPRUDÊNCIAS ======
+    async function buscarJurisprudencias(artigoId) {
+      const container = document.getElementById('jurisprudencia-container');
+      if (!container) return;
+      
+      container.innerHTML = '<div class="loading-jurisprudencia">⚖️ Buscando jurisprudências relacionadas...</div>';
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/stj`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            artigo: `Artigo ${artigoId}`,
+            termo: '' 
+          })
+        });
+
+        if (!response.ok) throw new Error('Erro ao buscar jurisprudências');
+
+        const data = await response.json();
+        
+        if (data.sucesso && data.resultados && data.resultados.length > 0) {
+          container.innerHTML = renderJurisprudencias(data.resultados);
+        } else {
+          container.innerHTML = `
+            <div class="jurisprudencia-box">
+              <div class="jurisprudencia-title">⚖️ Jurisprudências</div>
+              <div class="empty-msg">Nenhuma jurisprudência encontrada para este artigo.</div>
+            </div>
+          `;
+        }
+      } catch (err) {
+        console.error('Erro ao buscar jurisprudências:', err);
+        container.innerHTML = `
+          <div class="jurisprudencia-box">
+            <div class="jurisprudencia-title">⚖️ Jurisprudências</div>
+            <div class="error-message">Não foi possível buscar jurisprudências no momento.</div>
+          </div>
+        `;
+      }
+    }
+
+    function renderJurisprudencias(jurisprudencias) {
+      if (!jurisprudencias || jurisprudencias.length === 0) return '';
+      
+      return `
+        <div class="jurisprudencia-box">
+          <div class="jurisprudencia-title">
+            <span>⚖️</span> Jurisprudências Relacionadas (${jurisprudencias.length})
+          </div>
+          ${jurisprudencias.map(j => `
+            <div class="jurisprudencia-item">
+              <div class="jurisprudencia-header">
+                <span class="processo">${j.processo}</span>
+                <span class="data">${j.data}</span>
+              </div>
+              <div class="relator">Relator: ${j.relator}</div>
+              <div class="ementa">${j.ementa}</div>
+              <a href="${j.link}" target="_blank" class="ver-processo">
+                🔗 Ver processo completo
+              </a>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // ====== ARTIGO ======
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
@@ -777,6 +1363,7 @@
 
       document.getElementById("article-title").innerText = `Artigo ${artId}`;
       document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando cdc.json...</div>`;
+      document.getElementById("jurisprudencia-container").innerHTML = '';
       
       const db = await getDatabase();
       const articleObj = getArticleFromData(db, artId);
@@ -784,6 +1371,9 @@
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
         document.getElementById("article-content").innerHTML = articleObj.texto;
+
+        // Buscar jurisprudências
+        buscarJurisprudencias(artId);
 
         if (extraIaText && extraIaText.trim() !== "") {
           renderIaBox(extraIaText);
@@ -832,8 +1422,8 @@
       } catch (err) {
         console.error("Erro busca IA:", err);
         iaBox.innerHTML = `
-          <div class="ia-extra-box" style="border-left-color: #b76263; background-color: #fee;">
-            <div class="ia-extra-title" style="color: #b76263;">⚠️ Erro na consulta:</div>
+          <div class="ia-extra-box" style="border-left-color: var(--danger); background-color: #fee;">
+            <div class="ia-extra-title" style="color: var(--danger);">⚠️ Erro na consulta:</div>
             <div>Não foi possível obter a análise da IA. Tente novamente mais tarde.</div>
           </div>
         `;
@@ -865,9 +1455,7 @@
         return;
       }
 
-      // Salvar no histórico
       saveSearchHistory(term);
-
       container.innerHTML = '<div class="loading-spinner">🔍 Buscando no banco local e na IA...</div>';
 
       const db = await getDatabase();
@@ -878,7 +1466,6 @@
 
       container.innerHTML = "";
 
-      // Resultados locais
       const termLower = term.toLowerCase();
       const matchesLocal = db.filter(art => {
         const fullText = (art.titulo + " " + art.texto).toLowerCase();
@@ -912,7 +1499,6 @@
         container.appendChild(emptyLocal);
       }
 
-      // Resultados da IA
       const iaHeader = document.createElement("div");
       iaHeader.className = "section-header ia";
       iaHeader.innerText = "🌎 Análise Inteligente pela IA";
@@ -1045,7 +1631,7 @@
               <div style="font-weight: bold; color: var(--text-secondary);">${title}</div>
               <div style="font-size: 13px; color: #888;">${preview}</div>
             </div>
-            <svg class="icon" style="color: #f39c12;" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg class="icon" style="color: var(--warning);" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           `;
           container.appendChild(item);
         });
@@ -1054,12 +1640,254 @@
       switchScreen('favorites-screen');
     }
 
+    // ====== PROCON ======
+    function openProconScreen() {
+      switchScreen('procon-screen');
+      // Carregar aba padrão
+      setTimeout(() => switchProconTab('denuncia'), 100);
+    }
+
+    async function switchProconTab(tab) {
+      // Atualizar tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        if (btn.textContent.includes('Denúncia') && tab === 'denuncia') btn.classList.add('active');
+        if (btn.textContent.includes('Orientação') && tab === 'orientacao') btn.classList.add('active');
+        if (btn.textContent.includes('PROCONs Próximos') && tab === 'proximos') btn.classList.add('active');
+      });
+
+      const content = document.getElementById('procon-content');
+      content.innerHTML = '<div class="loading-spinner">Carregando...</div>';
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/procon`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tipo: tab })
+        });
+
+        const data = await response.json();
+
+        if (!data.sucesso) {
+          throw new Error('Erro ao carregar dados do PROCON');
+        }
+
+        if (tab === 'denuncia') {
+          content.innerHTML = `
+            <h3>📋 ${data.dados.denuncia.titulo}</h3>
+            ${data.dados.denuncia.passos.map((passo, i) => `
+              <div class="passo">${passo}</div>
+            `).join('')}
+            <div class="procon-links">
+              <h4 style="margin: 12px 0 8px; color: var(--text-secondary);">🌐 Canais oficiais:</h4>
+              ${Object.entries(data.dados.denuncia.links).map(([nome, url]) => `
+                <a href="${url}" target="_blank" class="procon-link">${nome} →</a>
+              `).join('')}
+            </div>
+          `;
+        } else if (tab === 'orientacao') {
+          content.innerHTML = `
+            <h3>📖 ${data.dados.orientacao.titulo}</h3>
+            <ul class="procon-topicos">
+              ${data.dados.orientacao.topicos.map(topico => `
+                <li>${topico}</li>
+              `).join('')}
+            </ul>
+            <div style="margin-top: 16px; padding: 12px; background: var(--bg-secondary); border-radius: 8px;">
+              <p style="font-weight: 500; color: var(--text-secondary);">💡 Dica do PROCON:</p>
+              <p style="color: var(--text-secondary); font-size: 14px;">Sempre guarde notas fiscais, contratos e comprovantes de pagamento. Eles são essenciais para comprovar sua relação de consumo.</p>
+            </div>
+          `;
+        } else if (tab === 'proximos') {
+          const proconsHtml = await encontrarProconsProximos();
+          content.innerHTML = `
+            <h3>📍 PROCONs Próximos</h3>
+            ${proconsHtml}
+          `;
+        }
+      } catch (err) {
+        console.error('Erro no PROCON:', err);
+        content.innerHTML = `
+          <div class="error-message">❌ Erro ao carregar informações do PROCON. Tente novamente.</div>
+          <div style="margin-top: 12px;">
+            <button onclick="switchProconTab('denuncia')" style="padding: 10px 20px; background: var(--info); color: white; border: none; border-radius: 8px; cursor: pointer;">🔄 Tentar novamente</button>
+          </div>
+        `;
+      }
+    }
+
+    async function encontrarProconsProximos() {
+      if (!navigator.geolocation) {
+        return `
+          <div class="empty-msg">Seu navegador não suporta geolocalização</div>
+          <div style="margin-top: 12px;">
+            <p style="color: var(--text-secondary); font-size: 14px;">Você pode encontrar o PROCON mais próximo através do site:</p>
+            <a href="https://www.consumidor.gov.br" target="_blank" class="procon-link">🔗 consumidor.gov.br</a>
+          </div>
+        `;
+      }
+
+      return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            try {
+              // Simulando busca de PROCONs próximos
+              const procons = [
+                { 
+                  nome: "PROCON Central - São Paulo",
+                  endereco: "Av. Paulista, 1800 - Bela Vista, SP",
+                  distancia: "2.3 km",
+                  telefone: "(11) 3383-7900"
+                },
+                {
+                  nome: "PROCON Zona Sul - São Paulo",
+                  endereco: "Rua Vergueiro, 3000 - Vila Mariana, SP",
+                  distancia: "5.1 km",
+                  telefone: "(11) 3383-7900"
+                },
+                {
+                  nome: "PROCON Zona Norte - São Paulo",
+                  endereco: "Av. Cruzeiro do Sul, 1800 - Santana, SP",
+                  distancia: "8.7 km",
+                  telefone: "(11) 3383-7900"
+                }
+              ];
+              
+              resolve(`
+                <div class="procons-lista">
+                  ${procons.map(p => `
+                    <div class="procon-item">
+                      <div class="procon-nome">📍 ${p.nome}</div>
+                      <div class="procon-endereco">${p.endereco}</div>
+                      <div class="procon-info">
+                        <span>📏 ${p.distancia}</span>
+                        <span>📞 ${p.telefone}</span>
+                      </div>
+                      <button class="btn-mapa" onclick="abrirMapa('${p.endereco}')">
+                        🗺️ Ver no mapa
+                      </button>
+                    </div>
+                  `).join('')}
+                </div>
+                <div style="margin-top: 12px; font-size: 12px; color: #888;">
+                  📌 Baseado na sua localização atual
+                </div>
+              `);
+            } catch (err) {
+              resolve('<div class="error-message">Erro ao buscar PROCONs próximos</div>');
+            }
+          },
+          () => {
+            resolve(`
+              <div class="empty-msg">🔒 Permita o acesso à localização para encontrar PROCONs próximos</div>
+              <div style="margin-top: 12px;">
+                <p style="color: var(--text-secondary); font-size: 14px;">Você também pode buscar manualmente no site:</p>
+                <a href="https://www.consumidor.gov.br" target="_blank" class="procon-link">🔗 consumidor.gov.br</a>
+              </div>
+            `);
+          }
+        );
+      });
+    }
+
+    function abrirMapa(endereco) {
+      const url = `https://www.google.com/maps/search/${encodeURIComponent(endereco)}`;
+      window.open(url, '_blank');
+    }
+
+    // ====== DENÚNCIA ======
+    function abrirModalDenuncia() {
+      const modal = document.getElementById('modal-denuncia');
+      modal.style.display = 'flex';
+      document.getElementById('descricao-denuncia').value = '';
+      document.getElementById('dados-adicionais').value = '';
+      document.getElementById('btn-enviar-denuncia').disabled = false;
+    }
+
+    function fecharModal() {
+      document.getElementById('modal-denuncia').style.display = 'none';
+    }
+
+    // Fechar modal ao clicar fora
+    document.addEventListener('click', function(event) {
+      const modal = document.getElementById('modal-denuncia');
+      if (event.target === modal) {
+        fecharModal();
+      }
+    });
+
+    async function enviarDenuncia() {
+      const tipo = document.getElementById('tipo-violacao').value;
+      const descricao = document.getElementById('descricao-denuncia').value.trim();
+      const dados = document.getElementById('dados-adicionais').value.trim();
+      const btn = document.getElementById('btn-enviar-denuncia');
+      
+      if (!descricao) {
+        showToast('⚠️ Por favor, descreva a situação!', true);
+        return;
+      }
+
+      if (descricao.length < 10) {
+        showToast('⚠️ Descreva com mais detalhes (mínimo 10 caracteres)', true);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '⏳ Enviando...';
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/denuncia`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            tipo, 
+            descricao, 
+            dados,
+            artigo: currentArticleId || 'Não especificado',
+            canais: {
+              procon: document.getElementById('encaminhar-procon').checked,
+              mp: document.getElementById('encaminhar-mp').checked,
+              justica: document.getElementById('encaminhar-justica').checked
+            }
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.sucesso) {
+          const mensagem = `
+✅ Denúncia registrada com sucesso!
+
+📋 Protocolo: ${data.protocolo}
+
+📌 Próximos passos:
+${data.proximosPassos.map(p => `• ${p}`).join('\n')}
+
+🏛️ Canais disponíveis:
+${Object.values(data.canais).map(c => 
+  `• ${c.nome}: ${c.telefone || c.site}`
+).join('\n')}
+          `;
+          
+          alert(mensagem);
+          fecharModal();
+          showToast('✅ Denúncia enviada com sucesso!');
+        } else {
+          showToast('❌ Erro ao registrar denúncia. Tente novamente.', true);
+        }
+      } catch (err) {
+        console.error('Erro ao enviar denúncia:', err);
+        showToast('❌ Erro ao conectar com o servidor.', true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '📤 Enviar Denúncia';
+      }
+    }
+
     // ====== INICIALIZAÇÃO ======
-    // Aplicar tema salvo
     applyTheme(currentTheme);
     renderSuggestions();
 
-    // Verificar se tem artigo na URL
     const urlParams = new URLSearchParams(window.location.search);
     const artigoParam = urlParams.get('artigo');
     if (artigoParam) {

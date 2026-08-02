@@ -30,13 +30,12 @@
     .icon-btn { width: 44px; height: 44px; background-color: #3f90be; border: none; border-radius: 10px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
     .icon-btn.fav-btn.active { background-color: #f39c12; }
 
-    /* TELA DO ARTIGO */
     .article-screen { background-color: #ffffff; height: 100%; }
     .article-body { padding: 24px 20px 50px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; color: #111111; line-height: 1.6; }
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
-    /* CAIXA COMPLEMENTAR DA IA (COM ÍCONE 🌎) */
+    /* CAIXA COMPLEMENTAR 🌎 DA IA ABAIXO DA LEI */
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
@@ -52,12 +51,8 @@
       margin-bottom: 8px;
       font-size: 15px;
       color: #0d3859;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    /* BUSCA */
     .search-screen { background-color: #ffffff; }
     .search-body { padding: 20px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
     .search-title { font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 12px; }
@@ -135,11 +130,11 @@
           </button>
         </div>
 
-        <div class="footer-version">v6.0 Original + Complemento 🌎</div>
+        <div class="footer-version">v7.0 CDC Inteligente</div>
       </div>
     </div>
 
-    <!-- 2. TELA DE PESQUISA DUPLA -->
+    <!-- 2. TELA DE PESQUISA -->
     <div id="search-screen" class="screen search-screen">
       <div class="nav-bar">
         <button class="icon-btn" onclick="showHome()"><svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></button>
@@ -154,7 +149,7 @@
       </div>
     </div>
 
-    <!-- 3. TELA DO ARTIGO (MANTÉM O TEXTO ORIGINAL + COMPLEMENTO 🌎) -->
+    <!-- 3. TELA DO ARTIGO (LEI ORIGINAL + COMPLEMENTO IA) -->
     <div id="article-screen" class="screen article-screen">
       <div class="nav-bar">
         <div class="nav-group">
@@ -170,9 +165,7 @@
 
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
-        <!-- TEXTO ORIGINAL 100% FIEL DO CDC.JSON -->
         <div id="article-content" class="article-text"></div>
-        <!-- CAIXA ABAIXO DO TEXTO ORIGINAL PARA O COMPLEMENTO DA IA -->
         <div id="ia-extra-container"></div>
       </div>
     </div>
@@ -196,12 +189,12 @@
     async function getDatabase() {
       if (cdcDatabase) return cdcDatabase;
       try {
-        const response = await fetch('cdc.json?v=' + Date.now(), { cache: 'no-store' });
+        const response = await fetch('cdc.json', { cache: 'no-store' });
         if (!response.ok) throw new Error('Erro ao carregar cdc.json');
         cdcDatabase = await response.json();
         return cdcDatabase;
       } catch (err) {
-        console.error("Erro cdc.json:", err);
+        console.error("Erro no cdc.json:", err);
         return null;
       }
     }
@@ -231,7 +224,6 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // EXIBE O ARTIGO COM TEXTO ORIGINAL E ADICIONA O COMPLEMENTO ABAIXO COM 🌎
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
@@ -246,11 +238,8 @@
 
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
-        
-        // 1. TEXTO ORIGINAL DO CDC.JSON
         document.getElementById("article-content").innerHTML = articleObj.texto;
 
-        // 2. COMPLEMENTO DA IA LOGO ABAIXO
         if (extraIaText && extraIaText.trim() !== "") {
           document.getElementById("ia-extra-container").innerHTML = `
             <div class="ia-extra-box">
@@ -273,13 +262,12 @@
       switchScreen('search-screen');
     }
 
-    // BUSCA HÍBRIDA: LOCAL + IA SEPARADAS
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
       
       if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">Buscando localmente e consultando IA...</div>';
+      container.innerHTML = '<div class="loading-spinner">Buscando localmente e na IA...</div>';
 
       const db = await getDatabase();
       if (!db) {
@@ -289,7 +277,7 @@
 
       container.innerHTML = "";
 
-      // 1. RESULTADOS DO BANCO LOCAL (CDC.JSON)
+      // 1. BUSCA LOCAL
       const termLower = term.toLowerCase();
       const matchesLocal = db.filter(art => {
         const fullText = (art.titulo + " " + art.texto).toLowerCase();
@@ -323,7 +311,7 @@
         container.appendChild(emptyLocal);
       }
 
-      // 2. RESULTADOS DA IA (Groq)
+      // 2. BUSCA IA
       const iaHeader = document.createElement("div");
       iaHeader.className = "section-header ia";
       iaHeader.innerText = "🌎 Análise Inteligente pela IA";
@@ -331,7 +319,7 @@
 
       const iaLoading = document.createElement("div");
       iaLoading.className = "loading-spinner";
-      iaLoading.innerText = "IA analisando a dúvida...";
+      iaLoading.innerText = "Consultando IA...";
       container.appendChild(iaLoading);
 
       try {
@@ -351,13 +339,11 @@
 
             const item = document.createElement("div");
             item.className = "result-item";
-            
-            // Abre o artigo oficial e envia a orientação da IA para a caixa 🌎
             item.onclick = () => fetchAndDisplayArticle(res.id, res.explicacao_ia);
             
             item.innerHTML = `
               <div class="result-title">Artigo ${res.id} 🌎</div>
-              <div class="result-snippet">${res.explicacao_ia || 'Toque para abrir a análise da IA sobre este artigo'}</div>
+              <div class="result-snippet">${res.explicacao_ia || 'Toque para abrir a análise'}</div>
             `;
             container.appendChild(item);
           });
@@ -372,7 +358,7 @@
         if (container.contains(iaLoading)) container.removeChild(iaLoading);
         const errIa = document.createElement("div");
         errIa.className = "empty-msg";
-        errIa.innerText = "Não foi possível conectar com a IA.";
+        errIa.innerText = "Sem resposta da IA.";
         container.appendChild(errIa);
       }
     }

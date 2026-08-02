@@ -17,26 +17,21 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [
           {
             role: "system",
-            content: `Você é uma API de consulta oficial do Código de Defesa do Consumidor (Lei nº 8.078/1990) do Brasil.
-Sua tarefa é retornar os artigos completos aplicáveis à busca do usuário.
+            content: `Você é um indexador especialista no Código de Defesa do Consumidor (CDC) do Brasil.
+Sua ÚNICA função é identificar quais números de artigos do CDC (entre 1 e 119) correspondem à dúvida ou ao termo do usuário.
+NUNCA invente ou escreva o texto do artigo.
 
-REGRAS OBRIGATÓRIAS:
-1. Retorne o texto VERDADEIRO e COMPLETO da Lei, sem resumir, sem omitir parágrafos (§), incisos (I, II) ou alíneas.
-2. NUNCA invente texto legal.
-3. Formate o campo 'texto' usando HTML (tags <p>, <strong> para o número do artigo/parágrafos, e <br>).
-
-Formato ESTRITO de resposta em JSON:
+Responda ESTRITAMENTE em formato JSON contendo o número do artigo em 'id' e um pequeno resumo em 'snippet':
 {
   "resultados": [
     {
-      "id": "42",
-      "title": "Artigo 42",
-      "snippet": "Resumo em 1 frase da aplicação do artigo.",
-      "texto": "<strong>Art. 42.</strong> Na cobrança de débitos, o consumidor inadimplente não será exposto a ridículo, nem será submetido a qualquer tipo de constrangimento ou ameaça.<br><br><strong>Parágrafo único.</strong> O consumidor cobrado em quantia indevida tem direito à repetição do indébito, por valor igual ao dobro do que pagou em excesso, acrescido de correção monetária e juros legais, salvo hipótese de engano justificável."
+      "id": "18",
+      "title": "Artigo 18",
+      "snippet": "Responsabilidade por vício de qualidade do produto e prazos para sanar defeitos."
     }
   ]
 }`

@@ -30,12 +30,13 @@
     .icon-btn { width: 44px; height: 44px; background-color: #3f90be; border: none; border-radius: 10px; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
     .icon-btn.fav-btn.active { background-color: #f39c12; }
 
+    /* TELA DO ARTIGO */
     .article-screen { background-color: #ffffff; height: 100%; }
     .article-body { padding: 24px 20px 50px 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; color: #111111; line-height: 1.6; }
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
-    /* BLOCO DESTACADO COM ANÁLISE/COMPLEMENTO DA IA 🌎 */
+    /* CAIXA DA ANÁLISE DA IA ABAIXO DO TEXTO DA LEI */
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
@@ -51,8 +52,12 @@
       margin-bottom: 8px;
       font-size: 15px;
       color: #0d3859;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
+    /* TELA DE PESQUISA */
     .search-screen { background-color: #ffffff; }
     .search-body { padding: 20px; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
     .search-title { font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 12px; }
@@ -130,7 +135,7 @@
           </button>
         </div>
 
-        <div class="footer-version">v8.0 Análise Total 🌎</div>
+        <div class="footer-version">v9.0 Análise Automática 🌎</div>
       </div>
     </div>
 
@@ -166,6 +171,7 @@
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
+        <!-- AQUI ENTRA A CAIXA ABAIXO DO TEXTO ORIGINAL -->
         <div id="ia-extra-container"></div>
       </div>
     </div>
@@ -224,7 +230,7 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // EXIBE O TEXTO OFICIAL DO CDC.JSON E CONSULTA A IA SE NÃO HOUVER ANÁLISE PRÉVIA
+    // MONTA A TELA: DESENHA O BANCO LOCAL E BUSCA A IA EM SEGUIDA
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
@@ -240,14 +246,14 @@
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
         
-        // 1. CARREGA O TEXTO COMPLETO E ORIGINAL DO BANCO LOCAL
+        // 1. TEXTO OFICIAL E INTACTO DO CDC.JSON
         document.getElementById("article-content").innerHTML = articleObj.texto;
 
-        // 2. SE JÁ PASSOU A ANÁLISE PELA BUSCA, MOSTRA ELA
+        // 2. SE JÁ RECEBEU O TEXTO DA IA (PELA BUSCA), EXIBE ELE
         if (extraIaText && extraIaText.trim() !== "") {
           renderIaBox(extraIaText);
         } else {
-          // SE FOI DIGITADO PELO TECLADO OU NAVEGAÇÃO, CONSULTA A IA EM SEGUNDO PLANO
+          // SE ABRIU PELO TECLADO OU NAVEGAÇÃO, CHAMA A IA AUTOMATICAMENTE
           fetchIaAnalysisForArticle(artId);
         }
 
@@ -258,7 +264,7 @@
       }
     }
 
-    // BUSCA A ANÁLISE/ORIENTAÇÃO DA IA QUANDO O ARTIGO É ABERTO PELO TECLADO
+    // BUSCA A ANÁLISE DA IA PARA O ARTIGO ABERTO
     async function fetchIaAnalysisForArticle(artId) {
       const iaBox = document.getElementById("ia-extra-container");
       iaBox.innerHTML = `
@@ -271,7 +277,7 @@
         const response = await fetch('/api/buscar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: `Forneça uma orientação prática e jurisprudência sobre o Artigo ${artId} do CDC.` })
+          body: JSON.stringify({ query: `Forneça uma análise, explicação prática e jurisprudência sobre o Artigo ${artId} do CDC.` })
         });
 
         const data = await response.json();
@@ -301,13 +307,13 @@
       switchScreen('search-screen');
     }
 
-    // BUSCA HÍBRIDA (LOCAL + IA SEPARADAS)
+    // BUSCA POR PALAVRA (LOCAL + IA SEPARADAS)
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
       
       if (!term) return;
-      container.innerHTML = '<div class="loading-spinner">Buscando localmente e na IA...</div>';
+      container.innerHTML = '<div class="loading-spinner">Buscando no banco local e na IA...</div>';
 
       const db = await getDatabase();
       if (!db) {
@@ -317,7 +323,7 @@
 
       container.innerHTML = "";
 
-      // 1. RESULTADOS DO BANCO LOCAL (CDC.JSON)
+      // 1. RESULTADOS LOCAL (CDC.JSON)
       const termLower = term.toLowerCase();
       const matchesLocal = db.filter(art => {
         const fullText = (art.titulo + " " + art.texto).toLowerCase();
@@ -351,7 +357,7 @@
         container.appendChild(emptyLocal);
       }
 
-      // 2. RESULTADOS DA IA
+      // 2. RESULTADOS IA
       const iaHeader = document.createElement("div");
       iaHeader.className = "section-header ia";
       iaHeader.innerText = "🌎 Análise Inteligente pela IA";

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>CDC - Código de Defesa do Consumidor (IA)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #6392b4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      max-height: 880px;
+      background-color: #6392b4;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    header {
+      background-color: #0d3859;
+      color: #ffffff;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #6da2c9;
+      margin-bottom: 2px;
+    }
+
+    header p {
+      font-size: 13px;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .screen {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* TELA INICIAL */
+    .home-content {
+      flex: 1;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .display-number {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffffff;
+      min-height: 36px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 15px;
+    }
+
+    .key-btn {
+      background-color: #e3e3e3;
+      border: none;
+      border-radius: 12px;
+      height: 72px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      transition: background-color 0.1s, transform 0.05s;
+    }
+
+    .key-btn:active {
+      transform: scale(0.97);
+      background-color: #d0d0d0;
+    }
+
+    .key-btn.clear {
+      background-color: #b76263;
+      color: #ffffff;
+      font-size: 26px;
+    }
+
+    .key-btn.enter {
+      background-color: #0d3859;
+      color: #ffffff;
+      font-size: 28px;
+    }
+
+    .actions-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .action-btn {
+      width: 100%;
+      background-color: #e3e3e3;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000000;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .action-btn:active {
+      background-color: #d0d0d0;
+    }
+
+    .footer-version {
+      text-align: right;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* BARRA DE NAVEGAÇÃO */
+    .nav-bar {
+      background-color: #f5f5f7;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+      flex-shrink: 0;
+    }
+
+    .nav-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      background-color: #3f90be;
+      border: none;
+      border-radius: 10px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .icon-btn:active {
+      opacity: 0.8;
+    }
+
+    .icon-btn.fav-btn.active {
+      background-color: #f39c12;
+    }
+
+    /* TELA DE ARTIGO */
+    .article-screen {
+      background-color: #ffffff;
+      height: 100%;
+    }
+
+    .article-body {
+      padding: 24px 20px 50px 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    .article-title {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    .article-text p {
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    /* TELA DE PESQUISA POR PALAVRA / IA */
+    .search-screen {
+      background-color: #ffffff;
+    }
+
+    .search-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .search-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 12px;
+    }
+
+    .search-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .search-input {
+      flex: 1;
+      height: 52px;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      padding: 0 16px;
+      font-size: 16px;
+      color: #333333;
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: #bbbbbb;
+    }
+
+    .search-submit-btn {
+      width: 52px;
+      height: 52px;
+      background-color: #0d3859;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .results-list {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .result-item {
+      padding: 14px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+    }
+
+    .result-item:hover, .result-item:active {
+      background-color: #f8f9fa;
+    }
+
+    .result-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #0d3859;
+      margin-bottom: 4px;
+    }
+
+    .result-snippet {
+      font-size: 13px;
+      color: #555555;
+      line-height: 1.4;
+    }
+
+    /* TELA DE FAVORITOS */
+    .favorites-screen {
+      background-color: #ffffff;
+    }
+
+    .fav-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .fav-header h2 {
+      font-size: 20px;
+      color: #0d3859;
+    }
+
+    .fav-list {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .fav-item {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .empty-msg {
+      text-align: center;
+      color: #888;
+      margin-top: 40px;
+      font-size: 15px;
+    }
+
+    .loading-spinner {
+      text-align: center;
+      color: #0d3859;
+      padding: 30px;
+      font-weight: 500;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <header>
+      <h1>CDC</h1>
+      <p>Código de Defesa do Consumidor</p>
+    </header>
+
+    <!-- 1. TELA INICIAL (TECLADO) -->
+    <div id="home-screen" class="screen active">
+      <div class="home-content">
+        <div id="display" class="display-number"></div>
+
+        <div class="keypad">
+          <button class="key-btn" onclick="pressNum('1')">1</button>
+          <button class="key-btn" onclick="pressNum('2')">2</button>
+          <button class="key-btn" onclick="pressNum('3')">3</button>
+          <button class="key-btn" onclick="pressNum('4')">4</button>
+          <button class="key-btn" onclick="pressNum('5')">5</button>
+          <button class="key-btn" onclick="pressNum('6')">6</button>
+          <button class="key-btn" onclick="pressNum('7')">7</button>
+          <button class="key-btn" onclick="pressNum('8')">8</button>
+          <button class="key-btn" onclick="pressNum('9')">9</button>
+          <button class="key-btn clear" onclick="clearNum()">✕</button>
+          <button class="key-btn" onclick="pressNum('0')">0</button>
+          <button class="key-btn enter" onclick="searchArticleFromKeypad()">→</button>
+        </div>
+
+        <div class="actions-group">
+          <button class="action-btn" onclick="openSearchScreen()">
+            Pesquisar com IA
+          </button>
+          <button class="action-btn" style="background-color: #d1e4f0; color: #0d3859;" onclick="openFavorites()">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Ver Artigos Favoritados
+          </button>
+        </div>
+
+        <div class="footer-version">2.0.0 Groq</div>
+      </div>
+    </div>
+
+    <!-- 2. TELA DE PESQUISA POR PALAVRA / IA -->
+    <div id="search-screen" class="screen search-screen">
+      <div class="nav-bar">
+        <button class="icon-btn" onclick="showHome()" title="Início">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </button>
+      </div>
+      <div class="search-body">
+        <h2 class="search-title">Pesquisar com IA</h2>
+        <div class="search-input-group">
+          <input type="text" id="search-term-input" class="search-input" placeholder="Ex: prazo de troca, propaganda enganosa" onkeyup="if(event.key === 'Enter') performTextSearch()" />
+          <button class="search-submit-btn" onclick="performTextSearch()">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+          </button>
+        </div>
+        <div id="search-results-container" class="results-list"></div>
+      </div>
+    </div>
+
+    <!-- 3. TELA DO ARTIGO -->
+    <div id="article-screen" class="screen article-screen">
+      <div class="nav-bar">
+        <div class="nav-group">
+          <button class="icon-btn" onclick="showHome()" title="Início">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </button>
+          <button class="icon-btn" onclick="openSearchScreen()" title="Pesquisar">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          </button>
+          <button id="fav-toggle-btn" class="icon-btn fav-btn" onclick="toggleFavorite()" title="Favoritar">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </button>
+        </div>
+        <div class="nav-group">
+          <button class="icon-btn" onclick="navArticle(-1)" title="Anterior">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button class="icon-btn" onclick="navArticle(1)" title="Próximo">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="article-body">
+        <h2 id="article-title" class="article-title"></h2>
+        <div id="article-content" class="article-text"></div>
+      </div>
+    </div>
+
+    <!-- 4. TELA DE FAVORITOS -->
+    <div id="favorites-screen" class="screen favorites-screen">
+      <div class="fav-header">
+        <h2>Artigos Favoritados</h2>
+        <button class="icon-btn" onclick="showHome()">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div id="fav-list-container" class="fav-list"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = "";
+    let currentArticleId = null;
+    let cdcDatabase = null;
+    let favorites = JSON.parse(localStorage.getItem('cdc_favorites')) || [];
+
+    // --- CARREGAMENTO DO BANCO LOCAL ---
+    async function getDatabase() {
+      if (cdcDatabase) return cdcDatabase;
+      try {
+        const response = await fetch('cdc.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Não foi possível carregar cdc.json');
+        cdcDatabase = await response.json();
+        return cdcDatabase;
+      } catch (err) {
+        console.error("Erro ao ler cdc.json:", err);
+        return null;
+      }
+    }
+
+    function getArticleTextFromData(db, artId) {
+      if (!db) return null;
+      const num = parseInt(artId, 10);
+      if (Array.isArray(db)) {
+        const item = db.find(a => parseInt(a.id || a.numero, 10) === num);
+        return item ? (item.texto || item.conteudo) : null;
+      }
+      if (typeof db === 'object') {
+        return db[String(num)] || db[num] || null;
+      }
+      return null;
+    }
+
+    // --- TECLADO NUMÉRICO ---
+    function pressNum(num) {
+      if (currentInput.length < 3) {
+        currentInput += num;
+        updateDisplay();
+      }
+    }
+
+    function clearNum() {
+      currentInput = "";
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      document.getElementById("display").innerText = currentInput;
+    }
+
+    // --- NAVEGAÇÃO DE TELAS ---
+    function switchScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+    }
+
+    function showHome() {
+      clearNum();
+      switchScreen('home-screen');
+    }
+
+    function searchArticleFromKeypad() {
+      if (!currentInput) return;
+      const artId = parseInt(currentInput, 10).toString();
+      fetchAndDisplayArticle(artId);
+    }
+
+    // --- EXIBIÇÃO DO ARTIGO ---
+    async function fetchAndDisplayArticle(artId) {
+      currentArticleId = artId;
+      switchScreen('article-screen');
+      updateFavButtonState();
+
+      document.getElementById("article-title").innerText = `Artigo ${artId}`;
+      document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando...</div>`;
+
+      const db = await getDatabase();
+      const text = getArticleTextFromData(db, artId);
+
+      if (text) {
+        document.getElementById("article-title").innerText = `Artigo ${parseInt(artId, 10)}`;
+        document.getElementById("article-content").innerHTML = text;
+        const bodyEl = document.querySelector('.article-body');
+        if (bodyEl) bodyEl.scrollTop = 0;
+      } else {
+        document.getElementById("article-content").innerHTML = `<p class="empty-msg">Artigo não encontrado no banco local.</p>`;
+      }
+    }
+
+    // --- PESQUISA INTELIGENTE (CHAMA A IA GROQ VIA API SERVERLESS) ---
+    function openSearchScreen() {
+      document.getElementById("search-term-input").value = "";
+      document.getElementById("search-results-container").innerHTML = "";
+      switchScreen('search-screen');
+    }
+
+    async function performTextSearch() {
+      const term = document.getElementById("search-term-input").value.trim();
+      const container = document.getElementById("search-results-container");
+      
+      if (!term) return;
+      container.innerHTML = '<div class="loading-spinner">Consultando IA (Groq)...</div>';
+
+      try {
+        // Chamada para a nossa API na Vercel
+        const response = await fetch('/api/buscar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: term })
+        });
+
+        const data = await response.json();
+
+        if (data.erro || !data.resultados || data.resultados.length === 0) {
+          container.innerHTML = `<div class="empty-msg">Nenhum artigo encontrado para "${term}".</div>`;
+          return;
+        }
+
+        container.innerHTML = "";
+        data.resultados.forEach(res => {
+          const item = document.createElement("div");
+          item.className = "result-item";
+          item.onclick = () => fetchAndDisplayArticle(res.id);
+          item.innerHTML = `
+            <div class="result-title">${res.title}</div>
+            <div class="result-snippet">${res.snippet}</div>
+          `;
+          container.appendChild(item);
+        });
+
+      } catch (err) {
+        console.error("Erro na busca por IA:", err);
+        container.innerHTML = '<div class="empty-msg">Falha na conexão com a IA. Tente novamente.</div>';
+      }
+    }
+
+    // --- NAVEGAÇÃO ANTERIOR / PRÓXIMO ---
+    function navArticle(direction) {
+      let num = parseInt(currentArticleId, 10);
+      if (isNaN(num)) num = 1;
+      num += direction;
+      if (num < 1) num = 1;
+      if (num > 119) num = 119;
+      fetchAndDisplayArticle(num.toString());
+    }
+
+    // --- FAVORITOS ---
+    function toggleFavorite() {
+      if (!currentArticleId) return;
+      const index = favorites.indexOf(currentArticleId);
+      if (index === -1) {
+        favorites.push(currentArticleId);
+      } else {
+        favorites.splice(index, 1);
+      }
+      localStorage.setItem('cdc_favorites', JSON.stringify(favorites));
+      updateFavButtonState();
+    }
+
+    function updateFavButtonState() {
+      const btn = document.getElementById("fav-toggle-btn");
+      if (favorites.includes(currentArticleId)) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    }
+
+    async function openFavorites() {
+      const container = document.getElementById("fav-list-container");
+      container.innerHTML = "";
+
+      if (favorites.length === 0) {
+        container.innerHTML = '<div class="empty-msg">Nenhum artigo favoritado ainda.</div>';
+      } else {
+        const db = await getDatabase();
+        favorites.forEach(id => {
+          let title = `Artigo ${id}`;
+          let preview = "Toque para abrir...";
+          const rawText = getArticleTextFromData(db, id);
+          if (rawText) {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = rawText;
+            preview = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 80) + "...";
+          }
+
+          const item = document.createElement("div");
+          item.className = "fav-item";
+          item.onclick = () => fetchAndDisplayArticle(id);
+          item.innerHTML = `
+            <div>
+              <div style="font-weight: bold; color: #0d3859;">${title}</div>
+              <div style="font-size: 13px; color: #666;">${preview}</div>
+            </div>
+            <svg class="icon" style="color: #f39c12;" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          `;
+          container.appendChild(item);
+        });
+      }
+
+      switchScreen('favorites-screen');
+    }
+  </script>
+</body>
+</html>

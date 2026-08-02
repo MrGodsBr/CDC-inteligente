@@ -36,7 +36,7 @@
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
-    /* CAIXA DA ANÁLISE DA IA ABAIXO DO TEXTO DA LEI */
+    /* CAIXA FIXA DE ANÁLISE DA IA COM BORDAS E DESTAQUE 🌎 */
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
@@ -135,7 +135,7 @@
           </button>
         </div>
 
-        <div class="footer-version">v9.0 Análise Automática 🌎</div>
+        <div class="footer-version">v10.0 Análise Garantida 🌎</div>
       </div>
     </div>
 
@@ -171,7 +171,8 @@
       <div class="article-body">
         <h2 id="article-title" class="article-title"></h2>
         <div id="article-content" class="article-text"></div>
-        <!-- AQUI ENTRA A CAIXA ABAIXO DO TEXTO ORIGINAL -->
+        
+        <!-- ELEMENTO ONDE A CAIXA AZUL DA IA É INSERIDA -->
         <div id="ia-extra-container"></div>
       </div>
     </div>
@@ -230,7 +231,7 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
-    // MONTA A TELA: DESENHA O BANCO LOCAL E BUSCA A IA EM SEGUIDA
+    // CARREGA O TEXTO OFICIAL DO CDC.JSON E BUSCA A IA AUTOMATICAMENTE
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
@@ -238,22 +239,19 @@
 
       document.getElementById("article-title").innerText = `Artigo ${artId}`;
       document.getElementById("article-content").innerHTML = `<div class="loading-spinner">Carregando cdc.json...</div>`;
-      document.getElementById("ia-extra-container").innerHTML = "";
-
+      
       const db = await getDatabase();
       const articleObj = getArticleFromData(db, artId);
 
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
-        
-        // 1. TEXTO OFICIAL E INTACTO DO CDC.JSON
         document.getElementById("article-content").innerHTML = articleObj.texto;
 
-        // 2. SE JÁ RECEBEU O TEXTO DA IA (PELA BUSCA), EXIBE ELE
+        // Se a busca já trouxe a explicação pronta, desenha na hora
         if (extraIaText && extraIaText.trim() !== "") {
           renderIaBox(extraIaText);
         } else {
-          // SE ABRIU PELO TECLADO OU NAVEGAÇÃO, CHAMA A IA AUTOMATICAMENTE
+          // Senão, chama a busca da IA para o artigo selecionado
           fetchIaAnalysisForArticle(artId);
         }
 
@@ -264,12 +262,12 @@
       }
     }
 
-    // BUSCA A ANÁLISE DA IA PARA O ARTIGO ABERTO
+    // MONTA A CAIXA DE CARREGAMENTO E CONSULTA A API
     async function fetchIaAnalysisForArticle(artId) {
       const iaBox = document.getElementById("ia-extra-container");
       iaBox.innerHTML = `
-        <div class="ia-extra-box" style="background-color: #f5f5f5; border-left-color: #888;">
-          <div class="ia-extra-title" style="color: #666;">🌎 Consultando análise complementar da IA...</div>
+        <div class="ia-extra-box" style="background-color: #f8fafc; border-left-color: #3f90be;">
+          <div class="ia-extra-title" style="color: #0d3859;">🌎 Consultando análise da IA para o Artigo ${artId}...</div>
         </div>
       `;
 
@@ -277,7 +275,7 @@
         const response = await fetch('/api/buscar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: `Forneça uma análise, explicação prática e jurisprudência sobre o Artigo ${artId} do CDC.` })
+          body: JSON.stringify({ query: `Explicação e aplicação prática do Artigo ${artId} do CDC` })
         });
 
         const data = await response.json();
@@ -285,9 +283,15 @@
         if (data.resultados && data.resultados.length > 0 && data.resultados[0].explicacao_ia) {
           renderIaBox(data.resultados[0].explicacao_ia);
         } else {
-          iaBox.innerHTML = "";
+          iaBox.innerHTML = `
+            <div class="ia-extra-box">
+              <div class="ia-extra-title">🌎 Análise / Orientação da IA:</div>
+              <div>Artigo legal sem jurisprudências específicas associadas no momento.</div>
+            </div>
+          `;
         }
       } catch (err) {
+        console.error("Erro busca IA:", err);
         iaBox.innerHTML = "";
       }
     }
@@ -307,7 +311,7 @@
       switchScreen('search-screen');
     }
 
-    // BUSCA POR PALAVRA (LOCAL + IA SEPARADAS)
+    // PESQUISA HÍBRIDA (LOCAL + IA)
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");

@@ -21,19 +21,17 @@ export default async function handler(req, res) {
         messages: [
           {
             role: "system",
-            content: `Você é uma base jurídica estrita do Código de Defesa do Consumidor (CDC) do Brasil.
-SUA REGRA PRINCIPAL: NUNCA RESUMA, NUNCA PARAFRASEIE E NUNCA USE INGLÊS.
-Você deve retornar o texto OFICIAL E COMPLETO do artigo solicitado, incluindo Caput, Parágrafos (§), Incisos (I, II) e Alíneas (a, b), idêntico ao texto da Lei 8.078/1990.
+            content: `Você é um classificador jurídico do Código de Defesa do Consumidor (CDC) do Brasil.
+Sua ÚNICA função é identificar quais números de artigos do CDC (de 1 a 119) correspondem à dúvida ou ao número pesquisado pelo usuário.
+NUNCA invente o texto dos artigos.
 
-Formate o texto em HTML usando <strong> para destacar o número do artigo e os parágrafos, e <br><br> para quebrar as linhas.
-
-Formato da resposta obrigatoriamente em JSON:
+Responda ESTRITAMENTE em formato JSON com o número do artigo em 'id' e uma breve justificativa da relação em 'snippet':
 {
   "resultados": [
     {
-      "id": "37",
-      "title": "Artigo 37",
-      "snippet": "<strong>Art. 37.</strong> É proibida toda publicidade enganosa ou abusiva.<br><br><strong>§ 1º</strong> É enganosa qualquer modalidade de informação ou comunicação de caráter publicitário, inteira ou parcialmente falsa, ou, por qualquer outro modo, mesmo por omissão, capaz de induzir em erro o consumidor a respeito da natureza, características, qualidade, quantidade, propriedades, origem, preço e quaisquer outros dados sobre produtos e serviços.<br><br><strong>§ 2º</strong> É abusiva, dentre outras a publicidade discriminatória de qualquer natureza, a que incite à violência, explore o medo ou a superstição, se aproveite da deficiência de julgamento e experiência da criança, desrespeita valores ambientais, ou que seja capaz de induzir o consumidor a se comportar de forma prejudicial ou perigosa à sua saúde ou segurança.<br><br><strong>§ 3º</strong> Para os efeitos deste código, a publicidade é enganosa por omissão quando deixar de informar sobre dado essencial do produto ou serviço.<br><br><strong>§ 4º</strong> (Vetado)."
+      "id": "18",
+      "title": "Artigo 18",
+      "snippet": "Trata da responsabilidade por vício de qualidade e prazo para sanar defeitos."
     }
   ]
 }`

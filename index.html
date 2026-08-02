@@ -35,7 +35,7 @@
     .article-title { font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #000000; }
     .article-text { font-size: 15px; }
 
-    /* CAIXA COMPLEMENTAR 🌎 DA IA ABAIXO DA LEI */
+    /* BLOCO DESTACADO COM ANÁLISE/COMPLEMENTO DA IA 🌎 */
     .ia-extra-box {
       margin-top: 24px;
       padding: 16px;
@@ -130,7 +130,7 @@
           </button>
         </div>
 
-        <div class="footer-version">v7.0 CDC Inteligente</div>
+        <div class="footer-version">v8.0 Análise Total 🌎</div>
       </div>
     </div>
 
@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <!-- 3. TELA DO ARTIGO (LEI ORIGINAL + COMPLEMENTO IA) -->
+    <!-- 3. TELA DO ARTIGO -->
     <div id="article-screen" class="screen article-screen">
       <div class="nav-bar">
         <div class="nav-group">
@@ -190,11 +190,11 @@
       if (cdcDatabase) return cdcDatabase;
       try {
         const response = await fetch('cdc.json', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Erro ao carregar cdc.json');
+        if (!response.ok) throw new Error('Erro cdc.json');
         cdcDatabase = await response.json();
         return cdcDatabase;
       } catch (err) {
-        console.error("Erro no cdc.json:", err);
+        console.error("Erro cdc.json:", err);
         return null;
       }
     }
@@ -224,6 +224,7 @@
       fetchAndDisplayArticle(parseInt(currentInput, 10).toString());
     }
 
+    // EXIBE O TEXTO OFICIAL DO CDC.JSON E CONSULTA A IA SE NÃO HOUVER ANÁLISE PRÉVIA
     async function fetchAndDisplayArticle(artId, extraIaText = null) {
       currentArticleId = artId;
       switchScreen('article-screen');
@@ -238,15 +239,16 @@
 
       if (articleObj && articleObj.texto) {
         document.getElementById("article-title").innerText = articleObj.titulo || `Artigo ${artId}`;
+        
+        // 1. CARREGA O TEXTO COMPLETO E ORIGINAL DO BANCO LOCAL
         document.getElementById("article-content").innerHTML = articleObj.texto;
 
+        // 2. SE JÁ PASSOU A ANÁLISE PELA BUSCA, MOSTRA ELA
         if (extraIaText && extraIaText.trim() !== "") {
-          document.getElementById("ia-extra-container").innerHTML = `
-            <div class="ia-extra-box">
-              <div class="ia-extra-title">🌎 Complemento / Orientação da IA:</div>
-              <div>${extraIaText}</div>
-            </div>
-          `;
+          renderIaBox(extraIaText);
+        } else {
+          // SE FOI DIGITADO PELO TECLADO OU NAVEGAÇÃO, CONSULTA A IA EM SEGUNDO PLANO
+          fetchIaAnalysisForArticle(artId);
         }
 
         const bodyEl = document.querySelector('.article-body');
@@ -256,12 +258,50 @@
       }
     }
 
+    // BUSCA A ANÁLISE/ORIENTAÇÃO DA IA QUANDO O ARTIGO É ABERTO PELO TECLADO
+    async function fetchIaAnalysisForArticle(artId) {
+      const iaBox = document.getElementById("ia-extra-container");
+      iaBox.innerHTML = `
+        <div class="ia-extra-box" style="background-color: #f5f5f5; border-left-color: #888;">
+          <div class="ia-extra-title" style="color: #666;">🌎 Consultando análise complementar da IA...</div>
+        </div>
+      `;
+
+      try {
+        const response = await fetch('/api/buscar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: `Forneça uma orientação prática e jurisprudência sobre o Artigo ${artId} do CDC.` })
+        });
+
+        const data = await response.json();
+
+        if (data.resultados && data.resultados.length > 0 && data.resultados[0].explicacao_ia) {
+          renderIaBox(data.resultados[0].explicacao_ia);
+        } else {
+          iaBox.innerHTML = "";
+        }
+      } catch (err) {
+        iaBox.innerHTML = "";
+      }
+    }
+
+    function renderIaBox(text) {
+      document.getElementById("ia-extra-container").innerHTML = `
+        <div class="ia-extra-box">
+          <div class="ia-extra-title">🌎 Análise / Orientação da IA:</div>
+          <div>${text}</div>
+        </div>
+      `;
+    }
+
     function openSearchScreen() {
       document.getElementById("search-term-input").value = "";
       document.getElementById("search-results-container").innerHTML = "";
       switchScreen('search-screen');
     }
 
+    // BUSCA HÍBRIDA (LOCAL + IA SEPARADAS)
     async function performTextSearch() {
       const term = document.getElementById("search-term-input").value.trim();
       const container = document.getElementById("search-results-container");
@@ -277,7 +317,7 @@
 
       container.innerHTML = "";
 
-      // 1. BUSCA LOCAL
+      // 1. RESULTADOS DO BANCO LOCAL (CDC.JSON)
       const termLower = term.toLowerCase();
       const matchesLocal = db.filter(art => {
         const fullText = (art.titulo + " " + art.texto).toLowerCase();
@@ -311,7 +351,7 @@
         container.appendChild(emptyLocal);
       }
 
-      // 2. BUSCA IA
+      // 2. RESULTADOS DA IA
       const iaHeader = document.createElement("div");
       iaHeader.className = "section-header ia";
       iaHeader.innerText = "🌎 Análise Inteligente pela IA";

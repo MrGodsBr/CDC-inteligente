@@ -336,29 +336,6 @@
       transition: width 0.3s;
     }
     
-    .perguntas-sugeridas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 12px 0;
-    }
-    
-    .pergunta-sugerida {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 6px 12px;
-      font-size: 12px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-    
-    .pergunta-sugerida:active {
-      transform: scale(0.95);
-      background: var(--ia-bg);
-    }
-    
     .share-btn {
       background-color: #25D366;
       color: white;
@@ -423,8 +400,8 @@
       margin-top: 4px;
     }
 
-    /* ===== NOVA ANÁLISE IA - MENTOR ===== */
-    .ia-analise-completa {
+    /* ===== ARTIGOS RELACIONADOS (NOVA MENTORIA) ===== */
+    .artigos-relacionados-box {
       margin-top: 16px;
       background: var(--bg-secondary);
       border-radius: 12px;
@@ -433,7 +410,7 @@
       box-shadow: var(--shadow);
     }
     
-    .ia-header {
+    .artigos-relacionados-header {
       background: linear-gradient(135deg, var(--header-bg), var(--info));
       padding: 12px 16px;
       display: flex;
@@ -442,95 +419,71 @@
       color: #fff;
     }
     
-    .ia-header .ia-icon {
+    .artigos-relacionados-header .icon {
       font-size: 20px;
     }
     
-    .ia-header .ia-title {
+    .artigos-relacionados-header .title {
       font-weight: bold;
       font-size: 15px;
     }
     
-    .ia-section {
-      padding: 14px 16px;
-      border-left: 4px solid var(--info);
-      border-bottom: 1px solid var(--border-color);
+    .artigos-relacionados-header .count {
+      margin-left: auto;
+      font-size: 12px;
+      background: rgba(255,255,255,0.2);
+      padding: 2px 10px;
+      border-radius: 12px;
     }
     
-    .ia-section:last-child {
+    .artigo-relacionado-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .artigo-relacionado-item:last-child {
       border-bottom: none;
     }
     
-    .ia-section-title {
+    .artigo-relacionado-item:active {
+      background-color: var(--card-bg);
+    }
+    
+    .artigo-relacionado-item .num {
       font-weight: bold;
+      color: var(--info);
+      font-size: 14px;
+      min-width: 30px;
+    }
+    
+    .artigo-relacionado-item .titulo {
       font-size: 14px;
       color: var(--text-secondary);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .ia-section-content {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-secondary);
-    }
-    
-    .ia-section-content ul {
-      padding-left: 20px;
-      margin: 4px 0;
-    }
-    
-    .ia-section-content li {
-      margin-bottom: 4px;
-    }
-    
-    .ia-actions {
-      display: flex;
-      gap: 8px;
-      padding: 12px 16px;
-      background: var(--card-bg);
-      flex-wrap: wrap;
-    }
-    
-    .ia-action-btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      background: var(--info);
-      color: #fff;
-      transition: transform 0.1s;
       flex: 1;
-      min-width: 120px;
     }
     
-    .ia-action-btn:active {
-      transform: scale(0.95);
+    .artigo-relacionado-item .seta {
+      color: var(--info);
+      font-size: 18px;
     }
     
-    .ia-action-btn:first-child {
-      background: var(--header-bg);
+    .artigo-relacionado-item .relacao {
+      font-size: 11px;
+      color: #888;
+      display: block;
+      margin-top: 2px;
     }
     
-    .loading-dots {
-      display: inline-block;
-      width: 20px;
-      text-align: left;
-    }
-    
-    .loading-dots::after {
-      content: '...';
-      animation: dots 1.5s steps(4, end) infinite;
-    }
-    
-    @keyframes dots {
-      0%, 20% { content: '.'; }
-      40% { content: '..'; }
-      60%, 100% { content: '...'; }
+    .artigos-relacionados-empty {
+      padding: 20px;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
     }
 
     /* ===== PESQUISA ===== */
@@ -1016,15 +969,13 @@
       <div class="progresso-bar"><div class="progresso-bar-fill" id="progresso-leitura"></div></div>
       <div id="article-content" class="article-text"></div>
       
-      <div id="perguntas-sugeridas" class="perguntas-sugeridas"></div>
-      
       <div class="article-actions">
         <button class="share-btn" onclick="shareArticle()">📤 Compartilhar</button>
         <button class="btn-anotar" onclick="abrirEditorAnotacao()">📝 Anotar</button>
       </div>
       
       <div id="anotacao-container"></div>
-      <div id="ia-extra-container"></div>
+      <div id="artigos-relacionados-container"></div>
     </div>
   </div>
 
@@ -1284,6 +1235,117 @@ function marcarNotificacaoLida(id) {
 }
 
 // ============================================================
+//  ARTIGOS RELACIONADOS (NOVA FUNÇÃO)
+// ============================================================
+function encontrarArtigosRelacionados(db, artigoId, maxResults = 5) {
+  if (!db || !artigoId) return [];
+  
+  const artigoAtual = getArticleFromData(db, artigoId);
+  if (!artigoAtual) return [];
+  
+  const numAtual = parseInt(artigoId, 10);
+  const relacionados = [];
+  
+  // Função para extrair palavras-chave do texto
+  function extrairPalavrasChave(texto) {
+    const palavras = texto.toLowerCase()
+      .replace(/[^\w\s]/g, '')
+      .split(/\s+/)
+      .filter(p => p.length > 3);
+    
+    // Palavras comuns do CDC que são importantes
+    const palavrasImportantes = ['consumidor', 'fornecedor', 'produto', 'serviço', 'direito', 
+      'garantia', 'responsabilidade', 'prazo', 'defeito', 'vício', 'reparação', 'indenização',
+      'contrato', 'cláusula', 'publicidade', 'engano', 'informação', 'qualidade', 'segurança',
+      'solidariedade', 'decadência', 'prescrição', 'ônus', 'prova', 'sanção', 'multa'];
+    
+    // Pega palavras que são importantes
+    const chaves = palavras.filter(p => palavrasImportantes.some(imp => p.includes(imp)));
+    return [...new Set(chaves)];
+  }
+  
+  const palavrasChave = extrairPalavrasChave(artigoAtual.texto + ' ' + (artigoAtual.titulo || ''));
+  
+  // Busca artigos relacionados
+  db.forEach(art => {
+    const id = parseInt(art.id || art.numero, 10);
+    if (id === numAtual) return;
+    
+    const textoCompleto = (art.texto + ' ' + (art.titulo || '')).toLowerCase();
+    let score = 0;
+    let palavrasEncontradas = [];
+    
+    // Verifica cada palavra-chave
+    palavrasChave.forEach(palavra => {
+      if (textoCompleto.includes(palavra)) {
+        score++;
+        palavrasEncontradas.push(palavra);
+      }
+    });
+    
+    // Verifica se o artigo é numericamente próximo (artigos sequenciais)
+    const diff = Math.abs(id - numAtual);
+    if (diff <= 10) {
+      score += 0.5;
+    }
+    
+    // Se tem relação, adiciona
+    if (score > 0) {
+      relacionados.push({
+        id: id,
+        titulo: art.titulo || `Artigo ${id}`,
+        score: score,
+        palavras: palavrasEncontradas.slice(0, 3)
+      });
+    }
+  });
+  
+  // Ordena por score e limita
+  relacionados.sort((a, b) => b.score - a.score);
+  return relacionados.slice(0, maxResults);
+}
+
+function renderArtigosRelacionados(relacionados, artigoId) {
+  const container = document.getElementById('artigos-relacionados-container');
+  
+  if (!relacionados || relacionados.length === 0) {
+    container.innerHTML = `
+      <div class="artigos-relacionados-box">
+        <div class="artigos-relacionados-header">
+          <span class="icon">📚</span>
+          <span class="title">Artigos Relacionados</span>
+          <span class="count">0</span>
+        </div>
+        <div class="artigos-relacionados-empty">
+          Nenhum artigo relacionado encontrado para o Artigo ${artigoId}.
+        </div>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = `
+    <div class="artigos-relacionados-box">
+      <div class="artigos-relacionados-header">
+        <span class="icon">📚</span>
+        <span class="title">Artigos Relacionados</span>
+        <span class="count">${relacionados.length}</span>
+      </div>
+      ${relacionados.map(art => `
+        <div class="artigo-relacionado-item" onclick="fetchAndDisplayArticle('${art.id}')">
+          <span class="num">${art.id}</span>
+          <div>
+            <span class="titulo">${art.titulo}</span>
+            <span class="relacao">${art.palavras.length > 0 ? 'Relacionado por: ' + art.palavras.join(', ') : 'Artigo relacionado'}</span>
+          </div>
+          <span class="seta">›</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ============================================================
 //  ARTIGO
 // ============================================================
 async function fetchAndDisplayArticle(artId, extraIaText = null) {
@@ -1323,182 +1385,14 @@ async function fetchAndDisplayArticle(artId, extraIaText = null) {
       anotContainer.innerHTML = '';
     }
 
-    const perguntas = [
-      `Como aplico o Artigo ${artId} na prática?`,
-      `Quais são as exceções do Artigo ${artId}?`,
-      `O Artigo ${artId} se aplica a todos os consumidores?`
-    ];
-    const suggContainer = document.getElementById('perguntas-sugeridas');
-    suggContainer.innerHTML = perguntas.map(p => `
-      <span class="pergunta-sugerida" onclick="perguntarSobreArtigo('${p}')">💬 ${p}</span>
-    `).join('');
-
-    if (extraIaText && extraIaText.trim() !== "") {
-      renderAnaliseSimples(extraIaText);
-    } else {
-      fetchIaAnalysisForArticle(artId);
-    }
+    // Buscar e mostrar artigos relacionados
+    const relacionados = encontrarArtigosRelacionados(db, artId);
+    renderArtigosRelacionados(relacionados, artId);
 
     document.getElementById('article-body').scrollTop = 0;
   } else {
     document.getElementById("article-content").innerHTML = `<p class="empty-msg">Artigo não encontrado.</p>`;
   }
-}
-
-function perguntarSobreArtigo(pergunta) {
-  const input = document.getElementById('search-term-input');
-  if (input) {
-    input.value = `Sobre o Artigo ${currentArticleId}: ${pergunta}`;
-    openSearchScreen();
-    setTimeout(performTextSearch, 300);
-  }
-}
-
-// ============================================================
-//  NOVA ANÁLISE IA - MENTOR
-// ============================================================
-async function fetchIaAnalysisForArticle(artId) {
-  const iaBox = document.getElementById("ia-extra-container");
-  
-  iaBox.innerHTML = `
-    <div class="ia-analise-completa">
-      <div class="ia-header">
-        <span class="ia-icon">🧠</span>
-        <span class="ia-title">Consultando mentor IA...</span>
-      </div>
-      <div style="padding:16px;display:flex;align-items:center;gap:10px;">
-        <span class="loading-dots"></span>
-        <span style="font-size:13px;color:#888;">Analisando o Artigo ${artId}...</span>
-      </div>
-    </div>
-  `;
-
-  try {
-    const response = await fetch(`${API_BASE_URL}/buscar`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        query: `Faça uma análise completa do Artigo ${artId} do CDC para um consumidor comum. Use linguagem simples e dê exemplos práticos.`,
-        artigo: artId,
-        tipo: 'analise_completa'
-      })
-    });
-
-    if (!response.ok) throw new Error('Erro na IA');
-    
-    const data = await response.json();
-    
-    if (data.resultados && data.resultados.length > 0) {
-      const resultado = data.resultados[0];
-      
-      try {
-        const analise = JSON.parse(resultado.explicacao_ia);
-        renderAnaliseCompleta(analise, artId);
-      } catch (e) {
-        renderAnaliseSimples(resultado.explicacao_ia);
-      }
-    } else {
-      iaBox.innerHTML = `
-        <div class="ia-analise-completa">
-          <div class="ia-header">
-            <span class="ia-icon">⚠️</span>
-            <span class="ia-title">Não foi possível obter análise</span>
-          </div>
-          <div style="padding:16px;font-size:13px;color:#888;">Tente novamente mais tarde.</div>
-        </div>
-      `;
-    }
-  } catch (err) {
-    console.error('Erro na IA:', err);
-    iaBox.innerHTML = `
-      <div class="ia-analise-completa">
-        <div class="ia-header" style="background:linear-gradient(135deg, var(--danger), #c0392b);">
-          <span class="ia-icon">⚠️</span>
-          <span class="ia-title">Erro na consulta</span>
-        </div>
-        <div style="padding:16px;font-size:13px;color:#888;">Não foi possível obter a análise. Tente novamente.</div>
-      </div>
-    `;
-  }
-}
-
-function renderAnaliseCompleta(analise, artId) {
-  const iaBox = document.getElementById("ia-extra-container");
-  
-  const simplificado = analise.simplificado || 'O artigo garante proteção ao consumidor.';
-  const exemplo = analise.exemplo || 'Exemplo prático não disponível.';
-  const acao = analise.acao || 'Consulte um especialista para orientação específica.';
-  const prazo = analise.prazo || 'Fique atento aos prazos legais.';
-  const dica = analise.dica || 'Mantenha todos os documentos organizados.';
-  
-  iaBox.innerHTML = `
-    <div class="ia-analise-completa">
-      <div class="ia-header">
-        <span class="ia-icon">🧠</span>
-        <span class="ia-title">Mentor IA - Análise Completa</span>
-      </div>
-      
-      <div class="ia-section">
-        <div class="ia-section-title">📖 Em palavras simples</div>
-        <div class="ia-section-content">${simplificado}</div>
-      </div>
-      
-      <div class="ia-section" style="border-left-color: #f39c12;">
-        <div class="ia-section-title">💡 Exemplo prático</div>
-        <div class="ia-section-content">${exemplo}</div>
-      </div>
-      
-      <div class="ia-section" style="border-left-color: #27ae60;">
-        <div class="ia-section-title">🎯 O que você pode fazer</div>
-        <div class="ia-section-content">${acao}</div>
-      </div>
-      
-      <div class="ia-section" style="border-left-color: #e74c3c;">
-        <div class="ia-section-title">⏰ Prazos importantes</div>
-        <div class="ia-section-content">${prazo}</div>
-      </div>
-      
-      <div class="ia-section" style="border-left-color: #8e44ad;">
-        <div class="ia-section-title">💎 Dica do mentor</div>
-        <div class="ia-section-content">${dica}</div>
-      </div>
-      
-      <div class="ia-actions">
-        <button class="ia-action-btn" onclick="perguntarSobreArtigo('Gostaria de saber mais sobre o Artigo ${artId}')">
-          ❓ Perguntar mais
-        </button>
-        <button class="ia-action-btn" onclick="perguntarSobreArtigo('Me dê um exemplo de como usar o Artigo ${artId} no dia a dia')">
-          📋 Ver exemplos
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-function renderAnaliseSimples(texto) {
-  const iaBox = document.getElementById("ia-extra-container");
-  
-  const sections = texto.split(/\n+/).filter(s => s.trim());
-  
-  iaBox.innerHTML = `
-    <div class="ia-analise-completa">
-      <div class="ia-header">
-        <span class="ia-icon">🧠</span>
-        <span class="ia-title">Mentor IA - Análise</span>
-      </div>
-      
-      <div class="ia-section">
-        <div class="ia-section-title">📖 Análise</div>
-        <div class="ia-section-content">${sections.join('<br><br>')}</div>
-      </div>
-      
-      <div class="ia-actions">
-        <button class="ia-action-btn" onclick="perguntarSobreArtigo('Gostaria de saber mais sobre o Artigo ${currentArticleId}')">
-          ❓ Perguntar mais
-        </button>
-      </div>
-    </div>
-  `;
 }
 
 function navArticle(direction) {
@@ -1653,7 +1547,7 @@ async function performTextSearch() {
       data.resultados.forEach(res => {
         const item = document.createElement("div");
         item.className = "result-item";
-        item.onclick = () => fetchAndDisplayArticle(res.id, res.explicacao_ia);
+        item.onclick = () => fetchAndDisplayArticle(res.id);
         item.innerHTML = `<div class="result-title">📌 Artigo ${res.id} 🌎</div><div class="result-snippet">${res.explicacao_ia||'Toque para abrir'}</div>`;
         container.appendChild(item);
         historicoConversa.push({ pergunta: term, resposta: res.explicacao_ia });
@@ -1842,7 +1736,6 @@ window.marcarTodasLidas = marcarTodasLidas;
 window.exportarFavoritos = exportarFavoritos;
 window.exportarBackup = exportarBackup;
 window.restaurarBackup = restaurarBackup;
-window.perguntarSobreArtigo = perguntarSobreArtigo;
 </script>
 </body>
 </html>

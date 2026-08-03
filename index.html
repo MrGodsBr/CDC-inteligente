@@ -282,8 +282,6 @@
     
     .icon-btn:active { transform: scale(0.92); }
     .icon-btn.fav-btn.active { background-color: var(--warning); }
-    .icon-btn.theme-btn { background-color: #6c5ce7; }
-    .icon-btn.notif-btn { background-color: var(--info); position: relative; }
     .icon-btn.home-btn { background-color: var(--header-bg); }
 
     /* ===== TELA DO ARTIGO ===== */
@@ -311,7 +309,15 @@
       transition: color 0.3s;
     }
     
-    .article-text { font-size: 14px; }
+    .article-text { 
+      font-size: 14px; 
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+    
+    .article-text strong, .article-text b {
+      color: var(--header-bg);
+    }
     
     .progresso-bar {
       width: 100%;
@@ -330,67 +336,28 @@
       transition: width 0.3s;
     }
     
-    .ia-extra-box {
-      margin-top: 16px;
-      padding: 14px;
-      background-color: var(--ia-bg);
-      border-left: 4px solid var(--ia-border);
-      border-radius: 8px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      transition: background-color 0.3s;
-    }
-    
-    .ia-extra-title {
-      font-weight: bold;
-      margin-bottom: 6px;
-      font-size: 14px;
-      color: var(--ia-border);
+    .perguntas-sugeridas {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 6px;
+      margin: 12px 0;
     }
     
-    .anotacao-container {
-      margin-top: 16px;
-      padding: 14px;
+    .pergunta-sugerida {
       background: var(--card-bg);
-      border-radius: 8px;
-    }
-    
-    .anotacao-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    
-    .anotacao-texto {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-    
-    .anotacao-data {
-      font-size: 11px;
-      color: #888;
-      margin-top: 4px;
-    }
-    
-    .btn-anotar {
-      width: 100%;
-      padding: 10px;
-      margin-top: 12px;
-      background: var(--info);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: bold;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 6px 12px;
+      font-size: 12px;
       cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.2s;
     }
     
-    .btn-anotar:active { transform: scale(0.98); }
+    .pergunta-sugerida:active {
+      transform: scale(0.95);
+      background: var(--ia-bg);
+    }
     
     .share-btn {
       background-color: #25D366;
@@ -416,27 +383,154 @@
       flex-wrap: wrap;
     }
     
-    .perguntas-sugeridas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 12px 0;
-    }
-    
-    .pergunta-sugerida {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 6px 12px;
-      font-size: 12px;
+    .btn-anotar {
+      flex: 1;
+      padding: 10px;
+      background: var(--info);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
       cursor: pointer;
-      color: var(--text-secondary);
-      transition: all 0.2s;
+      transition: transform 0.1s;
     }
     
-    .pergunta-sugerida:active {
+    .btn-anotar:active { transform: scale(0.98); }
+    
+    .anotacao-container {
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--card-bg);
+      border-radius: 8px;
+    }
+    
+    .anotacao-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .anotacao-texto {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    .anotacao-data {
+      font-size: 11px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* ===== NOVA ANÁLISE IA - MENTOR ===== */
+    .ia-analise-completa {
+      margin-top: 16px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .ia-header {
+      background: linear-gradient(135deg, var(--header-bg), var(--info));
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    
+    .ia-header .ia-icon {
+      font-size: 20px;
+    }
+    
+    .ia-header .ia-title {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    
+    .ia-section {
+      padding: 14px 16px;
+      border-left: 4px solid var(--info);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .ia-section:last-child {
+      border-bottom: none;
+    }
+    
+    .ia-section-title {
+      font-weight: bold;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .ia-section-content {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    
+    .ia-section-content ul {
+      padding-left: 20px;
+      margin: 4px 0;
+    }
+    
+    .ia-section-content li {
+      margin-bottom: 4px;
+    }
+    
+    .ia-actions {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      flex-wrap: wrap;
+    }
+    
+    .ia-action-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--info);
+      color: #fff;
+      transition: transform 0.1s;
+      flex: 1;
+      min-width: 120px;
+    }
+    
+    .ia-action-btn:active {
       transform: scale(0.95);
-      background: var(--ia-bg);
+    }
+    
+    .ia-action-btn:first-child {
+      background: var(--header-bg);
+    }
+    
+    .loading-dots {
+      display: inline-block;
+      width: 20px;
+      text-align: left;
+    }
+    
+    .loading-dots::after {
+      content: '...';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+    
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
     }
 
     /* ===== PESQUISA ===== */
@@ -594,7 +688,7 @@
     
     .fav-item:active { background-color: var(--card-bg); }
 
-    /* ===== BACKUP (DASHBOARD) ===== */
+    /* ===== BACKUP ===== */
     .backup-screen {
       background-color: var(--bg-secondary);
     }
@@ -891,7 +985,6 @@
     <div class="nav-bar">
       <div class="nav-group">
         <button class="icon-btn home-btn" onclick="showHome()">🏠</button>
-        <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
       </div>
     </div>
     <div class="search-body">
@@ -912,7 +1005,6 @@
         <button class="icon-btn home-btn" onclick="showHome()">🏠</button>
         <button class="icon-btn" onclick="openSearchScreen()">🔍</button>
         <button id="fav-toggle-btn" class="icon-btn fav-btn" onclick="toggleFavorite()">⭐</button>
-        <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
       </div>
       <div class="nav-group">
         <button class="icon-btn" onclick="navArticle(-1)">◀</button>
@@ -928,7 +1020,7 @@
       
       <div class="article-actions">
         <button class="share-btn" onclick="shareArticle()">📤 Compartilhar</button>
-        <button class="btn-anotar" onclick="abrirEditorAnotacao()" style="flex:1;">📝 Anotar</button>
+        <button class="btn-anotar" onclick="abrirEditorAnotacao()">📝 Anotar</button>
       </div>
       
       <div id="anotacao-container"></div>
@@ -941,7 +1033,6 @@
     <div class="fav-header">
       <h2>⭐ Favoritos</h2>
       <div class="nav-group">
-        <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
         <button class="icon-btn home-btn" onclick="showHome()">🏠</button>
       </div>
     </div>
@@ -953,7 +1044,6 @@
     <div class="nav-bar">
       <div class="nav-group">
         <button class="icon-btn home-btn" onclick="showHome()">🏠</button>
-        <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
       </div>
     </div>
     <div class="backup-container" id="backup-container">
@@ -967,7 +1057,6 @@
     <div class="nav-bar">
       <div class="nav-group">
         <button class="icon-btn home-btn" onclick="showHome()">🏠</button>
-        <button class="icon-btn theme-btn" onclick="toggleTheme()">🌓</button>
       </div>
       <button class="icon-btn" onclick="marcarTodasLidas()" style="background: var(--success);">✅</button>
     </div>
@@ -1023,7 +1112,7 @@ let historicoConversa = [];
 const API_BASE_URL = '/api';
 
 // ============================================================
-//  TEMA
+//  TEMA - APENAS NO HEADER
 // ============================================================
 function applyTheme(theme) {
   currentTheme = theme;
@@ -1245,7 +1334,7 @@ async function fetchAndDisplayArticle(artId, extraIaText = null) {
     `).join('');
 
     if (extraIaText && extraIaText.trim() !== "") {
-      renderIaBox(extraIaText);
+      renderAnaliseSimples(extraIaText);
     } else {
       fetchIaAnalysisForArticle(artId);
     }
@@ -1265,30 +1354,150 @@ function perguntarSobreArtigo(pergunta) {
   }
 }
 
+// ============================================================
+//  NOVA ANÁLISE IA - MENTOR
+// ============================================================
 async function fetchIaAnalysisForArticle(artId) {
   const iaBox = document.getElementById("ia-extra-container");
-  iaBox.innerHTML = `<div class="ia-extra-box"><div class="ia-extra-title">🌎 Consultando IA...</div></div>`;
+  
+  iaBox.innerHTML = `
+    <div class="ia-analise-completa">
+      <div class="ia-header">
+        <span class="ia-icon">🧠</span>
+        <span class="ia-title">Consultando mentor IA...</span>
+      </div>
+      <div style="padding:16px;display:flex;align-items:center;gap:10px;">
+        <span class="loading-dots"></span>
+        <span style="font-size:13px;color:#888;">Analisando o Artigo ${artId}...</span>
+      </div>
+    </div>
+  `;
+
   try {
     const response = await fetch(`${API_BASE_URL}/buscar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: `Explique o Artigo ${artId} do CDC de forma prática` })
+      body: JSON.stringify({ 
+        query: `Faça uma análise completa do Artigo ${artId} do CDC para um consumidor comum. Use linguagem simples e dê exemplos práticos.`,
+        artigo: artId,
+        tipo: 'analise_completa'
+      })
     });
+
     if (!response.ok) throw new Error('Erro na IA');
+    
     const data = await response.json();
-    if (data.resultados && data.resultados.length > 0 && data.resultados[0].explicacao_ia) {
-      renderIaBox(data.resultados[0].explicacao_ia);
+    
+    if (data.resultados && data.resultados.length > 0) {
+      const resultado = data.resultados[0];
+      
+      try {
+        const analise = JSON.parse(resultado.explicacao_ia);
+        renderAnaliseCompleta(analise, artId);
+      } catch (e) {
+        renderAnaliseSimples(resultado.explicacao_ia);
+      }
     } else {
-      iaBox.innerHTML = `<div class="ia-extra-box"><div class="ia-extra-title">🌎 Análise:</div><div>Sem análise específica.</div></div>`;
+      iaBox.innerHTML = `
+        <div class="ia-analise-completa">
+          <div class="ia-header">
+            <span class="ia-icon">⚠️</span>
+            <span class="ia-title">Não foi possível obter análise</span>
+          </div>
+          <div style="padding:16px;font-size:13px;color:#888;">Tente novamente mais tarde.</div>
+        </div>
+      `;
     }
   } catch (err) {
-    iaBox.innerHTML = `<div class="ia-extra-box" style="border-left-color:var(--danger);"><div class="ia-extra-title">⚠️ Erro na IA</div><div>Tente novamente.</div></div>`;
+    console.error('Erro na IA:', err);
+    iaBox.innerHTML = `
+      <div class="ia-analise-completa">
+        <div class="ia-header" style="background:linear-gradient(135deg, var(--danger), #c0392b);">
+          <span class="ia-icon">⚠️</span>
+          <span class="ia-title">Erro na consulta</span>
+        </div>
+        <div style="padding:16px;font-size:13px;color:#888;">Não foi possível obter a análise. Tente novamente.</div>
+      </div>
+    `;
   }
 }
 
-function renderIaBox(text) {
-  document.getElementById("ia-extra-container").innerHTML = `
-    <div class="ia-extra-box"><div class="ia-extra-title">🌎 Análise / Orientação da IA:</div><div>${text}</div></div>
+function renderAnaliseCompleta(analise, artId) {
+  const iaBox = document.getElementById("ia-extra-container");
+  
+  const simplificado = analise.simplificado || 'O artigo garante proteção ao consumidor.';
+  const exemplo = analise.exemplo || 'Exemplo prático não disponível.';
+  const acao = analise.acao || 'Consulte um especialista para orientação específica.';
+  const prazo = analise.prazo || 'Fique atento aos prazos legais.';
+  const dica = analise.dica || 'Mantenha todos os documentos organizados.';
+  
+  iaBox.innerHTML = `
+    <div class="ia-analise-completa">
+      <div class="ia-header">
+        <span class="ia-icon">🧠</span>
+        <span class="ia-title">Mentor IA - Análise Completa</span>
+      </div>
+      
+      <div class="ia-section">
+        <div class="ia-section-title">📖 Em palavras simples</div>
+        <div class="ia-section-content">${simplificado}</div>
+      </div>
+      
+      <div class="ia-section" style="border-left-color: #f39c12;">
+        <div class="ia-section-title">💡 Exemplo prático</div>
+        <div class="ia-section-content">${exemplo}</div>
+      </div>
+      
+      <div class="ia-section" style="border-left-color: #27ae60;">
+        <div class="ia-section-title">🎯 O que você pode fazer</div>
+        <div class="ia-section-content">${acao}</div>
+      </div>
+      
+      <div class="ia-section" style="border-left-color: #e74c3c;">
+        <div class="ia-section-title">⏰ Prazos importantes</div>
+        <div class="ia-section-content">${prazo}</div>
+      </div>
+      
+      <div class="ia-section" style="border-left-color: #8e44ad;">
+        <div class="ia-section-title">💎 Dica do mentor</div>
+        <div class="ia-section-content">${dica}</div>
+      </div>
+      
+      <div class="ia-actions">
+        <button class="ia-action-btn" onclick="perguntarSobreArtigo('Gostaria de saber mais sobre o Artigo ${artId}')">
+          ❓ Perguntar mais
+        </button>
+        <button class="ia-action-btn" onclick="perguntarSobreArtigo('Me dê um exemplo de como usar o Artigo ${artId} no dia a dia')">
+          📋 Ver exemplos
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderAnaliseSimples(texto) {
+  const iaBox = document.getElementById("ia-extra-container");
+  
+  const sections = texto.split(/\n+/).filter(s => s.trim());
+  
+  iaBox.innerHTML = `
+    <div class="ia-analise-completa">
+      <div class="ia-header">
+        <span class="ia-icon">🧠</span>
+        <span class="ia-title">Mentor IA - Análise</span>
+      </div>
+      
+      <div class="ia-section">
+        <div class="ia-section-title">📖 Análise</div>
+        <div class="ia-section-content">${sections.join('<br><br>')}</div>
+      </div>
+      
+      <div class="ia-actions">
+        <button class="ia-action-btn" onclick="perguntarSobreArtigo('Gostaria de saber mais sobre o Artigo ${currentArticleId}')">
+          ❓ Perguntar mais
+        </button>
+      </div>
+    </div>
   `;
 }
 
@@ -1432,7 +1641,10 @@ async function performTextSearch() {
     const response = await fetch(`${API_BASE_URL}/buscar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: term, contexto: historicoConversa.slice(-3) })
+      body: JSON.stringify({ 
+        query: term,
+        contexto: historicoConversa.slice(-3)
+      })
     });
     const data = await response.json();
     if (container.contains(iaLoading)) container.removeChild(iaLoading);
